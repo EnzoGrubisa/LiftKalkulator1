@@ -1,11 +1,6 @@
 {
-  "name": "liftkalkulator1",
-  "version": "1.0.0",
-  "description": "React app",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Enzo Grubiša",
-  "license": "ISC"
+  "dependencies": {
+    "create-react-app": "^5.0.1",
+    "react": "^18.2.0"
+  }
 }
