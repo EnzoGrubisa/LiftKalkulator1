@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import UkrcavanjeVilicarem from '../Components/UkrcavanjeVilicarem';
+// import UkrcavanjeVilicarem from '../Components/UkrcavanjeVilicarem';
 
 
 const OsnovniPodaciODizalu = () => {
@@ -46,7 +46,7 @@ const OsnovniPodaciODizalu = () => {
     
 
     useEffect(() => {
-        if(namjenaDizala == "teretno" || namjenaDizala == "osobnoTeretno"){
+        if(namjenaDizala === "teretno" || namjenaDizala === "osobnoTeretno"){
             setShowUkrcavanjeVilicaremCheckBox(true);
         }else{
             setShowUkrcavanjeVilicaremCheckBox(false);
@@ -54,7 +54,7 @@ const OsnovniPodaciODizalu = () => {
     }, [namjenaDizala]);
 
     useEffect(() => {
-        if(vrstaDizala == "elektricno"){
+        if(vrstaDizala === "elektricno"){
             setVrstaPogona("reduktorski");
         }else{
             setVrstaPogona("direktni");
@@ -78,15 +78,15 @@ const OsnovniPodaciODizalu = () => {
     }
 
     return (
-        <div >
-            <h1>Osnovni podaci o dizalu</h1>
-            <br/>
-
+        <div className='container-sm'>
+            <h2>Osnovni podaci o dizalu</h2>
+            
             <div>
                 <label>Namjena dizala: </label>
             </div>
             <div>
-                <select onChange={changeNamjenaDizala} defaultValue={namjenaDizala} class="form-select" aria-label="Default select example">
+                
+                <select onChange={changeNamjenaDizala} defaultValue={namjenaDizala} className="form-select" aria-label="Default select example">
                     <option value="osobno">Osobno dizalo</option>
                     <option value="teretno">Teretno dizalo</option>
                     <option value="osobnoTeretno">Osobno teretno dizalo</option>
@@ -95,8 +95,8 @@ const OsnovniPodaciODizalu = () => {
                 {/* { showUkrcavanjeVilicaremCheckBox ? <UkrcavanjeVilicarem ukrcavanjeVilicaremBool={ukrcavanjeVilicaremBool}/> : null } */}
                 { showUkrcavanjeVilicaremCheckBox ? 
                 <div>
-                    <input onClick={ukrcavanjeVilicaremCheckBoxClick} class="form-check-input" type="checkbox" value="" id="ukrcavanjeVilicaremCheckBox"/>
-                    <label class="form-check-label" for="ukrcavanjeVilicaremCheckBox">ukrcavanje viličarem</label>
+                    <input onClick={ukrcavanjeVilicaremCheckBoxClick} className="form-check-input" type="checkbox" value="" id="ukrcavanjeVilicaremCheckBox"/>
+                    <label className="form-check-label" htmlFor="ukrcavanjeVilicaremCheckBox">ukrcavanje viličarem</label>
                 </div> 
                 : null 
                 }
@@ -107,7 +107,7 @@ const OsnovniPodaciODizalu = () => {
                 <label>Vrsta dizala: </label>
             </div>
             <div>
-                <select onChange={changeVrstaDizala} defaultValue={vrstaDizala} class="form-select" aria-label="Default select example">
+                <select onChange={changeVrstaDizala} defaultValue={vrstaDizala} className="form-select" aria-label="Default select example">
                     <option value="elektricno">Električno dizalo s pogonskom užnicom</option>
                     <option value="hidraulicno">Hidraulično dizalo</option>
                 </select>
@@ -117,11 +117,11 @@ const OsnovniPodaciODizalu = () => {
                 <label>Vrsta pogona: </label>
             </div>
             <div>
-                <select value={vrstaPogona} onChange={changeVrstaPogona} class="form-select" aria-label="Default select example">
-                    {vrstaDizala == "elektricno" ? <option value="bezreduktorski">Bezreduktorski</option> : null}
-                    {vrstaDizala == "elektricno" ? <option value="reduktorski">Reduktorski</option> : null}
-                    {vrstaDizala == "hidraulicno" ? <option value="indirektni">Indirektni</option> : null}
-                    {vrstaDizala == "hidraulicno" ? <option value="direktni">Direktni</option> : null}
+                <select value={vrstaPogona} onChange={changeVrstaPogona} className="form-select" aria-label="Default select example">
+                    {vrstaDizala === "elektricno" ? <option value="bezreduktorski">Bezreduktorski</option> : null}
+                    {vrstaDizala === "elektricno" ? <option value="reduktorski">Reduktorski</option> : null}
+                    {vrstaDizala === "hidraulicno" ? <option value="indirektni">Indirektni</option> : null}
+                    {vrstaDizala === "hidraulicno" ? <option value="direktni">Direktni</option> : null}
                 </select>
             </div>
             <br/>
@@ -130,8 +130,8 @@ const OsnovniPodaciODizalu = () => {
                 <label>Smještaj pogona: </label>
             </div>
             <div>
-                <select value={smjestajPogona} onChange={changeSmjestajPogona} class="form-select" aria-label="Default select example">
-                    {vrstaDizala == "elektricno" && bezStrojarnice == true ?
+                <select value={smjestajPogona} onChange={changeSmjestajPogona} className="form-select" aria-label="Default select example">
+                    {vrstaDizala === "elektricno" && bezStrojarnice === true ?
                     <>
                         <option value="uVoznomOknuNaNosacu">U voznom oknu - na nosaču</option>
                         <option value="uVoznomOknuNaVodilicama">U voznom oknu - na vodilicama</option>
@@ -139,13 +139,13 @@ const OsnovniPodaciODizalu = () => {
                     </>
                     : null}
 
-                    {vrstaDizala == "hidraulicno" && bezStrojarnice == true ?
+                    {vrstaDizala === "hidraulicno" && bezStrojarnice === true ?
                     <>
                         <option value="uVoznomOknu">U voznom oknu</option>
                     </>
                     : null}
                     
-                    {bezStrojarnice == false ?
+                    {bezStrojarnice === false ?
                     <>
                         <option value="uStrojarniciIznadVoznogOkna">U strojarnici iznad voznog okna</option>
                         <option value="uStrojarniciIspodVoznogOkna">U strojarnici ispod voznog okna</option>
@@ -154,8 +154,8 @@ const OsnovniPodaciODizalu = () => {
                     : null}
                 </select>
                 <br/>
-                <input onClick={bezStrojarniceClick} class="form-check-input" type="checkbox" value="" id="bezStrojarniceCheckBox"/>
-                <label class="form-check-label" for="bezStrojarniceCheckBox">bez strojarnice</label>
+                <input onClick={bezStrojarniceClick} className="form-check-input" type="checkbox" value="" id="bezStrojarniceCheckBox"/>
+                <label className="form-check-label" htmlFor="bezStrojarniceCheckBox">bez strojarnice</label>
             </div>
             <br/>
 
