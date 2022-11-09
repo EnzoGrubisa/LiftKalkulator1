@@ -11,3 +11,46 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/*             |||            */
+/* //---- moje VVV ----------- */
+
+label {
+  padding: 10px;
+}
+
+.divCheckBox {
+  width: auto;
+  height: auto;
+  display: inline-flex;
+  align-items: center;
+  float: left;
+  clear:both;
+}
+
+.chkbx {
+  padding: 10px;
+}
+
+/* 
+.divDropDown {
+  display:inline-flex;
+  position: relative;
+  float: left;
+  clear:both;
+  padding-bottom: 10px;
+}
+
+
+
+
+
+.autoWidth {
+  width: auto;
+} */
+
+
+/* 
+.form-select {
+  width: auto;
+  color: red;
+} */
