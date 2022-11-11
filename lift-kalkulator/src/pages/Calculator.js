@@ -1,4 +1,5 @@
-import OsnovniPodaciODizalu from "../tabs/OsnovniPodaciODizalu";
+import OsnovniPodaciOProjektu from "../tabs/osnovniPodaciOProjektu/OsnovniPodaciOProjektu";
+//import OsnovniPodaciODizalu from "../tabs/osnovniPodaciODizalu/OsnovniPodaciODizalu";
 
 const Calculator = () => {
 
@@ -11,7 +12,8 @@ const Calculator = () => {
 		<div >
         	<h1 style={headerStyle}>Lift-Kalkulator</h1>
 			<hr/>
-			<OsnovniPodaciODizalu/>
+			<OsnovniPodaciOProjektu/>
+			{/* <OsnovniPodaciODizalu/> */}
 		</div>
     );
 }
