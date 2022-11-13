@@ -10,10 +10,20 @@ import Calculator from './pages/Calculator';
 const App = () => {
   return (
     <div className="App">
-      {/* <Navbar/> */}
       <Routes>
         <Route path='/' element={<Calculator/>}/>
         <Route path='/home' element={<Home/>}/>
+        <Route path='/projekt' element={<Calculator tab="projekt"/>}/>
+        <Route path='/dizalo' element={<Calculator tab="dizalo"/>}/>
+        <Route path='/ovjes' element={<Calculator tab="ovjes"/>}/>
+        <Route path='/vodiliceKabine' element={<Calculator tab="vodiliceKabine"/>}/>
+        <Route path='/vodiliceProtuutega' element={<Calculator tab="vodiliceProtuutega"/>}/>
+        <Route path='/kabina' element={<Calculator tab="kabina"/>}/>
+        <Route path='/protuutegIKompenzacija' element={<Calculator tab="protuutegIKompenzacija"/>}/>
+        <Route path='/elektricniPogon' element={<Calculator tab="elektricniPogon"/>}/>
+        <Route path='/hidraulicniPogon' element={<Calculator tab="hidraulicniPogon"/>}/>
+        <Route path='/biljeske' element={<Calculator tab="biljeske"/>}/>
+
       </Routes>
     </div>
   );
