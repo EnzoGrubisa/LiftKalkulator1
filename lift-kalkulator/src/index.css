@@ -54,6 +54,7 @@ label {
  /* The sidebar menu */
  .sidebar {
   height: 100%; /* 100% Full-height */
+  max-width: 100%;
   width: 0; /* 0 width - change this with JavaScript */
   position: fixed; /* Stay in place */
   z-index: 1; /* Stay on top */
@@ -61,7 +62,7 @@ label {
   left: 0;
   background-color: #111; /* Black*/
   overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
+  padding-top: 0px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
 }
 
@@ -73,6 +74,18 @@ label {
   color: #818181;
   display: block;
   transition: 0.3s;
+  text-align: left;
+}
+
+.sidebar hr {
+  padding: 0px 0px 0px 0px;
+  margin: 0px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  text-align: left;
 }
 
 /* When you mouse over the navigation links, change their color */
@@ -81,13 +94,17 @@ label {
   background-color: #444;
 }
 
+.selectedTab {
+  color: #f1f1f1;
+  background-color: #444;
+}
+
 /* Position and style the close button (top right corner) */
 .sidebar .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
+  position: relative;
+  margin: 0px;
   font-size: 36px;
-  margin-left: 50px;
+  text-align: right;
 }
 
 /* The button used to open the sidebar */
@@ -98,6 +115,10 @@ label {
   color: white;
   padding: 10px 15px;
   border: none;
+  margin: 0px;
+  width: 130px;
+  text-align: center;
+  height: 100%;
 }
 
 .openbtn:hover {
@@ -115,3 +136,12 @@ label {
   .sidebar {padding-top: 15px;}
   .sidebar a {font-size: 18px;}
 } 
+
+
+/* calculator Title Container */
+#calculatorTitleContainer {
+  position: relative;
+  width: 100%;
+  height: 55px;
+}
+

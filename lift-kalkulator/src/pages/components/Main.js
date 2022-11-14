@@ -14,7 +14,7 @@ const Main = (props) => {
     //props.postaviNaslov(props.tab);
 
     return (
-        <div id="main">
+        <div id="main" style={{backgroundColor: "#CCCCCC"}}>
             {props.tab === "projekt" ? <OsnovniPodaciOProjektu/> : null}
             {props.tab === "dizalo" ? <OsnovniPodaciODizalu/> : null}
             {props.tab === "ovjes" ? <Ovjes/> : null}

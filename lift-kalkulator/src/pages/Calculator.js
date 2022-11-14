@@ -48,26 +48,34 @@ const Calculator = (props) => {
 
 	const headerStyle = {
 		fontWeight: "bold",
-		paddingTop: "10px"
+		paddingTop: "0px",
+		marginBottom: "0px",
+		textAlign: "center",
+		marginLeft: "130px"
+	};
+
+	const izbornikButtonStyle = {
+		display: "flex",
+		position: "absolute"
 	};
 	
 	/* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
 	function openSidebar() {
-		document.getElementById("mySidebar").style.width = "250px";
-		document.getElementById("main").style.marginLeft = "250px";
+		document.getElementById("mySidebar").style.width = "350px";
+		document.getElementById("main").style.marginLeft = "350px";
 	}
 	
     return (
-		<div >
-			<button className="openbtn" onClick={openSidebar}>&#9776; Izbornik</button>
+		<div>
+			<div id="calculatorTitleContainer">
+				<button className="openbtn" style={izbornikButtonStyle} onClick={openSidebar}>&#9776; Izbornik</button>
+				<h2 style={headerStyle}>{naslov}</h2>
+			</div>
 			
-			<h1 style={headerStyle}>{naslov}</h1>
-			
-			<hr/>
-			
-			<Sidebar/>
+			<Sidebar tab={props.tab} />
 			
 			<Main tab={props.tab} postaviNaslov={setNaslov}/>
+		
 		</div>
     );
 }

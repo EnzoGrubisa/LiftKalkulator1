@@ -6,7 +6,6 @@ const OsnovniPodaciOProjektu = () => {
     
     return (
         <div className='container' style={{backgroundColor: "#CCCCCC"}}>
-            <h2>Osnovi podaci o projektu</h2>
             <PodaciOAutoruIUgraditeljuDizala/><br/>
             <OsnovniPodaciOProjektuComponent/><br/>
         </div>

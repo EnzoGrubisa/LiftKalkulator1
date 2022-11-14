@@ -7,6 +7,7 @@ const TitledInput = (props) => {
         <>
             <label>{props.title}: </label>
             <input/>
+            <label>{props.sDesna}</label>
         </>
       
     );
