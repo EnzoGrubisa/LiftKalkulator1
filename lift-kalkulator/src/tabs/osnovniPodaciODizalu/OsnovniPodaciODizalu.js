@@ -25,6 +25,4 @@ const OsnovniPodaciODizalu = () => {
     );
 }
   
-
-
 export default OsnovniPodaciODizalu;

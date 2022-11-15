@@ -1,16 +1,21 @@
 import { useEffect, useState } from 'react';
 
+import { useCalculator, useCalculatorUpdate } from '../../../contexts/CalculatorProvider'; 
+
 const Dizalo = () => {
     
+    const { vrstaDizala, bezStrojarnice } = useCalculator();
+    const { setVrstaDizala, setBezStrojarnice } = useCalculatorUpdate();
+
     const [namjenaDizala, setNamjenaDizala] = useState("osobno");
     const [showUkrcavanjeVilicaremCheckBox, setShowUkrcavanjeVilicaremCheckBox] = useState(false);
     const [ukrcavanjeVilicaremBool, setUkrcavanjeVilicaremBool] = useState(false);
 
-    const [vrstaDizala, setVrstaDizala] = useState("elektricno");
+    //const [vrstaDizala, setVrstaDizala] = useState("elektricno");
     const [vrstaPogona, setVrstaPogona] = useState("reduktorski");
     
     const [smjestajPogona, setSmjestajPogona] = useState("uVoznomOknuNaNosacu");
-    const [bezStrojarnice, setBezStrojarnice] = useState(true);
+    //const [bezStrojarnice, setBezStrojarnice] = useState(true);
     
     
     const changeNamjenaDizala = (e) => {

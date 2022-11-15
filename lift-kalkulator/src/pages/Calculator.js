@@ -3,10 +3,12 @@ import Sidebar from "./components/Sidebar";
 
 import { useState, useEffect } from 'react';
 
+import CalculatorProvider from "../contexts/CalculatorProvider";
+
 const Calculator = (props) => {
 
 	const [naslov, setNaslov] = useState("Default naslov");
-
+	
 	useEffect(() => {
 		switch (props.tab) {
 			case "projekt":
@@ -66,17 +68,17 @@ const Calculator = (props) => {
 	}
 	
     return (
-		<div>
+		<CalculatorProvider>
 			<div id="calculatorTitleContainer">
 				<button className="openbtn" style={izbornikButtonStyle} onClick={openSidebar}>&#9776; Izbornik</button>
 				<h2 style={headerStyle}>{naslov}</h2>
+				{/* <h1>{bezStrojarnice.toString()}</h1> */}
 			</div>
 			
 			<Sidebar tab={props.tab} />
 			
 			<Main tab={props.tab} postaviNaslov={setNaslov}/>
-		
-		</div>
+		</CalculatorProvider>
     );
 }
 

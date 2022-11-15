@@ -1,17 +1,38 @@
 //import { useEffect, useState } from 'react';
-import elekricnoSaStrojarnicom from '../../../assets/images/dizalo/elektricnoSaStrojarnicom.png';
-import elekricnoBezStrojarnice from '../../../assets/images/dizalo/elektricnoBezStrojarnice.png';
-import hirdaulicno from '../../../assets/images/dizalo/hidraulicno.png';
+import elektricnoSaStrojarnicom from '../../../assets/images/dizalo/elektricnoSaStrojarnicom.png';
+import elektricnoBezStrojarnice from '../../../assets/images/dizalo/elektricnoBezStrojarnice.png';
+import hidraulicno from '../../../assets/images/dizalo/hidraulicno.png';
+
+import { useCalculator } from '../../../contexts/CalculatorProvider'; 
 
 const SlikaDizala = () => {
+
+
+    const { vrstaDizala, bezStrojarnice } = useCalculator();
+    // console.log("asdas" + vrstaDizala);
+    // // console.log(bezStrojarnice);
 
     function fullscreenImage(){
         
     }
 
+    function pickImage(){
+        if(vrstaDizala === 'elektricno'){
+            if(bezStrojarnice === false){
+                return elektricnoSaStrojarnicom;
+            }
+            else if(bezStrojarnice === true){
+                return elektricnoBezStrojarnice;
+            }
+        }
+        else if(vrstaDizala === 'hidraulicno'){
+            return hidraulicno;
+        }
+    }
+
     return (
         <div>
-            <img src={hirdaulicno} className="img-fluid" onClick={fullscreenImage}/>
+            <img alt='slika dizala' src={pickImage()} className="img-fluid" onClick={fullscreenImage}/>
         </div>
       
     );
