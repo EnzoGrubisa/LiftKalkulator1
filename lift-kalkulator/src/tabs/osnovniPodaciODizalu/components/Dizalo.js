@@ -78,10 +78,6 @@ const Dizalo = () => {
         console.log("-------");
     }
 
-    function izracuniButtonClick(){
-        alert("izracune treba napravit!");
-    }
-
     function getVrstaPogonaOptions(){
         if(vrstaDizala === "elektricno"){
             return [{key: "reduktorski", value: "Reduktorski"}, {key: "bezreduktorski", value: "Bezreduktorski"}];
@@ -133,12 +129,8 @@ const Dizalo = () => {
             <br/>
             <br/>
 
-            <button onClick={logButtonClick}>LOG</button>
+            <button onClick={logButtonClick}>LOG state</button>
             
-            <br/>
-            <br/>
-
-            <button onClick={izracuniButtonClick}>Izracuni</button>
             <br/>
         </div>
     );

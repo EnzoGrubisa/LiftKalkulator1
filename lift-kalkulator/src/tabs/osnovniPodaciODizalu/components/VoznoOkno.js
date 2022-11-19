@@ -51,7 +51,7 @@ const VoznoOkno = () => {
         else{
             setValidBrojUlaza(true);
         }
-    }, [brojUlaza]);
+    }, [brojUlaza, brojPostaja]);
 
     function brojUlazaOnBlur(e){
         if(validBrojUlaza){

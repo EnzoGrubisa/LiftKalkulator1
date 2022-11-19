@@ -4,6 +4,7 @@ import Sidebar from "./components/Sidebar";
 import { useState, useEffect } from 'react';
 
 import CalculatorProvider from "../contexts/CalculatorProvider";
+import Izracuni from "./components/izracuni/Izracuni";
 
 const Calculator = (props) => {
 
@@ -67,6 +68,10 @@ const Calculator = (props) => {
 		document.getElementById("main").style.marginLeft = "350px";
 	}
 	
+	function openIzracuni(){
+		document.getElementById("divIzracuni").style.visibility = "visible"; 
+	}
+
     return (
 		<CalculatorProvider>
 			<div id="calculatorTitleContainer">
@@ -77,6 +82,10 @@ const Calculator = (props) => {
 			<Sidebar tab={props.tab} />
 			
 			<Main tab={props.tab} postaviNaslov={setNaslov}/>
+
+			<button onClick={openIzracuni}>Izračuni</button>
+			<Izracuni/>
+
 		</CalculatorProvider>
     );
 }
