@@ -2,13 +2,16 @@ import TitledInput from '../../../components/TitledInput';
 
 const OsnovniPodaciOProjektuComponent = () => {
     
+    const labelsWidth = "180px";
+
     return (
-        <div className='container' style={{backgroundColor: "#CCCCCC"}}>
+        //className='container'
+        <div >
             <h3>Osnovni podaci o projektu</h3>
-            <TitledInput title="Naziv građevine"/><br/>
-            <TitledInput title="Lokacija, Adresa"/><br/>
-            <TitledInput title="Ref. oznaka projekta"/><br/>
-            <TitledInput title="Tv. broj / Oznaka dizala"/><br/>
+            <TitledInput labelWidth={labelsWidth} title="Naziv građevine"/>
+            <TitledInput labelWidth={labelsWidth} title="Lokacija, Adresa"/>
+            <TitledInput labelWidth={labelsWidth} title="Ref. oznaka projekta"/>
+            <TitledInput labelWidth={labelsWidth} title="Tv. broj / Oznaka dizala"/>
         </div>
       
     );

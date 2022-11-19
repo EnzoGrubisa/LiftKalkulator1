@@ -13,10 +13,10 @@ const OsnovniPodaciODizalu = () => {
                 <div className="col-sm">
                     <Dizalo/>
                 </div>
-                <div className="col-sm">
+                <div className="col-sm" style={{alignItems: "center", width: "fit-content"}}>
                     <VoznoOkno/>    
                 </div>
-                <div className="col-sm">
+                <div className="col-sm" style={{minWidth: "350px"}}>
                     <SlikaDizala/>    
                 </div>
             </div>

@@ -13,8 +13,6 @@ export function useCalculatorUpdate(){
 
 const CalculatorProvider = ({children}) => {
 
-	//const [naslov, setNaslov] = useState("Default naslov");
-	
 	const [vrstaDizala, setVrstaDizala] = useState("elektricno");
     const [bezStrojarnice, setBezStrojarnice] = useState(true);
 

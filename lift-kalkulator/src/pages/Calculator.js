@@ -72,7 +72,6 @@ const Calculator = (props) => {
 			<div id="calculatorTitleContainer">
 				<button className="openbtn" style={izbornikButtonStyle} onClick={openSidebar}>&#9776; Izbornik</button>
 				<h2 style={headerStyle}>{naslov}</h2>
-				{/* <h1>{bezStrojarnice.toString()}</h1> */}
 			</div>
 			
 			<Sidebar tab={props.tab} />

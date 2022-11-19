@@ -18,37 +18,79 @@ label {
   padding: 10px;
 }
 
+/* --------------------- */
+/* divTitledInput */
+.divTitledInput {
+  /* max-width: "100vw"; */
+  align-items: center;
+  width: fit-content;
+  /* height: auto; */
+  display: flex;
+  margin: 5px;
+  /* align-items: center; */
+  /* float: left; */
+  /* clear:both; */
+}
+.divTitledInput input{
+  /* padding: 10px; */
+  margin: 0px;
+}
+.divTitledInput label{
+  padding: 3px;
+  padding-left: 0px;
+  text-align: right;
+  height: auto;
+  display: block;
+}
+.inputInvalid{
+  color: red;
+}
+
+/* --------------------- */
+/* divDropDown */
+.divDropDown {
+  /* width: auto; */
+  /* height: auto; */
+  display: flex;
+  margin: "2px";
+  /* align-items: center; */
+  /* float: left; */
+  /* clear:both; */
+}
+.divDropDown select{
+  /* padding: 10px; */
+  /* margin: 5px; */
+  display: "flex";
+  height: "38px";
+  vertical-align: "center";
+  top: "50%";
+}
+.divDropDown label{
+  /* padding: 3px; */
+  /* padding-left: 0px; */
+  display: "block";
+  text-align: "right";
+  padding: "6px"
+}
+/* --------------------- */
+/* divCheckBox */
 .divCheckBox {
   width: auto;
   height: auto;
-  display: inline-flex;
-  align-items: center;
-  float: left;
-  clear:both;
+  display: flex;
+  /* align-items: center; */
+  /* float: left; */
+  /* clear:both; */
 }
-
-.chkbx {
+.divCheckBox input{
   padding: 10px;
+  margin: 5px;
 }
-
-/* 
-.divDropDown {
-  display:inline-flex;
-  position: relative;
-  float: left;
-  clear:both;
-  padding-bottom: 10px;
+.divCheckBox label{
+  padding: 3px;
+  padding-left: 0px;
 }
-
-.autoWidth {
-  width: auto;
-} */
-
-/* 
-.form-select {
-  width: auto;
-  color: red;
-} */
+/* --------------------- */
 
 /* SIDEBAR */
  /* The sidebar menu */
@@ -137,6 +179,7 @@ label {
   .sidebar a {font-size: 18px;}
 } 
 
+/* --------------------- */
 
 /* calculator Title Container */
 #calculatorTitleContainer {
@@ -145,3 +188,16 @@ label {
   height: 55px;
 }
 
+
+
+
+
+/* 
+html{
+  width: 100vw;
+} */
+
+body {
+  background-color: #CCCCCC;
+  overflow-x: hidden; /* disables horizontal scroll */
+}

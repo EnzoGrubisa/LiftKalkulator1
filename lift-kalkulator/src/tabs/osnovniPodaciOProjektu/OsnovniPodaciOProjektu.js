@@ -5,7 +5,8 @@ import OsnovniPodaciOProjektuComponent from './components/OsnovniPodaciOProjektu
 const OsnovniPodaciOProjektu = () => {
     
     return (
-        <div className='container' style={{backgroundColor: "#CCCCCC"}}>
+        // className='container'
+        <div style={{width:"100vw", maxWidth: "fit-content"}}>
             <PodaciOAutoruIUgraditeljuDizala/><br/>
             <OsnovniPodaciOProjektuComponent/><br/>
         </div>

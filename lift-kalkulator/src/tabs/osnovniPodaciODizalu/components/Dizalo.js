@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import CheckBox from '../../../components/CheckBox';
+import Dropdown from '../../../components/Dropdown';
 
 import { useCalculator, useCalculatorUpdate } from '../../../contexts/CalculatorProvider'; 
 
@@ -9,7 +11,7 @@ const Dizalo = () => {
 
     const [namjenaDizala, setNamjenaDizala] = useState("osobno");
     const [showUkrcavanjeVilicaremCheckBox, setShowUkrcavanjeVilicaremCheckBox] = useState(false);
-    const [ukrcavanjeVilicaremBool, setUkrcavanjeVilicaremBool] = useState(false);
+    const [ukrcavanjeVilicarem, setUkrcavanjeVilicarem] = useState(false);
 
     //const [vrstaDizala, setVrstaDizala] = useState("elektricno");
     const [vrstaPogona, setVrstaPogona] = useState("reduktorski");
@@ -22,8 +24,8 @@ const Dizalo = () => {
         setNamjenaDizala(e.target.value);
     };
 
-    const ukrcavanjeVilicaremCheckBoxClick = (e) => {
-        setUkrcavanjeVilicaremBool(e.target.checked);
+    const ukrcavanjeVilicaremCheckBoxClicked = (e) => {
+        setUkrcavanjeVilicarem(e.target.checked);
     };
     
 
@@ -42,7 +44,7 @@ const Dizalo = () => {
         setSmjestajPogona(e.target.value);
     };
 
-    const bezStrojarniceClick = (e) => {
+    const bezStrojarniceCheckBoxClicked = (e) => {
         setBezStrojarnice(e.target.checked);
     };
     
@@ -57,9 +59,9 @@ const Dizalo = () => {
 
     useEffect(() => {
         if(vrstaDizala === "elektricno"){
-            setVrstaPogona("reduktorski");
+            setVrstaPogona("bezreduktorski");
         }else{
-            setVrstaPogona("direktni");
+            setVrstaPogona("indirektni");
         }
     }, [vrstaDizala]);
 
@@ -69,7 +71,7 @@ const Dizalo = () => {
         console.log("-------");
         console.log("namjenaDizala = " + namjenaDizala);
         console.log("showUkrcavanjeVilicaremCheckBox = " + showUkrcavanjeVilicaremCheckBox);
-        console.log("ukrcavanjeVilicaremBool = " + ukrcavanjeVilicaremBool);
+        console.log("ukrcavanjeVilicarem = " + ukrcavanjeVilicarem);
         console.log("vrstaDizala = " + vrstaDizala);
         console.log("vrstaPogona = " + vrstaPogona);
         console.log("bezStrojarnice = " + bezStrojarnice);
@@ -80,93 +82,65 @@ const Dizalo = () => {
         alert("izracune treba napravit!");
     }
 
-
+    function getVrstaPogonaOptions(){
+        if(vrstaDizala === "elektricno"){
+            return [{key: "reduktorski", value: "Reduktorski"}, {key: "bezreduktorski", value: "Bezreduktorski"}];
+        }
+        else if(vrstaDizala === "hidraulicno"){
+            return [{key: "direktni", value: "Direktni"}, {key: "indirektni", value: "Indirektni"}];
+        }
+        else{
+            return [{key: "error", value: "error"}];
+        }
+    }
+    
+    function getSmjestajPogonaOptions(){
+        if(vrstaDizala === "elektricno" && bezStrojarnice === true){
+            return [{key: "uVoznomOknuNaNosacu", value: "U voznom oknu - na nosaču"}, {key: "uVoznomOknuNaVodilicama", value: "U voznom oknu - na vodilicama"}, {key: "naDnuVoznogOkna", value: "Na dnu voznog okna"}];
+        }
+        else if(vrstaDizala === "hidraulicno" && bezStrojarnice === true){
+            return [{key: "uVoznomOknu", value: "U voznom oknu"}];
+        }
+        else if(bezStrojarnice === false){
+            return [{key: "uStrojarniciIznadVoznogOkna", value: "U strojarnici iznad voznog okna"}, {key: "uStrojarniciIspodVoznogOkna", value: "U strojarnici ispod voznog okna"}, {key: "uStrojarniciPoredVoznogOkna", value: "U strojarnici pored voznog okna"}];
+        }
+        else{
+            return [{key: "error", value: "error"}];
+        }
+    }
 
     return (
-                <>
-                    {/* namjena dizala */}
-                    <div className='divDropDown'>
-                        <label className='autoWidth'>Namjena dizala: </label>
-                        <select  onChange={changeNamjenaDizala} defaultValue={namjenaDizala} className="form-select" aria-label="Default select example">
-                            <option value="osobno">Osobno dizalo</option>
-                            <option value="teretno">Teretno dizalo</option>
-                            <option value="osobnoTeretno">Osobno teretno dizalo</option>
-                        </select>
-                        {/* { showUkrcavanjeVilicaremCheckBox ? <UkrcavanjeVilicarem ukrcavanjeVilicaremBool={ukrcavanjeVilicaremBool}/> : null } */}
-                        { showUkrcavanjeVilicaremCheckBox ? 
-                        <div className='divCheckBox'>
-                            <input className="form-check-input chkbx" onClick={ukrcavanjeVilicaremCheckBoxClick} type="checkbox" value="" id="ukrcavanjeVilicaremCheckBox"/>
-                            <label className="form-check-label" htmlFor="ukrcavanjeVilicaremCheckBox">ukrcavanje viličarem</label>
-                        </div> 
-                        : null 
-                        }
-                    </div>
+        <div style={{display: "block"}}>
+            <label >Dizalo: </label>
+            <Dropdown labelWidth="200px" title="Namjena dizala" options={[{key: "osobno", value: "Osobno dizalo"}, {key: "teretno", value: "Teretno dizalo"}, {key: "osobnoTeretno", value: "Osobno teretno dizalo"}]} onChange={changeNamjenaDizala} value={namjenaDizala}/>
+            
+            { namjenaDizala === "teretno" || namjenaDizala === "osobnoTeretno" ? 
+            <CheckBox defaultChecked={ukrcavanjeVilicarem} title="ukrcavanje viličarem" id="ukrcavanjeVilicaremCheckBox" onClick={ukrcavanjeVilicaremCheckBoxClicked}/>
+            : null }
+            
+            <br/>
 
-                    <br/><br/>
+            <Dropdown labelWidth="200px" title="Vrsta dizala" options={[{key: "elektricno", value: "Električno dizalo s pogonskom užnicom"}, {key: "hidraulicno", value: "Hidraulično dizalo"}]} value={vrstaDizala} onChange={changeVrstaDizala}/>
+            <Dropdown labelWidth="200px" title="Vrsta pogona" options={getVrstaPogonaOptions()} value={vrstaPogona} onChange={changeVrstaPogona}/>
+                        
+            <br/>
 
-                    <div className='divDropDown'>
-                        <label>Vrsta dizala: </label>
-                        <select onChange={changeVrstaDizala} defaultValue={vrstaDizala} className="form-select" aria-label="Default select example">
-                            <option value="elektricno">Električno dizalo s pogonskom užnicom</option>
-                            <option value="hidraulicno">Hidraulično dizalo</option>
-                        </select>
-                    </div>
+            <Dropdown labelWidth="200px" title="Smještaj pogona" options={getSmjestajPogonaOptions()} value={smjestajPogona} onChange={changeSmjestajPogona}/>
+            <CheckBox defaultChecked={bezStrojarnice} title="bez strojarnice" id="bezStrojarniceCheckBox" onClick={bezStrojarniceCheckBoxClicked}/>
+        
+            <br/>
 
-                    <div className='divDropDown'>
-                        <label>Vrsta pogona: </label>
-                        <select value={vrstaPogona} onChange={changeVrstaPogona} className="form-select" aria-label="Default select example">
-                            {vrstaDizala === "elektricno" ? <option value="bezreduktorski">Bezreduktorski</option> : null}
-                            {vrstaDizala === "elektricno" ? <option value="reduktorski">Reduktorski</option> : null}
-                            {vrstaDizala === "hidraulicno" ? <option value="indirektni">Indirektni</option> : null}
-                            {vrstaDizala === "hidraulicno" ? <option value="direktni">Direktni</option> : null}
-                        </select>
-                    </div>
-                    <br/>
+            <br/>
+            <br/>
 
-                    <div className='divDropDown'>
-                        <label>Smještaj pogona: </label>
-                        <select value={smjestajPogona} onChange={changeSmjestajPogona} className="form-select" aria-label="Default select example">
-                            {vrstaDizala === "elektricno" && bezStrojarnice === true ?
-                            <>
-                                <option value="uVoznomOknuNaNosacu">U voznom oknu - na nosaču</option>
-                                <option value="uVoznomOknuNaVodilicama">U voznom oknu - na vodilicama</option>
-                                <option value="naDnuVoznogOkna">Na dnu voznog okna</option>
-                            </>
-                            : null}
+            <button onClick={logButtonClick}>LOG</button>
+            
+            <br/>
+            <br/>
 
-                            {vrstaDizala === "hidraulicno" && bezStrojarnice === true ?
-                            <>
-                                <option value="uVoznomOknu">U voznom oknu</option>
-                            </>
-                            : null}
-                            
-                            {bezStrojarnice === false ?
-                            <>
-                                <option value="uStrojarniciIznadVoznogOkna">U strojarnici iznad voznog okna</option>
-                                <option value="uStrojarniciIspodVoznogOkna">U strojarnici ispod voznog okna</option>
-                                <option value="uStrojarniciPoredVoznogOkna">U strojarnici pored voznog okna</option>
-                            </>
-                            : null}
-                        </select>
-                        <div className='divCheckBox'>
-                            <input value={bezStrojarnice} onClick={bezStrojarniceClick} className="form-check-input chkbx" type="checkbox"  id="bezStrojarniceCheckBox"/>
-                            <label className="form-check-label" htmlFor="bezStrojarniceCheckBox">bez strojarnice</label>
-                        </div>
-                    </div>
-                    <br/>
-
-                    <br/>
-                    <br/>
-
-                    <button onClick={logButtonClick}>LOG</button>
-                    
-                    <br/>
-                    <br/>
-
-                    <button onClick={izracuniButtonClick}>Izracuni</button>
-                    <br/>
-                </>
-      
+            <button onClick={izracuniButtonClick}>Izracuni</button>
+            <br/>
+        </div>
     );
 }
   
