@@ -3,7 +3,7 @@ import Sidebar from "./components/Sidebar";
 
 import { useState, useEffect } from 'react';
 
-import CalculatorProvider from "../contexts/CalculatorProvider";
+// import CalculatorProvider from "../contexts/CalculatorProvider";
 import Izracuni from "./components/izracuni/Izracuni";
 
 const Calculator = (props) => {
@@ -73,7 +73,7 @@ const Calculator = (props) => {
 	}
 
     return (
-		<CalculatorProvider>
+		<>
 			<div id="calculatorTitleContainer">
 				<button className="openbtn" style={izbornikButtonStyle} onClick={openSidebar}>&#9776; Izbornik</button>
 				<h2 style={headerStyle}>{naslov}</h2>
@@ -83,10 +83,10 @@ const Calculator = (props) => {
 			
 			<Main tab={props.tab} postaviNaslov={setNaslov}/>
 
-			<button onClick={openIzracuni}>Izračuni</button>
+			<button onClick={openIzracuni} className="btn btn-primary">Izračuni</button>
 			<Izracuni/>
 
-		</CalculatorProvider>
+		</>
     );
 }
 

@@ -9,7 +9,7 @@ const Izracuni = () => {
     return(
         <div id="divIzracuni">
             <div id="innerDivIzracuni">
-                <button id="closeIzracuniButton" onClick={closeIzracuni}>X</button>
+                <button id="closeIzracuniButton" className="btn btn-dark" onClick={closeIzracuni}>X</button>
             </div>
         </div>
     );

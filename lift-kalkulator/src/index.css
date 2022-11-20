@@ -222,7 +222,7 @@ body {
 #closeIzracuniButton{
   /* position: fixed; */
   right: 0;
-  margin: 5vh hvw;
+  margin: 2vh 2vw;
   padding: 1vh 1vw;
   float: right;
 }

@@ -9,8 +9,6 @@ const SlikaDizala = () => {
 
 
     const { vrstaDizala, bezStrojarnice } = useCalculator();
-    // console.log("asdas" + vrstaDizala);
-    // // console.log(bezStrojarnice);
 
     function fullscreenImage(){
         

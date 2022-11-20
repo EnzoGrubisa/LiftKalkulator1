@@ -1,7 +1,7 @@
 const Biljeske = () => {
     return (
         <div>
-            <p>Biljeske</p>
+            <textarea rows={10} cols="50"></textarea>
         </div>
     );
 }

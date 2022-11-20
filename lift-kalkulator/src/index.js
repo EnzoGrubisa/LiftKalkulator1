@@ -5,6 +5,8 @@ import './index.css';
 import Home from './pages/Home'
 import Calculator from './pages/Calculator';
 
+import CalculatorProvider from "./contexts/CalculatorProvider";
+import VoznoOknoProvider from './contexts/VoznoOknoProvider';
 
 const App = () => {
   return (
@@ -36,10 +38,13 @@ export default App;
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <MemoryRouter>
-      <App/>
-    </MemoryRouter>
-    
+    <CalculatorProvider>
+      <VoznoOknoProvider>
+        <MemoryRouter>
+          <App/>
+        </MemoryRouter>
+      </VoznoOknoProvider>
+    </CalculatorProvider>
   </React.StrictMode>
 );
 

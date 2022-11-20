@@ -2,13 +2,35 @@ import { useEffect, useState } from 'react';
 
 import TitledInput from "../../../components/TitledInput";
 
+import { useCalculator } from '../../../contexts/CalculatorProvider'; 
+import { useVoznoOkno, useVoznoOknoUpdate } from '../../../contexts/VoznoOknoProvider'; 
+
 const VoznoOkno = () => {
     
+    //const { vrstaDizala } = useCalculator();
+
+    // useEffect(() => {
+    //     if(vrstaDizala === "elektricno"){
+    //         setBrojPostaja(7);
+    //         setBrojUlaza(7);
+    //         setDubinaJame(1200);
+    //     }
+    //     else if(vrstaDizala === "hidraulicno"){
+    //         setBrojPostaja(6);
+    //         setBrojUlaza(6);
+    //         setDubinaJame(1300);
+    //     }
+    // }, [vrstaDizala]);
+
     //#region properties 
+
+    const { brojPostaja, brojUlaza, visinaDizanja, tlocrtnaSirina, tlocrtnaDubina, dubinaJame, nadvisenje } = useVoznoOkno();   
+    const { setBrojPostaja, setBrojUlaza, setVisinaDizanja, setTlocrtnaSirina, setTlocrtnaDubina, setDubinaJame, setNadvisenje } = useVoznoOknoUpdate();   
 
     //BROJ POSTAJA
     const [validBrojPostaja, setValidBrojPostaja]  = useState(true);
-    const [brojPostaja, setBrojPostaja]  = useState(7);
+    
+    
 
     function brojPostajaChanged(e){
         setBrojPostaja(e.target.value);
@@ -16,7 +38,7 @@ const VoznoOkno = () => {
 
     useEffect(() => {
         const num = (+brojPostaja);
-        if(num.toString() === "NaN" || num % 1 !== 0 || num > 7 || num < 1){
+        if(num.toString() === "NaN" || num % 1 !== 0 || num > 7 || num < 2){
             setValidBrojPostaja(false);
         }
         else{
@@ -37,7 +59,7 @@ const VoznoOkno = () => {
 
     //BROJ ULAZA
     const [validBrojUlaza, setValidBrojUlaza]  = useState(true);
-    const [brojUlaza, setBrojUlaza]  = useState(brojPostaja);
+    
 
     function brojUlazaChanged(e){
         setBrojUlaza(e.target.value);
@@ -64,7 +86,7 @@ const VoznoOkno = () => {
     
     //VISINA DIZANJA
     const [validVisinaDizanja, setValidVisinaDizanja]  = useState(true);
-    const [visinaDizanja, setVisinaDizanja]  = useState(18000);
+    
 
     function visinaDizanjaChanged(e){
         setVisinaDizanja(e.target.value);
@@ -91,7 +113,7 @@ const VoznoOkno = () => {
 
     //TLOCRTNA SIRINA
     const [validTlocrtnaSirina, setValidTlocrtnaSirina]  = useState(true);
-    const [tlocrtnaSirina, setTlocrtnaSirina]  = useState(1700);
+    
 
     function tlocrtnaSirinaChanged(e){
         setTlocrtnaSirina(e.target.value);
@@ -118,7 +140,7 @@ const VoznoOkno = () => {
 
     //TLOCRTNA DUBINA
     const [validTlocrtnaDubina, setValidTlocrtnaDubina]  = useState(true);
-    const [tlocrtnaDubina, setTlocrtnaDubina]  = useState(1800);
+    
 
     function tlocrtnaDubinaChanged(e){
         setTlocrtnaDubina(e.target.value);
@@ -145,7 +167,7 @@ const VoznoOkno = () => {
 
     //DUBINA JAME
     const [validDubinaJame, setValidDubinaJame]  = useState(true);
-    const [dubinaJame, setDubinaJame]  = useState(1200);
+    
 
     function dubinaJameChanged(e){
         setDubinaJame(e.target.value);
@@ -172,7 +194,7 @@ const VoznoOkno = () => {
 
     //NADVISENJE
     const [validNadvisenje, setValidNadvisenje]  = useState(true);
-    const [nadvisenje, setNadvisenje]  = useState(3600);
+    
 
     function nadvisenjeChanged(e){
         setNadvisenje(e.target.value);
@@ -180,7 +202,7 @@ const VoznoOkno = () => {
 
     useEffect(() => {
         const num = +nadvisenje;
-        if(num.toString() === "NaN" || num > 10000 || num <= 0){
+        if(num.toString() === "NaN" || num > 10000 || num < 2200){
             setValidNadvisenje(false);
         }
         else{
@@ -193,7 +215,7 @@ const VoznoOkno = () => {
             setNadvisenje(+(e.target.value));
         }
         else{
-            setNadvisenje(0.01);
+            setNadvisenje(2200);
         }
     }
 
@@ -204,8 +226,8 @@ const VoznoOkno = () => {
     return (
         <div style={{width: "fit-content"}}>
             <label >Vozno okno: </label>
-            <TitledInput labelWidth={labelsWidth} inputWidth="50px" title="Broj postaja (nst)" value={brojPostaja} onChange={brojPostajaChanged} valid={validBrojPostaja} onBlur={brojPostajaOnBlur} tooltip="1 - 7"/>
-            <TitledInput labelWidth={labelsWidth} inputWidth="50px" title="Broj ulaza (netc)" value={brojUlaza} onChange={brojUlazaChanged} valid={validBrojUlaza} onBlur={brojUlazaOnBlur} tooltip="1 - 7"/>
+            <TitledInput labelWidth={labelsWidth} inputWidth="50px" title="Broj postaja (nst)" value={brojPostaja} onChange={brojPostajaChanged} valid={validBrojPostaja} onBlur={brojPostajaOnBlur} tooltip="2 - 7"/>
+            <TitledInput labelWidth={labelsWidth} inputWidth="50px" title="Broj ulaza (netc)" value={brojUlaza} onChange={brojUlazaChanged} valid={validBrojUlaza} onBlur={brojUlazaOnBlur} tooltip="2 - 7"/>
             <br/>
             <TitledInput labelWidth={labelsWidth} inputWidth="100px" title="Visina dizanja (H)" sDesna="mm" value={visinaDizanja} onChange={visinaDizanjaChanged} valid={validVisinaDizanja} onBlur={visinaDizanjaOnBlur} tooltip="0 - 1000000"/>
             <br/>
@@ -213,7 +235,7 @@ const VoznoOkno = () => {
             <TitledInput labelWidth={labelsWidth} inputWidth="100px" title="Tlocrtna dubina (SD)" sDesna="mm" value={tlocrtnaDubina} onChange={tlocrtnaDubinaChanged} valid={validTlocrtnaDubina} onBlur={tlocrtnaDubinaOnBlur} tooltip="0 - 20000"/>
             <br/>
             <TitledInput labelWidth={labelsWidth} inputWidth="100px" title="Dubina jame (PD)" sDesna="mm" value={dubinaJame} onChange={dubinaJameChanged} valid={validDubinaJame} onBlur={dubinaJameOnBlur} tooltip="0 - 10000"/>
-            <TitledInput labelWidth={labelsWidth} inputWidth="100px" title="Nadvišenje (HH)" sDesna="mm" value={nadvisenje} onChange={nadvisenjeChanged} valid={validNadvisenje} onBlur={nadvisenjeOnBlur} tooltip="0 - 10000"/>
+            <TitledInput labelWidth={labelsWidth} inputWidth="100px" title="Nadvišenje (HH)" sDesna="mm" value={nadvisenje} onChange={nadvisenjeChanged} valid={validNadvisenje} onBlur={nadvisenjeOnBlur} tooltip="2200 - 10000"/>
         </div>
       
     );
