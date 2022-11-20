@@ -2,25 +2,9 @@ import { useEffect, useState } from 'react';
 
 import TitledInput from "../../../components/TitledInput";
 
-import { useCalculator } from '../../../contexts/CalculatorProvider'; 
 import { useVoznoOkno, useVoznoOknoUpdate } from '../../../contexts/VoznoOknoProvider'; 
 
 const VoznoOkno = () => {
-    
-    //const { vrstaDizala } = useCalculator();
-
-    // useEffect(() => {
-    //     if(vrstaDizala === "elektricno"){
-    //         setBrojPostaja(7);
-    //         setBrojUlaza(7);
-    //         setDubinaJame(1200);
-    //     }
-    //     else if(vrstaDizala === "hidraulicno"){
-    //         setBrojPostaja(6);
-    //         setBrojUlaza(6);
-    //         setDubinaJame(1300);
-    //     }
-    // }, [vrstaDizala]);
 
     //#region properties 
 
