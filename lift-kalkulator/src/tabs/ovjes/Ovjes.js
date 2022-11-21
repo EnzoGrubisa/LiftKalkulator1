@@ -1,3 +1,4 @@
+import OvjesDrugiDio from "./components/OvjesDrugiDio";
 import OvjesPrviDio from "./components/OvjesPrviDio";
 import SlikaOvjesa from "./components/SlikaOvjesa";
 
@@ -10,7 +11,7 @@ const Ovjes = () => {
                     <OvjesPrviDio/>
                 </div>
                 <div className="col-sm" style={{alignItems: "center", width: "fit-content"}}>
-                       
+                    <OvjesDrugiDio/>
                 </div>
                 <div className="col-sm" style={{minWidth: "350px"}}>
                     <SlikaOvjesa/>    

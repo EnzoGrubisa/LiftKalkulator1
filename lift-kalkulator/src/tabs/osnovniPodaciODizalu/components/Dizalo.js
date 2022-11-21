@@ -4,6 +4,7 @@ import Dropdown from '../../../components/Dropdown';
 
 import { useCalculator, useCalculatorUpdate } from '../../../contexts/CalculatorProvider'; 
 import { useVoznoOknoUpdate } from '../../../contexts/VoznoOknoProvider';
+import { useOvjesUpdate } from '../../../contexts/OvjesProvider';
 const Dizalo = () => {
 
     // const [namjenaDizala, setNamjenaDizala] = useState("osobno");
@@ -15,7 +16,7 @@ const Dizalo = () => {
     // context update functions
     const { setNamjenaDizala, setUkrcavanjeVilicarem, setVrstaDizala, setVrstaPogona, setSmjestajPogona, setBezStrojarnice, setFaktorOvjesa } = useCalculatorUpdate();   
     const { setBrojPostaja, setBrojUlaza, setDubinaJame } = useVoznoOknoUpdate();   
-    
+    const { setBrojNosivihUzadi, setKorisnickoDefiniranje } = useOvjesUpdate();
 
     const namjenaDizalaChanged = (e) => {
         setNamjenaDizala(e.target.value);
@@ -38,6 +39,9 @@ const Dizalo = () => {
             setBrojPostaja(7);
             setBrojUlaza(7);
             setDubinaJame(1200);
+            //ovjes
+            setBrojNosivihUzadi(7);
+            setKorisnickoDefiniranje(false);
         }else if(e.target.value === "hidraulicno"){
             setVrstaPogona("indirektni");
             setFaktorOvjesa("1:2");
@@ -46,6 +50,9 @@ const Dizalo = () => {
             setBrojPostaja(6);
             setBrojUlaza(6);
             setDubinaJame(1300);
+            //ovjes
+            setBrojNosivihUzadi(4);
+            setKorisnickoDefiniranje(false);
         }
     };
 

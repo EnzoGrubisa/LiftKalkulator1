@@ -7,6 +7,7 @@ import Calculator from './pages/Calculator';
 
 import CalculatorProvider from "./contexts/CalculatorProvider";
 import VoznoOknoProvider from './contexts/VoznoOknoProvider';
+import OvjesProvider from './contexts/OvjesProvider';
 
 const App = () => {
   return (
@@ -40,9 +41,11 @@ root.render(
   <React.StrictMode>
     <CalculatorProvider>
       <VoznoOknoProvider>
-        <MemoryRouter>
-          <App/>
-        </MemoryRouter>
+        <OvjesProvider>
+          <MemoryRouter>
+            <App/>
+          </MemoryRouter>
+        </OvjesProvider>
       </VoznoOknoProvider>
     </CalculatorProvider>
   </React.StrictMode>

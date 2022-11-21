@@ -13,15 +13,7 @@ export function useVoznoOknoUpdate(){
 
 const VoznoOknoProvider = ({children}) => {
 
-	// const [namjenaDizala, setNamjenaDizala] = useState("osobno");
-	// const [ukrcavanjeVilicarem, setUkrcavanjeVilicarem] = useState(false);
-	// const [vrstaDizala, setVrstaDizala] = useState("elektricno");
-    // const [vrstaPogona, setVrstaPogona] = useState("bezreduktorski");
-    // const [smjestajPogona, setSmjestajPogona] = useState("uVoznomOknuNaNosacu");
-    // const [bezStrojarnice, setBezStrojarnice] = useState(true);
-    // const [faktorOvjesa, setFaktorOvjesa] = useState("2:1");
-
-    const [brojPostaja, setBrojPostaja]  = useState(7);
+	const [brojPostaja, setBrojPostaja]  = useState(7);
     const [brojUlaza, setBrojUlaza]  = useState(brojPostaja);
     const [visinaDizanja, setVisinaDizanja]  = useState(18000);
     const [tlocrtnaSirina, setTlocrtnaSirina]  = useState(1700);
