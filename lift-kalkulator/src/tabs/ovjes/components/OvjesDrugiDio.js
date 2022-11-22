@@ -207,7 +207,7 @@ const OvjesDrugiDio = () => {
             {vrstaPogona === "reduktorski" ?
             <>
                 <CheckBox/>
-                <br/>OTKLONSKE UŽNICE
+                <br/>OTKLONSKE UŽNICE - UŽNICE ZA SKRETANJE
             </>
             : null}
         </div>

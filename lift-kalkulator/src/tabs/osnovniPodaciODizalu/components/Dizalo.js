@@ -14,7 +14,7 @@ const Dizalo = () => {
     const { namjenaDizala, ukrcavanjeVilicarem, vrstaDizala, vrstaPogona, smjestajPogona, bezStrojarnice, faktorOvjesa, nazivnaNosivost, brojOsoba, nazivnaBrzina, akceleracijaDeceleracijaNormalnaVoznja, deceleracijaKodHitnogStopa, brojUkljucenjaNaSat } = useDizalo();
 
     // context update functions
-    const { setNamjenaDizala, setUkrcavanjeVilicarem, setVrstaDizala, setVrstaPogona, setSmjestajPogona, setBezStrojarnice, setFaktorOvjesa, setnazivnaNosivost, setBrojOsoba, setNazivnaBrzina, setAkceleracijaDeceleracijaNormalnaVoznja, setDeceleracijaKodHitnogStopa, setBrojUkljucenjaNaSat } = useDizaloUpdate();   
+    const { setNamjenaDizala, setUkrcavanjeVilicarem, setVrstaDizala, setVrstaPogona, setSmjestajPogona, setBezStrojarnice, setFaktorOvjesa, /*setNazivnaNosivost, setBrojOsoba,*/ setNazivnaBrzina, setAkceleracijaDeceleracijaNormalnaVoznja, setDeceleracijaKodHitnogStopa, setBrojUkljucenjaNaSat } = useDizaloUpdate();   
     const { setBrojPostaja, setBrojUlaza, setDubinaJame } = useVoznoOknoUpdate();   
     const { setBrojNosivihUzadi, setKorisnickoDefiniranje } = useOvjesUpdate();
 
@@ -93,17 +93,6 @@ const Dizalo = () => {
         setFaktorOvjesa(e.target.value);
     };
 
-    // function logButtonClick(){
-    //     console.log("-------");
-    //     console.log("namjenaDizala = " + namjenaDizala);
-    //     console.log("ukrcavanjeVilicarem = " + ukrcavanjeVilicarem);
-    //     console.log("vrstaDizala = " + vrstaDizala);
-    //     console.log("vrstaPogona = " + vrstaPogona);
-    //     console.log("smjestajPogona = " + smjestajPogona);
-    //     console.log("bezStrojarnice = " + bezStrojarnice);
-    //     console.log("faktorOvjesa = " + faktorOvjesa);
-    //     console.log("-------");
-    // }
 
     function getVrstaDizalaOptions(){
         return [{key: "elektricno", value: "Električno dizalo s pogonskom užnicom"}, {key: "hidraulicno", value: "Hidraulično dizalo"}];
@@ -258,6 +247,7 @@ const Dizalo = () => {
         }
     }
 
+    
     return (
         <div style={{display: "block"}}>
             <h5>Dizalo: </h5>

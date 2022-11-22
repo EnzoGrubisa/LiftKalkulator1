@@ -15,11 +15,6 @@ const OvjesPrviDio = () => {
     const { brojNosivihUzadi, tipUzadi, korisnickoDefiniranje, promjer, prekidnaCvrstoca, masaPoDuljnomMetru, youngovModul } = useOvjes();
     const { setBrojNosivihUzadi, setTipUzadi, setKorisnickoDefiniranje, setPromjer, setPrekidnaCvrstoca, setMasaPoDuljnomMetru, setYoungovModul } = useOvjesUpdate();
 
-    function logState(){
-        // console.log("-------");
-        // console.log("-------");
-    }
-
     /* FAKTOR OVJESA */
     const faktorOvjesaChanged = (e) => {
         setFaktorOvjesa(e.target.value);
@@ -320,7 +315,7 @@ const OvjesPrviDio = () => {
             {vrstaPogona === "direktni" ?
             null :
             <>
-                <label>Nosiva užad: </label>
+                <h5>Nosiva užad: </h5>
 
                 <TitledInput labelWidth="200px" inputWidth="80px" title="Broj nosivih užadi (nr)" sDesna="" value={brojNosivihUzadi} valid={validBrojNosivihUzadi} onChange={brojNosivihUzadiChanged} onBlur={brojNosivihUzadiOnBlur} tooltip="2 - 50"/>
                 <Dropdown disabled={korisnickoDefiniranje} labelWidth="200px" title="Tip" options={getTipUzadiOptions()} value={tipUzadi} onChange={tipUzadiChanged}/>
@@ -340,14 +335,8 @@ const OvjesPrviDio = () => {
                 Promjena smjera
                 </>
                 : null}
-                
+
             </>}
-            
-            
-            
-
-
-            <button onClick={logState}>LOG</button>
         </div>
     );
 }

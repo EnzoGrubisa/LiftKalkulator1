@@ -1,8 +1,13 @@
 
+import noImage from '../../../assets/images/noImage.jpg'
 
 const Logotip = () => {
     return(
-        <>LOGOTIP UPLOAD</>
+        <>
+            <h5>Logotip: </h5>
+            <img alt='logotip' src={noImage} className="img-fluid"/>
+            <button>Odaberi...</button>
+        </>
     );
 }
 

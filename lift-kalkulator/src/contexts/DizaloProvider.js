@@ -27,7 +27,7 @@ const DizaloProvider = ({children}) => {
     const [bezStrojarnice, setBezStrojarnice] = useState(true);
     const [faktorOvjesa, setFaktorOvjesa] = useState("2:1");
     
-    const [nazivnaNosivost, setnazivnaNosivost] = useState(630);
+    const [nazivnaNosivost, setNazivnaNosivost] = useState(630);
     const [brojOsoba, setBrojOsoba] = useState(8);
     const [nazivnaBrzina, setNazivnaBrzina] = useState(1);
     const [akceleracijaDeceleracijaNormalnaVoznja, setAkceleracijaDeceleracijaNormalnaVoznja] = useState(0.5);
@@ -36,7 +36,7 @@ const DizaloProvider = ({children}) => {
 
     return (
         <DizaloContext.Provider value={{namjenaDizala, ukrcavanjeVilicarem, vrstaDizala, vrstaPogona, smjestajPogona, bezStrojarnice, faktorOvjesa, nazivnaNosivost, brojOsoba, nazivnaBrzina, akceleracijaDeceleracijaNormalnaVoznja, deceleracijaKodHitnogStopa, brojUkljucenjaNaSat}}>
-            <DizaloUpdateContext.Provider value={{setNamjenaDizala, setUkrcavanjeVilicarem, setVrstaDizala, setVrstaPogona, setSmjestajPogona, setBezStrojarnice, setFaktorOvjesa, setnazivnaNosivost, setBrojOsoba, setNazivnaBrzina, setAkceleracijaDeceleracijaNormalnaVoznja, setDeceleracijaKodHitnogStopa, setBrojUkljucenjaNaSat}}>
+            <DizaloUpdateContext.Provider value={{setNamjenaDizala, setUkrcavanjeVilicarem, setVrstaDizala, setVrstaPogona, setSmjestajPogona, setBezStrojarnice, setFaktorOvjesa, setNazivnaNosivost, setBrojOsoba, setNazivnaBrzina, setAkceleracijaDeceleracijaNormalnaVoznja, setDeceleracijaKodHitnogStopa, setBrojUkljucenjaNaSat}}>
                 {children}
             </DizaloUpdateContext.Provider>
         </DizaloContext.Provider>
