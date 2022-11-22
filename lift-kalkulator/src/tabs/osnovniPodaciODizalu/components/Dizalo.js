@@ -1,20 +1,20 @@
-//import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+
 import CheckBox from '../../../components/CheckBox';
 import Dropdown from '../../../components/Dropdown';
+import TitledInput from '../../../components/TitledInput';
 
-import { useCalculator, useCalculatorUpdate } from '../../../contexts/CalculatorProvider'; 
+import { useDizalo, useDizaloUpdate } from '../../../contexts/DizaloProvider'; 
 import { useVoznoOknoUpdate } from '../../../contexts/VoznoOknoProvider';
 import { useOvjesUpdate } from '../../../contexts/OvjesProvider';
+
 const Dizalo = () => {
 
-    // const [namjenaDizala, setNamjenaDizala] = useState("osobno");
-    // const [ukrcavanjeVilicarem, setUkrcavanjeVilicarem] = useState(false);
-
     // context read
-    const { namjenaDizala, ukrcavanjeVilicarem, vrstaDizala, vrstaPogona, smjestajPogona, bezStrojarnice, faktorOvjesa } = useCalculator();
+    const { namjenaDizala, ukrcavanjeVilicarem, vrstaDizala, vrstaPogona, smjestajPogona, bezStrojarnice, faktorOvjesa, nazivnaNosivost, brojOsoba, nazivnaBrzina, akceleracijaDeceleracijaNormalnaVoznja, deceleracijaKodHitnogStopa, brojUkljucenjaNaSat } = useDizalo();
 
     // context update functions
-    const { setNamjenaDizala, setUkrcavanjeVilicarem, setVrstaDizala, setVrstaPogona, setSmjestajPogona, setBezStrojarnice, setFaktorOvjesa } = useCalculatorUpdate();   
+    const { setNamjenaDizala, setUkrcavanjeVilicarem, setVrstaDizala, setVrstaPogona, setSmjestajPogona, setBezStrojarnice, setFaktorOvjesa, setnazivnaNosivost, setBrojOsoba, setNazivnaBrzina, setAkceleracijaDeceleracijaNormalnaVoznja, setDeceleracijaKodHitnogStopa, setBrojUkljucenjaNaSat } = useDizaloUpdate();   
     const { setBrojPostaja, setBrojUlaza, setDubinaJame } = useVoznoOknoUpdate();   
     const { setBrojNosivihUzadi, setKorisnickoDefiniranje } = useOvjesUpdate();
 
@@ -93,17 +93,17 @@ const Dizalo = () => {
         setFaktorOvjesa(e.target.value);
     };
 
-    function logButtonClick(){
-        console.log("-------");
-        console.log("namjenaDizala = " + namjenaDizala);
-        console.log("ukrcavanjeVilicarem = " + ukrcavanjeVilicarem);
-        console.log("vrstaDizala = " + vrstaDizala);
-        console.log("vrstaPogona = " + vrstaPogona);
-        console.log("smjestajPogona = " + smjestajPogona);
-        console.log("bezStrojarnice = " + bezStrojarnice);
-        console.log("faktorOvjesa = " + faktorOvjesa);
-        console.log("-------");
-    }
+    // function logButtonClick(){
+    //     console.log("-------");
+    //     console.log("namjenaDizala = " + namjenaDizala);
+    //     console.log("ukrcavanjeVilicarem = " + ukrcavanjeVilicarem);
+    //     console.log("vrstaDizala = " + vrstaDizala);
+    //     console.log("vrstaPogona = " + vrstaPogona);
+    //     console.log("smjestajPogona = " + smjestajPogona);
+    //     console.log("bezStrojarnice = " + bezStrojarnice);
+    //     console.log("faktorOvjesa = " + faktorOvjesa);
+    //     console.log("-------");
+    // }
 
     function getVrstaDizalaOptions(){
         return [{key: "elektricno", value: "Električno dizalo s pogonskom užnicom"}, {key: "hidraulicno", value: "Hidraulično dizalo"}];
@@ -154,11 +154,113 @@ const Dizalo = () => {
         }
     }
 
+    /* NAZIVNA BRZINA */
+    const [nazivnaBrzinaValid, setNazivnaBrzinaValid]  = useState(true);
 
+    const nazivnaBrzinaChanged = (e) => {
+        setNazivnaBrzina(e.target.value);
+    };
+
+    useEffect(() => {
+        const num = +nazivnaBrzina;
+        if(num.toString() === "NaN" || num > 1 || num <= 0){
+            setNazivnaBrzinaValid(false);
+        }
+        else{
+            setNazivnaBrzinaValid(true);
+        }
+    }, [nazivnaBrzina]);
+
+    function nazivnaBrzinaOnBlur(e){
+        if(nazivnaBrzinaValid){
+            setNazivnaBrzina(+(e.target.value));
+        }
+        else{
+            setNazivnaBrzina(0.01);
+        }
+    }
+
+    /* AKCELERACIJA / DECELERACIJA NORMALNA VOŽNJA */
+    const [akceleracijaDeceleracijaNormalnaVoznjaValid, setAkceleracijaDeceleracijaNormalnaVoznjaValid]  = useState(true);
+
+    const akceleracijaDeceleracijaNormalnaVoznjaChanged = (e) => {
+        setAkceleracijaDeceleracijaNormalnaVoznja(e.target.value);
+    };
+
+    useEffect(() => {
+        const num = +akceleracijaDeceleracijaNormalnaVoznja;
+        if(num.toString() === "NaN" || num > 4 || num <= 0){
+            setAkceleracijaDeceleracijaNormalnaVoznjaValid(false);
+        }
+        else{
+            setAkceleracijaDeceleracijaNormalnaVoznjaValid(true);
+        }
+    }, [akceleracijaDeceleracijaNormalnaVoznja]);
+
+    function akceleracijaDeceleracijaNormalnaVoznjaOnBlur(e){
+        if(akceleracijaDeceleracijaNormalnaVoznjaValid){
+            setAkceleracijaDeceleracijaNormalnaVoznja(+(e.target.value));
+        }
+        else{
+            setAkceleracijaDeceleracijaNormalnaVoznja(0.01);
+        }
+    }
+
+    /* DECELERACIJA KOD HITNOG STOPA */
+    const [deceleracijaKodHitnogStopaValid, setDeceleracijaKodHitnogStopaValid]  = useState(true);
+
+    const deceleracijaKodHitnogStopaChanged = (e) => {
+        setDeceleracijaKodHitnogStopa(e.target.value);
+    };
+
+    useEffect(() => {
+        const num = +deceleracijaKodHitnogStopa;
+        if(num.toString() === "NaN" || num > 4 || num <= 0){
+            setDeceleracijaKodHitnogStopaValid(false);
+        }
+        else{
+            setDeceleracijaKodHitnogStopaValid(true);
+        }
+    }, [deceleracijaKodHitnogStopa]);
+
+    function deceleracijaKodHitnogStopaOnBlur(e){
+        if(deceleracijaKodHitnogStopaValid){
+            setDeceleracijaKodHitnogStopa(+(e.target.value));
+        }
+        else{
+            setDeceleracijaKodHitnogStopa(0.01);
+        }
+    }
+
+    /* BROJ UKLJUČENJA NA SAT */
+    const [brojUkljucenjaNaSatValid, setBrojUkljucenjaNaSatValid]  = useState(true);
+
+    const brojUkljucenjaNaSatChanged = (e) => {
+        setBrojUkljucenjaNaSat(e.target.value);
+    };
+
+    useEffect(() => {
+        const num = +brojUkljucenjaNaSat;
+        if(num.toString() === "NaN" || num > 1200 || num <= 120){
+            setBrojUkljucenjaNaSatValid(false);
+        }
+        else{
+            setBrojUkljucenjaNaSatValid(true);
+        }
+    }, [brojUkljucenjaNaSat]);
+
+    function brojUkljucenjaNaSatOnBlur(e){
+        if(brojUkljucenjaNaSatValid){
+            setBrojUkljucenjaNaSat(+(e.target.value));
+        }
+        else{
+            setBrojUkljucenjaNaSat(180);
+        }
+    }
 
     return (
         <div style={{display: "block"}}>
-            <label >Dizalo: </label>
+            <h5>Dizalo: </h5>
             <Dropdown labelWidth="200px" title="Namjena dizala" options={[{key: "osobno", value: "Osobno dizalo"}, {key: "teretno", value: "Teretno dizalo"}, {key: "osobnoTeretno", value: "Osobno teretno dizalo"}]} onChange={namjenaDizalaChanged} value={namjenaDizala}/>
             
             { namjenaDizala === "teretno" || namjenaDizala === "osobnoTeretno" ? 
@@ -181,9 +283,13 @@ const Dizalo = () => {
 
             <br/>
 
-            <button onClick={logButtonClick}>LOG state</button>
+            <Dropdown labelWidth="200px" title="Nazivna nosivost (Q)" options={[{key: "630", value: "630"}]} value={nazivnaNosivost} onChange={()=>{}}/>
+            <Dropdown labelWidth="200px" title="Broj osoba" options={[{key: "8", value: "8"}]} value={brojOsoba} onChange={()=>{}}/>
             
-            <br/>
+            <TitledInput labelWidth="200px" title="Nazivna brzina" sDesna="m/s" value={nazivnaBrzina} valid={nazivnaBrzinaValid} onChange={nazivnaBrzinaChanged} onBlur={nazivnaBrzinaOnBlur} tooltip="0 - 1"/>
+            <TitledInput labelWidth="200px" title="Akceleracija/deceleracija normalna vožnja (a)" sDesna="m/s2" value={akceleracijaDeceleracijaNormalnaVoznja} valid={akceleracijaDeceleracijaNormalnaVoznjaValid} onChange={akceleracijaDeceleracijaNormalnaVoznjaChanged} onBlur={akceleracijaDeceleracijaNormalnaVoznjaOnBlur} tooltip="0 - 4"/>
+            <TitledInput labelWidth="200px" title="Deceleracija kod hitnog stopa (ae)" sDesna="m/s2" value={deceleracijaKodHitnogStopa} valid={deceleracijaKodHitnogStopaValid} onChange={deceleracijaKodHitnogStopaChanged} onBlur={deceleracijaKodHitnogStopaOnBlur} tooltip="0 - 4"/>
+            <TitledInput labelWidth="200px" title="Broj uključenja na sat (uh)" value={brojUkljucenjaNaSat} valid={brojUkljucenjaNaSatValid} onChange={brojUkljucenjaNaSatChanged} onBlur={brojUkljucenjaNaSatOnBlur} tooltip="120 - 1200"/>
         </div>
     );
 }

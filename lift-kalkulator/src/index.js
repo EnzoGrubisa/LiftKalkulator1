@@ -5,9 +5,10 @@ import './index.css';
 import Home from './pages/Home'
 import Calculator from './pages/Calculator';
 
-import CalculatorProvider from "./contexts/CalculatorProvider";
+import DizaloProvider from "./contexts/DizaloProvider";
 import VoznoOknoProvider from './contexts/VoznoOknoProvider';
 import OvjesProvider from './contexts/OvjesProvider';
+import ProjektProvider from './contexts/ProjektProvider';
 
 const App = () => {
   return (
@@ -39,15 +40,17 @@ export default App;
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <CalculatorProvider>
-      <VoznoOknoProvider>
-        <OvjesProvider>
-          <MemoryRouter>
-            <App/>
-          </MemoryRouter>
-        </OvjesProvider>
-      </VoznoOknoProvider>
-    </CalculatorProvider>
+    <ProjektProvider>
+      <DizaloProvider>
+        <VoznoOknoProvider>
+          <OvjesProvider>
+            <MemoryRouter>
+              <App/>
+            </MemoryRouter>
+          </OvjesProvider>
+        </VoznoOknoProvider>
+      </DizaloProvider>
+    </ProjektProvider>
   </React.StrictMode>
 );
 

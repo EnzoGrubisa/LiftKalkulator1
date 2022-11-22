@@ -209,7 +209,7 @@ const VoznoOkno = () => {
 
     return (
         <div style={{width: "fit-content"}}>
-            <label >Vozno okno: </label>
+            <h5>Vozno okno: </h5>
             <TitledInput labelWidth={labelsWidth} inputWidth="50px" title="Broj postaja (nst)" value={brojPostaja} onChange={brojPostajaChanged} valid={validBrojPostaja} onBlur={brojPostajaOnBlur} tooltip="2 - 7"/>
             <TitledInput labelWidth={labelsWidth} inputWidth="50px" title="Broj ulaza (netc)" value={brojUlaza} onChange={brojUlazaChanged} valid={validBrojUlaza} onBlur={brojUlazaOnBlur} tooltip="2 - 7"/>
             <br/>

@@ -9,11 +9,11 @@ import ovjesElektricnoUVoznomOknu2na1 from '../../../assets/images/ovjes/ovjesEl
 import ovjesHidraulicnoDirektni from '../../../assets/images/ovjes/ovjesHidraulicnoDirektni.png'
 import ovjesHidraulicnoIndirektni from '../../../assets/images/ovjes/ovjesHidraulicnoIndirektni.png'
 
-import { useCalculator } from '../../../contexts/CalculatorProvider'; 
+import { useDizalo } from '../../../contexts/DizaloProvider'; 
 
 const SlikaOvjesa = () => {
 
-    const { vrstaDizala, vrstaPogona, smjestajPogona, faktorOvjesa } = useCalculator();
+    const { vrstaDizala, vrstaPogona, smjestajPogona, faktorOvjesa } = useDizalo();
     
     function fullscreenImage(){
         

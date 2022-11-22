@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import CheckBox from "../../../components/CheckBox";
 
-import Dropdown from "../../../components/Dropdown";
+import CheckBox from "../../../components/CheckBox";
 import TitledInput from "../../../components/TitledInput";
-import { useCalculator, useCalculatorUpdate } from "../../../contexts/CalculatorProvider";
+
+import { useDizalo } from "../../../contexts/DizaloProvider";
 import { useOvjes, useOvjesUpdate } from "../../../contexts/OvjesProvider";
 
 // const OtklonskeUznice = () => {
@@ -14,11 +14,10 @@ import { useOvjes, useOvjesUpdate } from "../../../contexts/OvjesProvider";
 
 const OvjesDrugiDio = () => {
 
-    const { smjestajPogona, faktorOvjesa, vrstaDizala, vrstaPogona, bezStrojarnice } = useCalculator();
-    const { setSmjestajPogona, setFaktorOvjesa } = useCalculatorUpdate();
+    const { smjestajPogona, vrstaDizala, vrstaPogona } = useDizalo();
 
-    const { brojNosivihUzadi, tipUzadi, korisnickoDefiniranje, z1, z2, z3, z4, z5, z6, l1 } = useOvjes();
-    const { setBrojNosivihUzadi, setTipUzadi, setKorisnickoDefiniranje, setZ1, setZ2, setZ3, setZ4, setZ5, setZ6, setL1 } = useOvjesUpdate();
+    const { z1, z2, z3, z4, z5, z6, l1 } = useOvjes();
+    const { setZ1, setZ2, setZ3, setZ4, setZ5, setZ6/*, setL1*/ } = useOvjesUpdate();
 
     /* Z1 */
     const [validZ1, setValidZ1]  = useState(true);
@@ -207,6 +206,7 @@ const OvjesDrugiDio = () => {
 
             {vrstaPogona === "reduktorski" ?
             <>
+                <CheckBox/>
                 <br/>OTKLONSKE UŽNICE
             </>
             : null}

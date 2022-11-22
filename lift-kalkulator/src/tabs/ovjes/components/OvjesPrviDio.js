@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
-import CheckBox from "../../../components/CheckBox";
 
+import CheckBox from "../../../components/CheckBox";
 import Dropdown from "../../../components/Dropdown";
 import TitledInput from "../../../components/TitledInput";
-import { useCalculator, useCalculatorUpdate } from "../../../contexts/CalculatorProvider";
+
+import { useDizalo, useDizaloUpdate } from "../../../contexts/DizaloProvider";
 import { useOvjes, useOvjesUpdate } from "../../../contexts/OvjesProvider";
 
 const OvjesPrviDio = () => {
 
-    const { smjestajPogona, faktorOvjesa, vrstaDizala, vrstaPogona, bezStrojarnice } = useCalculator();
-    const { setSmjestajPogona, setFaktorOvjesa } = useCalculatorUpdate();
+    const { smjestajPogona, faktorOvjesa, vrstaDizala, vrstaPogona, bezStrojarnice } = useDizalo();
+    const { setSmjestajPogona, setFaktorOvjesa } = useDizaloUpdate();
 
-    const { brojNosivihUzadi, tipUzadi, korisnickoDefiniranje } = useOvjes();
-    const { setBrojNosivihUzadi, setTipUzadi, setKorisnickoDefiniranje } = useOvjesUpdate();
+    const { brojNosivihUzadi, tipUzadi, korisnickoDefiniranje, promjer, prekidnaCvrstoca, masaPoDuljnomMetru, youngovModul } = useOvjes();
+    const { setBrojNosivihUzadi, setTipUzadi, setKorisnickoDefiniranje, setPromjer, setPrekidnaCvrstoca, setMasaPoDuljnomMetru, setYoungovModul } = useOvjesUpdate();
 
     function logState(){
         // console.log("-------");
@@ -91,32 +92,221 @@ const OvjesPrviDio = () => {
     /* TIP UZADI */
     const tipUzadiChanged = (e) => {
         setTipUzadi(e.target.value);
+        switch (e.target.value) {
+            //elektricno
+            case "tip1":
+                setPromjer(6.5);
+                setPrekidnaCvrstoca(24700);
+                setMasaPoDuljnomMetru(0.148);
+                break;
+            case "tip2":
+                setPromjer(6.5);
+                setPrekidnaCvrstoca(25900);
+                setMasaPoDuljnomMetru(0.161);
+                break;
+            case "tip3":
+                setPromjer(6.5);
+                setPrekidnaCvrstoca(25800);
+                setMasaPoDuljnomMetru(0.16);
+                break;
+            case "tip4":
+                setPromjer(6.5);
+                setPrekidnaCvrstoca(29700);
+                setMasaPoDuljnomMetru(0.17);
+                break;
+            case "tip5":
+                setPromjer(6.5);
+                setPrekidnaCvrstoca(25900);
+                setMasaPoDuljnomMetru(0.161);
+                break;
+            case "tip6":
+                setPromjer(6.5);
+                setPrekidnaCvrstoca(21900);
+                setMasaPoDuljnomMetru(0.163);
+                break;
+            case "tip7":
+                setPromjer(6.5);
+                setPrekidnaCvrstoca(24700);
+                setMasaPoDuljnomMetru(0.155);
+                break;
+            case "tip8":
+                setPromjer(7);
+                setPrekidnaCvrstoca(29400);
+                setMasaPoDuljnomMetru(0.188);
+                break;
+                
+            //hidraulicno
+            case "tip9":
+                setPromjer(10);
+                setPrekidnaCvrstoca(48200);
+                setMasaPoDuljnomMetru(0.34);
+                break;
+            case "tip10":
+                setPromjer(10);
+                setPrekidnaCvrstoca(49900);
+                setMasaPoDuljnomMetru(0.35);
+                break;
+            case "tip11":
+                setPromjer(10);
+                setPrekidnaCvrstoca(48200);
+                setMasaPoDuljnomMetru(0.35);
+                break;
+            case "tip12":
+                setPromjer(10);
+                setPrekidnaCvrstoca(60500);
+                setMasaPoDuljnomMetru(0.385);
+                break;
+
+            default:
+                break;
+        }
     };
 
     function getTipUzadiOptions(){
-        return [
-            {key: "1", value: "1"}, 
-            {key: "2", value: "2"}, 
-            {key: "3", value: "3"}, 
-            {key: "4", value: "4"}, 
-            {key: "5", value: "5"}, 
-            {key: "6", value: "6"}, 
-            {key: "7", value: "7"}, 
-            {key: "8", value: "8"}
-        ];
+        if(vrstaDizala === "elektricno"){
+            return [
+                {key: "tip1", value: "tip 1"}, 
+                {key: "tip2", value: "tip 2"}, 
+                {key: "tip3", value: "tip 3"}, 
+                {key: "tip4", value: "tip 4"}, 
+                {key: "tip5", value: "tip 5"}, 
+                {key: "tip6", value: "tip 6"}, 
+                {key: "tip7", value: "tip 7"}, 
+                {key: "tip8", value: "tip 8"}
+            ];
+        }
+        else if(vrstaDizala === "hidraulicno"){
+            return [
+                {key: "tip9", value: "tip 9"}, 
+                {key: "tip10", value: "tip 10"}, 
+                {key: "tip11", value: "tip 11"}, 
+                {key: "tip12", value: "tip 12"}
+            ];
+        }
+        
     }
 
     /* KORISNICKO DEFINIRANJE */
     const korisnickoDefiniranjeCBChanged = (e) => {
         setKorisnickoDefiniranje(e.target.checked);
         if(e.target.checked){
-            setTipUzadi("0");
+            setTipUzadi("");
+
+            setPromjer(0);
+            setPrekidnaCvrstoca(0);
+            setMasaPoDuljnomMetru(0);
         }else if(!e.target.checked){
-            setTipUzadi("1");
+            setTipUzadi("tip1");
+
+            setPromjer(6.5);
+            setPrekidnaCvrstoca(24700);
+            setMasaPoDuljnomMetru(0.148);
         }
     };
 
+    /* PROMJER */
+    const [validPromjer, setValidPromjer]  = useState(true);
 
+    const promjerChanged = (e) => {
+        setPromjer(e.target.value);
+    };
+
+    useEffect(() => {
+        const num = +promjer;
+        if(num.toString() === "NaN" || num > 30 || num <= 0){
+            setValidPromjer(false);
+        }
+        else{
+            setValidPromjer(true);
+        }
+    }, [promjer]);
+
+    function promjerOnBlur(e){
+        if(validPromjer){
+            setPromjer(+(e.target.value));
+        }
+        else{
+            setPromjer(0.01);
+        }
+    }
+
+    /* PREKIDNA ČVRSTOĆA */
+    const [validPrekidnaCvrstoca, setValidPrekidnaCvrstoca]  = useState(true);
+
+    const prekidnaCvrstocaChanged = (e) => {
+        setPrekidnaCvrstoca(e.target.value);
+    };
+
+    useEffect(() => {
+        const num = +prekidnaCvrstoca;
+        if(num.toString() === "NaN" || num > 1000000 || num <= 0){
+            setValidPrekidnaCvrstoca(false);
+        }
+        else{
+            setValidPrekidnaCvrstoca(true);
+        }
+    }, [prekidnaCvrstoca]);
+
+    function prekidnaCvrstocaOnBlur(e){
+        if(validPrekidnaCvrstoca){
+            setPrekidnaCvrstoca(+(e.target.value));
+        }
+        else{
+            setPrekidnaCvrstoca(0.01);
+        }
+    }
+    
+    /* MASA PO DULJNOM METRU */
+    const [validMasaPoDuljnomMetru, setValidMasaPoDuljnomMetru]  = useState(true);
+
+    const masaPoDuljnomMetruChanged = (e) => {
+        setMasaPoDuljnomMetru(e.target.value);
+    };
+
+    useEffect(() => {
+        const num = +masaPoDuljnomMetru;
+        if(num.toString() === "NaN" || num > 10 || num <= 0){
+            setValidMasaPoDuljnomMetru(false);
+        }
+        else{
+            setValidMasaPoDuljnomMetru(true);
+        }
+    }, [masaPoDuljnomMetru]);
+
+    function masaPoDuljnomMetruOnBlur(e){
+        if(validMasaPoDuljnomMetru){
+            setMasaPoDuljnomMetru(+(e.target.value));
+        }
+        else{
+            setMasaPoDuljnomMetru(0.01);
+        }
+    }
+    
+    /* YOUNGOV MODUL */
+    const [validYoungovModul, setValidYoungovModul]  = useState(true);
+
+    const youngovModulChanged = (e) => {
+        setYoungovModul(e.target.value);
+    };
+
+    useEffect(() => {
+        const num = +youngovModul;
+        if(num.toString() === "NaN" || num > 100000 || num <= 0){
+            setValidYoungovModul(false);
+        }
+        else{
+            setValidYoungovModul(true);
+        }
+    }, [youngovModul]);
+
+    function youngovModulOnBlur(e){
+        if(validYoungovModul){
+            setYoungovModul(+(e.target.value));
+        }
+        else{
+            setYoungovModul(0.01);
+        }
+    }
 
 
     return(
@@ -139,11 +329,11 @@ const OvjesPrviDio = () => {
                 <CheckBox title="korisničko definiranje" id="korisnickoDefiniranjeCheckBox" onChange={korisnickoDefiniranjeCBChanged} checked={korisnickoDefiniranje}/>
                 : null}
                 
-                <TitledInput disabled={!korisnickoDefiniranje} labelWidth="210px" inputWidth="80px" title="Promjer (dr)" sDesna="mm"                    value={brojNosivihUzadi} valid={validBrojNosivihUzadi} onChange={brojNosivihUzadiChanged} onBlur={brojNosivihUzadiOnBlur} tooltip="2 - 50"/>
-                <TitledInput disabled={!korisnickoDefiniranje} labelWidth="210px" inputWidth="80px" title="Prekidna čvrstoća (Frbl)" sDesna="N"         value={brojNosivihUzadi} valid={validBrojNosivihUzadi} onChange={brojNosivihUzadiChanged} onBlur={brojNosivihUzadiOnBlur} tooltip="2 - 50"/>
-                <TitledInput disabled={!korisnickoDefiniranje} labelWidth="210px" inputWidth="80px" title="Masa po duljnom metru (qs)" sDesna="kg/m"    value={brojNosivihUzadi} valid={validBrojNosivihUzadi} onChange={brojNosivihUzadiChanged} onBlur={brojNosivihUzadiOnBlur} tooltip="2 - 50"/>    
+                <TitledInput disabled={!korisnickoDefiniranje} labelWidth="210px" inputWidth="80px" title="Promjer (dr)" sDesna="mm"                    value={promjer} valid={validPromjer} onChange={promjerChanged} onBlur={promjerOnBlur} tooltip="0 - 30"/>
+                <TitledInput disabled={!korisnickoDefiniranje} labelWidth="210px" inputWidth="80px" title="Prekidna čvrstoća (Frbl)" sDesna="N"         value={prekidnaCvrstoca} valid={validPrekidnaCvrstoca} onChange={prekidnaCvrstocaChanged} onBlur={prekidnaCvrstocaOnBlur} tooltip="0 - 1000000"/>
+                <TitledInput disabled={!korisnickoDefiniranje} labelWidth="210px" inputWidth="80px" title="Masa po duljnom metru (qs)" sDesna="kg/m"    value={masaPoDuljnomMetru} valid={validMasaPoDuljnomMetru} onChange={masaPoDuljnomMetruChanged} onBlur={masaPoDuljnomMetruOnBlur} tooltip="0 - 10"/>    
 
-                <TitledInput labelWidth="210px" inputWidth="80px" title="Young-ov modul (Eyg)" sDesna="kg/mm2"                                          value={brojNosivihUzadi} valid={validBrojNosivihUzadi} onChange={brojNosivihUzadiChanged} onBlur={brojNosivihUzadiOnBlur} tooltip="2 - 50"/>
+                <TitledInput labelWidth="210px" inputWidth="80px" title="Young-ov modul (Eyg)" sDesna="kg/mm2"                                          value={youngovModul} valid={validYoungovModul} onChange={youngovModulChanged} onBlur={youngovModulOnBlur} tooltip=""/>
 
                 {vrstaDizala === "elektricno"?
                 <>

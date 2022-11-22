@@ -13,17 +13,16 @@ export function useOvjesUpdate(){
 
 const OvjesProvider = ({children}) => {
 
-	// const [brojPostaja, setBrojPostaja]  = useState(7);
-    // const [brojUlaza, setBrojUlaza]  = useState(brojPostaja);
-    // const [visinaDizanja, setVisinaDizanja]  = useState(18000);
-    // const [tlocrtnaSirina, setTlocrtnaSirina]  = useState(1700);
-    // const [tlocrtnaDubina, setTlocrtnaDubina]  = useState(1800);
-    // const [dubinaJame, setDubinaJame]  = useState(1200);
-    // const [nadvisenje, setNadvisenje]  = useState(3600);
-    
+	//prvi dio
     const [brojNosivihUzadi, setBrojNosivihUzadi]  = useState(7);
     const [tipUzadi, setTipUzadi]  = useState("1");
     const [korisnickoDefiniranje, setKorisnickoDefiniranje]  = useState(false);
+    const [promjer, setPromjer]  = useState(6.5);
+    const [prekidnaCvrstoca, setPrekidnaCvrstoca]  = useState(24700);
+    const [masaPoDuljnomMetru, setMasaPoDuljnomMetru]  = useState(0.148);
+    const [youngovModul, setYoungovModul]  = useState(6300);
+
+
     const [z1, setZ1]  = useState(20000);
     const [z2, setZ2]  = useState(21000);
     const [z3, setZ3]  = useState(0.01);
@@ -33,8 +32,8 @@ const OvjesProvider = ({children}) => {
     const [l1, setL1]  = useState(8200); // hidraulicni
 
     return (
-        <OvjesContext.Provider value={{brojNosivihUzadi, tipUzadi, korisnickoDefiniranje, z1, z2, z3, z4, z5, z6, l1}}>
-            <OvjesUpdateContext.Provider value={{setBrojNosivihUzadi, setTipUzadi, setKorisnickoDefiniranje, setZ1, setZ2, setZ3, setZ4, setZ5, setZ6, setL1}}>
+        <OvjesContext.Provider value={{brojNosivihUzadi, tipUzadi, korisnickoDefiniranje, promjer, prekidnaCvrstoca, masaPoDuljnomMetru, youngovModul, z1, z2, z3, z4, z5, z6, l1}}>
+            <OvjesUpdateContext.Provider value={{setBrojNosivihUzadi, setTipUzadi, setKorisnickoDefiniranje, setPromjer, setPrekidnaCvrstoca, setMasaPoDuljnomMetru, setYoungovModul, setZ1, setZ2, setZ3, setZ4, setZ5, setZ6, setL1}}>
                 {children}
             </OvjesUpdateContext.Provider>
         </OvjesContext.Provider>

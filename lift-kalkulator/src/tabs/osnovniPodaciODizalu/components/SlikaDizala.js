@@ -3,12 +3,12 @@ import elektricnoSaStrojarnicom from '../../../assets/images/dizalo/elektricnoSa
 import elektricnoBezStrojarnice from '../../../assets/images/dizalo/elektricnoBezStrojarnice.png';
 import hidraulicno from '../../../assets/images/dizalo/hidraulicno.png';
 
-import { useCalculator } from '../../../contexts/CalculatorProvider'; 
+import { useDizalo } from '../../../contexts/DizaloProvider'; 
 
 const SlikaDizala = () => {
 
 
-    const { vrstaDizala, bezStrojarnice } = useCalculator();
+    const { vrstaDizala, bezStrojarnice } = useDizalo();
 
     function fullscreenImage(){
         
