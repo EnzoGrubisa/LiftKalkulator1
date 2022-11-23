@@ -35,6 +35,7 @@ const Dizalo = () => {
             setVrstaPogona("bezreduktorski");
             setFaktorOvjesa("2:1");
             setBezStrojarnice(true);
+            setNazivnaBrzina(1);
             //vozno okno
             setBrojPostaja(7);
             setBrojUlaza(7);
@@ -46,6 +47,7 @@ const Dizalo = () => {
             setVrstaPogona("indirektni");
             setFaktorOvjesa("1:2");
             setBezStrojarnice(false);
+            setNazivnaBrzina(0.5);
             //vozno okno
             setBrojPostaja(6);
             setBrojUlaza(6);

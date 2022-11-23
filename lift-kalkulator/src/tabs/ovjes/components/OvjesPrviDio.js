@@ -12,8 +12,8 @@ const OvjesPrviDio = () => {
     const { smjestajPogona, faktorOvjesa, vrstaDizala, vrstaPogona, bezStrojarnice } = useDizalo();
     const { setSmjestajPogona, setFaktorOvjesa } = useDizaloUpdate();
 
-    const { brojNosivihUzadi, tipUzadi, korisnickoDefiniranje, promjer, prekidnaCvrstoca, masaPoDuljnomMetru, youngovModul } = useOvjes();
-    const { setBrojNosivihUzadi, setTipUzadi, setKorisnickoDefiniranje, setPromjer, setPrekidnaCvrstoca, setMasaPoDuljnomMetru, setYoungovModul } = useOvjesUpdate();
+    const { brojNosivihUzadi, tipUzadi, korisnickoDefiniranje, promjer, prekidnaCvrstoca, masaPoDuljnomMetru, youngovModul, promjenaSmjeraNaStraniKabine, maxRazmakNaStraniKabine, npr_c, promjenaSmjeraNaStraniProtuutega, maxRazmakNaStraniProtuutega, npr_cw } = useOvjes();
+    const { setBrojNosivihUzadi, setTipUzadi, setKorisnickoDefiniranje, setPromjer, setPrekidnaCvrstoca, setMasaPoDuljnomMetru, setYoungovModul, setPromjenaSmjeraNaStraniKabine, setMaxRazmakNaStraniKabine, setNpr_c, setPromjenaSmjeraNaStraniProtuutega, setMaxRazmakNaStraniProtuutega, setNpr_cw } = useOvjesUpdate();
 
     /* FAKTOR OVJESA */
     const faktorOvjesaChanged = (e) => {
@@ -213,6 +213,8 @@ const OvjesPrviDio = () => {
         }
         else{
             setValidPromjer(true);
+            setMaxRazmakNaStraniKabine(num * 200);
+            setMaxRazmakNaStraniProtuutega(num * 200);
         }
     }, [promjer]);
 
@@ -303,6 +305,119 @@ const OvjesPrviDio = () => {
         }
     }
 
+    /* PROMJENA SMJERA NA STRANI KABINE */
+    const promjenaSmjeraNaStraniKabineCBChanged = (e) => {
+        setPromjenaSmjeraNaStraniKabine(e.target.checked);
+    };
+    
+    /* PROMJENA SMJERA NA STRANI PROOTUUTEGA */
+    const promjenaSmjeraNaStraniProtuutegaCBChanged = (e) => {
+        setPromjenaSmjeraNaStraniProtuutega(e.target.checked);
+    };
+
+    /* maxRazmakNaStrani Kabine */
+    const [maxRazmakNaStraniKabineValid, setMaxRazmakNaStraniKabineValid]  = useState(true);
+
+    const maxRazmakNaStraniKabineChanged = (e) => {
+        setMaxRazmakNaStraniKabine(e.target.value);
+    };
+
+    useEffect(() => {
+        const num = +maxRazmakNaStraniKabine;
+        if(num.toString() === "NaN" || num > 100000 || num <= 0){
+            setMaxRazmakNaStraniKabineValid(false);
+        }
+        else{
+            setMaxRazmakNaStraniKabineValid(true);
+        }
+    }, [maxRazmakNaStraniKabine]);
+
+    function maxRazmakNaStraniKabineOnBlur(e){
+        if(maxRazmakNaStraniKabineValid){
+            setMaxRazmakNaStraniKabine(+(e.target.value));
+        }
+        else{
+            setMaxRazmakNaStraniKabine(0.01);
+        }
+    }
+
+    /* maxRazmakNaStrani Protuutega */
+    const [maxRazmakNaStraniProtuutegaValid, setMaxRazmakNaStraniProtuutegaValid]  = useState(true);
+
+    const maxRazmakNaStraniProtuutegaChanged = (e) => {
+        setMaxRazmakNaStraniProtuutega(e.target.value);
+    };
+
+    useEffect(() => {
+        const num = +maxRazmakNaStraniProtuutega;
+        if(num.toString() === "NaN" || num > 100000 || num <= 0){
+            setMaxRazmakNaStraniProtuutegaValid(false);
+        }
+        else{
+            setMaxRazmakNaStraniProtuutegaValid(true);
+        }
+    }, [maxRazmakNaStraniProtuutega]);
+
+    function maxRazmakNaStraniProtuutegaOnBlur(e){
+        if(maxRazmakNaStraniProtuutegaValid){
+            setMaxRazmakNaStraniProtuutega(+(e.target.value));
+        }
+        else{
+            setMaxRazmakNaStraniProtuutega(0.01);
+        }
+    }
+    
+    /* Npr_c */
+    const [npr_cValid, setNpr_cValid]  = useState(true);
+
+    const npr_cChanged = (e) => {
+        setNpr_c(e.target.value);
+    };
+
+    useEffect(() => {
+        const num = +npr_c;
+        if(num.toString() === "NaN" || (num !== 1 && num !== 0)){
+            setNpr_cValid(false);
+        }
+        else{
+            setNpr_cValid(true);
+        }
+    }, [npr_c]);
+
+    function npr_cOnBlur(e){
+        if(npr_cValid){
+            setNpr_c(+(e.target.value));
+        }
+        else{
+            setNpr_c(0);
+        }
+    }
+    
+    /* Npr_cw */
+    const [npr_cwValid, setNpr_cwValid]  = useState(true);
+
+    const npr_cwChanged = (e) => {
+        setNpr_cw(e.target.value);
+    };
+
+    useEffect(() => {
+        const num = +npr_cw;
+        if(num.toString() === "NaN" || (num !== 1 && num !== 0)){
+            setNpr_cwValid(false);
+        }
+        else{
+            setNpr_cwValid(true);
+        }
+    }, [npr_cw]);
+
+    function npr_cwOnBlur(e){
+        if(npr_cwValid){
+            setNpr_cw(+(e.target.value));
+        }
+        else{
+            setNpr_cw(0);
+        }
+    }
 
     return(
         <div>
@@ -332,7 +447,23 @@ const OvjesPrviDio = () => {
 
                 {vrstaDizala === "elektricno"?
                 <>
-                Promjena smjera
+                    <br/>
+                    <CheckBox title="Promjena smjera savijanja užadi na strani kabine" id="promjenaSmjeraNaStraniKabineCheckBox" onChange={promjenaSmjeraNaStraniKabineCBChanged} checked={promjenaSmjeraNaStraniKabine}/>
+                    {promjenaSmjeraNaStraniKabine?
+                    <>
+                        <TitledInput disabled title="Broj stacioniranih užnica koje MIJENJAJU smjer savijanja užadi između kojih je razmak manji od" inputWidth="100px" value={maxRazmakNaStraniKabine} onChange={maxRazmakNaStraniKabineChanged} valid={maxRazmakNaStraniKabineValid} onBlur={maxRazmakNaStraniKabineOnBlur}/>
+                        <TitledInput title="(Npr_c)" inputWidth="100px" value={npr_c} onChange={npr_cChanged} valid={npr_cValid} onBlur={npr_cOnBlur} tooltip="0 / 1"/>
+                    </>
+                    : null}
+                    
+                    <CheckBox title="Promjena smjera savijanja užadi na strani protuutega" id="promjenaSmjeraNaStraniProtuutegaCheckBox" onChange={promjenaSmjeraNaStraniProtuutegaCBChanged} checked={promjenaSmjeraNaStraniProtuutega}/>
+                    {promjenaSmjeraNaStraniProtuutega?
+                    <>
+                        <TitledInput disabled title="Broj stacioniranih užnica koje MIJENJAJU smjer savijanja užadi između kojih je razmak manji od" inputWidth="100px" value={maxRazmakNaStraniProtuutega} onChange={maxRazmakNaStraniProtuutegaChanged} valid={maxRazmakNaStraniProtuutegaValid} onBlur={maxRazmakNaStraniProtuutegaOnBlur}/>
+                        <TitledInput title="(Npr_cw)" inputWidth="100px" value={npr_cw} onChange={npr_cwChanged} valid={npr_cwValid} onBlur={npr_cwOnBlur}/>
+                    </>
+                    : null}
+                    
                 </>
                 : null}
 

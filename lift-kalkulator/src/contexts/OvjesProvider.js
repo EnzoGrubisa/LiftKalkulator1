@@ -21,8 +21,15 @@ const OvjesProvider = ({children}) => {
     const [prekidnaCvrstoca, setPrekidnaCvrstoca]  = useState(24700);
     const [masaPoDuljnomMetru, setMasaPoDuljnomMetru]  = useState(0.148);
     const [youngovModul, setYoungovModul]  = useState(6300);
-
-
+    
+    const [promjenaSmjeraNaStraniKabine, setPromjenaSmjeraNaStraniKabine]  = useState(true);
+    const [maxRazmakNaStraniKabine, setMaxRazmakNaStraniKabine]  = useState(1300);
+    const [npr_c, setNpr_c]  = useState(1);
+    const [promjenaSmjeraNaStraniProtuutega, setPromjenaSmjeraNaStraniProtuutega]  = useState(false);
+    const [maxRazmakNaStraniProtuutega, setMaxRazmakNaStraniProtuutega]  = useState(1300);
+    const [npr_cw, setNpr_cw]  = useState(0);
+    
+    //drugio dio
     const [z1, setZ1]  = useState(20000);
     const [z2, setZ2]  = useState(21000);
     const [z3, setZ3]  = useState(0.01);
@@ -32,8 +39,8 @@ const OvjesProvider = ({children}) => {
     const [l1, setL1]  = useState(8200); // hidraulicni
 
     return (
-        <OvjesContext.Provider value={{brojNosivihUzadi, tipUzadi, korisnickoDefiniranje, promjer, prekidnaCvrstoca, masaPoDuljnomMetru, youngovModul, z1, z2, z3, z4, z5, z6, l1}}>
-            <OvjesUpdateContext.Provider value={{setBrojNosivihUzadi, setTipUzadi, setKorisnickoDefiniranje, setPromjer, setPrekidnaCvrstoca, setMasaPoDuljnomMetru, setYoungovModul, setZ1, setZ2, setZ3, setZ4, setZ5, setZ6, setL1}}>
+        <OvjesContext.Provider value={{brojNosivihUzadi, tipUzadi, korisnickoDefiniranje, promjer, prekidnaCvrstoca, masaPoDuljnomMetru, youngovModul, promjenaSmjeraNaStraniKabine, maxRazmakNaStraniKabine, npr_c, promjenaSmjeraNaStraniProtuutega, maxRazmakNaStraniProtuutega, npr_cw, z1, z2, z3, z4, z5, z6, l1}}>
+            <OvjesUpdateContext.Provider value={{setBrojNosivihUzadi, setTipUzadi, setKorisnickoDefiniranje, setPromjer, setPrekidnaCvrstoca, setMasaPoDuljnomMetru, setYoungovModul, setPromjenaSmjeraNaStraniKabine, setMaxRazmakNaStraniKabine, setNpr_c, setPromjenaSmjeraNaStraniProtuutega, setMaxRazmakNaStraniProtuutega, setNpr_cw, setZ1, setZ2, setZ3, setZ4, setZ5, setZ6, setL1}}>
                 {children}
             </OvjesUpdateContext.Provider>
         </OvjesContext.Provider>
