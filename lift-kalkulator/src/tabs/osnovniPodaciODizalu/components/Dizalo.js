@@ -278,10 +278,10 @@ const Dizalo = () => {
             <Dropdown labelWidth="200px" title="Nazivna nosivost (Q)" options={[{key: "630", value: "630"}]} value={nazivnaNosivost} onChange={()=>{}}/>
             <Dropdown labelWidth="200px" title="Broj osoba" options={[{key: "8", value: "8"}]} value={brojOsoba} onChange={()=>{}}/>
             
-            <TitledInput labelWidth="200px" title="Nazivna brzina" sDesna="m/s" value={nazivnaBrzina} valid={nazivnaBrzinaValid} onChange={nazivnaBrzinaChanged} onBlur={nazivnaBrzinaOnBlur} tooltip="0 - 1"/>
-            <TitledInput labelWidth="200px" title="Akceleracija/deceleracija normalna vožnja (a)" sDesna="m/s2" value={akceleracijaDeceleracijaNormalnaVoznja} valid={akceleracijaDeceleracijaNormalnaVoznjaValid} onChange={akceleracijaDeceleracijaNormalnaVoznjaChanged} onBlur={akceleracijaDeceleracijaNormalnaVoznjaOnBlur} tooltip="0 - 4"/>
-            <TitledInput labelWidth="200px" title="Deceleracija kod hitnog stopa (ae)" sDesna="m/s2" value={deceleracijaKodHitnogStopa} valid={deceleracijaKodHitnogStopaValid} onChange={deceleracijaKodHitnogStopaChanged} onBlur={deceleracijaKodHitnogStopaOnBlur} tooltip="0 - 4"/>
-            <TitledInput labelWidth="200px" title="Broj uključenja na sat (uh)" value={brojUkljucenjaNaSat} valid={brojUkljucenjaNaSatValid} onChange={brojUkljucenjaNaSatChanged} onBlur={brojUkljucenjaNaSatOnBlur} tooltip="120 - 1200"/>
+            <TitledInput labelWidth="200px" inputWidth="100px" title="Nazivna brzina" sDesna="m/s" value={nazivnaBrzina} valid={nazivnaBrzinaValid} onChange={nazivnaBrzinaChanged} onBlur={nazivnaBrzinaOnBlur} tooltip="0 - 1"/>
+            <TitledInput labelWidth="200px" inputWidth="100px" title="Akceleracija/deceleracija normalna vožnja (a)" sDesna="m/s2" value={akceleracijaDeceleracijaNormalnaVoznja} valid={akceleracijaDeceleracijaNormalnaVoznjaValid} onChange={akceleracijaDeceleracijaNormalnaVoznjaChanged} onBlur={akceleracijaDeceleracijaNormalnaVoznjaOnBlur} tooltip="0 - 4"/>
+            <TitledInput labelWidth="200px" inputWidth="100px" title="Deceleracija kod hitnog stopa (ae)" sDesna="m/s2" value={deceleracijaKodHitnogStopa} valid={deceleracijaKodHitnogStopaValid} onChange={deceleracijaKodHitnogStopaChanged} onBlur={deceleracijaKodHitnogStopaOnBlur} tooltip="0 - 4"/>
+            <TitledInput labelWidth="200px" inputWidth="100px" title="Broj uključenja na sat (uh)" value={brojUkljucenjaNaSat} valid={brojUkljucenjaNaSatValid} onChange={brojUkljucenjaNaSatChanged} onBlur={brojUkljucenjaNaSatOnBlur} tooltip="120 - 1200"/>
         </div>
     );
 }

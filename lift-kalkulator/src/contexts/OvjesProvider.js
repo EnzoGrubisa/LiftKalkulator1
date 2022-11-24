@@ -37,10 +37,22 @@ const OvjesProvider = ({children}) => {
     const [z5, setZ5]  = useState(20000); // hidraulicni
     const [z6, setZ6]  = useState(3000); // hidraulicni
     const [l1, setL1]  = useState(8200); // hidraulicni
+    
+    const [otklonskeUzniceNaStraniKabine, setOtklonskeUzniceNaStraniKabine]  = useState(true);
+    const [brojIDP_c, setBrojIDP_c]  = useState(1);
+    const [promjerDDP_c, setPromjerDDP_c]  = useState(240);
+    const [masaMDP_c, setMasaMDP_c]  = useState(11);
+    const [inercijaJDP_c, setInercijaJDP_c]  = useState(0.13);
+    
+    const [otklonskeUzniceNaStraniUtega, setOtklonskeUzniceNaStraniUtega]  = useState(true);
+    const [brojIDP_cw, setBrojIDP_cw]  = useState(1);
+    const [promjerDDP_cw, setPromjerDDP_cw]  = useState(240);
+    const [masaMDP_cw, setMasaMDP_cw]  = useState(11);
+    const [inercijaJDP_cw, setInercijaJDP_cw]  = useState(0.13);
 
     return (
-        <OvjesContext.Provider value={{brojNosivihUzadi, tipUzadi, korisnickoDefiniranje, promjer, prekidnaCvrstoca, masaPoDuljnomMetru, youngovModul, promjenaSmjeraNaStraniKabine, maxRazmakNaStraniKabine, npr_c, promjenaSmjeraNaStraniProtuutega, maxRazmakNaStraniProtuutega, npr_cw, z1, z2, z3, z4, z5, z6, l1}}>
-            <OvjesUpdateContext.Provider value={{setBrojNosivihUzadi, setTipUzadi, setKorisnickoDefiniranje, setPromjer, setPrekidnaCvrstoca, setMasaPoDuljnomMetru, setYoungovModul, setPromjenaSmjeraNaStraniKabine, setMaxRazmakNaStraniKabine, setNpr_c, setPromjenaSmjeraNaStraniProtuutega, setMaxRazmakNaStraniProtuutega, setNpr_cw, setZ1, setZ2, setZ3, setZ4, setZ5, setZ6, setL1}}>
+        <OvjesContext.Provider value={{brojNosivihUzadi, tipUzadi, korisnickoDefiniranje, promjer, prekidnaCvrstoca, masaPoDuljnomMetru, youngovModul, promjenaSmjeraNaStraniKabine, maxRazmakNaStraniKabine, npr_c, promjenaSmjeraNaStraniProtuutega, maxRazmakNaStraniProtuutega, npr_cw, z1, z2, z3, z4, z5, z6, l1, otklonskeUzniceNaStraniKabine, brojIDP_c, promjerDDP_c, masaMDP_c, inercijaJDP_c, otklonskeUzniceNaStraniUtega, brojIDP_cw, promjerDDP_cw, masaMDP_cw, inercijaJDP_cw}}>
+            <OvjesUpdateContext.Provider value={{setBrojNosivihUzadi, setTipUzadi, setKorisnickoDefiniranje, setPromjer, setPrekidnaCvrstoca, setMasaPoDuljnomMetru, setYoungovModul, setPromjenaSmjeraNaStraniKabine, setMaxRazmakNaStraniKabine, setNpr_c, setPromjenaSmjeraNaStraniProtuutega, setMaxRazmakNaStraniProtuutega, setNpr_cw, setZ1, setZ2, setZ3, setZ4, setZ5, setZ6, setL1, setOtklonskeUzniceNaStraniKabine, setBrojIDP_c, setPromjerDDP_c, setMasaMDP_c, setInercijaJDP_c, setOtklonskeUzniceNaStraniUtega, setBrojIDP_cw, setPromjerDDP_cw, setMasaMDP_cw, setInercijaJDP_cw}}>
                 {children}
             </OvjesUpdateContext.Provider>
         </OvjesContext.Provider>
