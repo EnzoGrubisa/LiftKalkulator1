@@ -18,15 +18,13 @@ class MyEmitter extends EventEmitter {};
 // init object
 const myEmitter = new MyEmitter();
 
-//add listener for log event
-myEmitter.on('log', (msg) => {
-    logEvents(msg);
-});
+// // add listener for log event
+// myEmitter.on('log', (msg) => {
+//     logEvents(msg);
+// });
 
 
-setTimeout(() => {
-    myEmitter.emit('log', 'log event emitted');
-})
+// myEmitter.emit('log', 'log event emitted');
 
 
 
