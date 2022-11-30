@@ -2,6 +2,35 @@ const express = require('express');
 const mysql = require('mysql');
 
 
+
+const { format } = require('date-fns');
+const { v4: uuid } = require('uuid');
+
+//console.log(format(new Date(), "dd.MM.yyyy.\tHH:mm:ss"));
+//console.log(uuid());
+
+const logEvents = require("./logEvents");
+
+const EventEmitter = require('events');
+
+class MyEmitter extends EventEmitter {};
+
+// init object
+const myEmitter = new MyEmitter();
+
+//add listener for log event
+myEmitter.on('log', (msg) => {
+    logEvents(msg);
+});
+
+
+setTimeout(() => {
+    myEmitter.emit('log', 'log event emitted');
+})
+
+
+
+
 const app = express();
 
 app.use(express.json());
