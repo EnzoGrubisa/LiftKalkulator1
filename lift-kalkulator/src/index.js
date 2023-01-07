@@ -11,39 +11,49 @@ import VoznoOknoProvider from './contexts/VoznoOknoProvider';
 import OvjesProvider from './contexts/OvjesProvider';
 import ProjektProvider from './contexts/ProjektProvider';
 import { AuthProvider } from './contexts/AuthProvider';
+import useAuth from "./hooks/useAuth";
+
+import RequireAuth from './auth/RequireAuth';
+import Layout from './components/Layout';
 
 const App = () => {
 
+  const { setAuth } = useAuth();
+
   useEffect(() => {
-    //console.log("[]");
-    
-    // fetch("/api")
-    //   .then((res) => res.json())
-    //   .then((data) => console.log(data.message));
-  }, []);
+    const localAuth = localStorage.getItem('auth');
+    if(localAuth){
+        setAuth(JSON.parse(localAuth));
+        //console.log("index.js -> local auth = " + localAuth);
+    }
+  }, [setAuth]);
    
   return (
     <div className="App">
       <Routes>
-        
-        <Route path='/home' element={<Home/>}/>
-        <Route path='/login' element={<Login/>}/>
+        <Route path="/" element={<Layout />}>
+          {/* public routes */}
+          <Route path='/home' element={<Home/>}/>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/' element={<Home/>}/>
 
-        {/* Calculator */}
-        <Route path='/projekt' element={<Calculator tab="projekt"/>}/>
-        <Route path='/dizalo' element={<Calculator tab="dizalo"/>}/>
-        <Route path='/ovjes' element={<Calculator tab="ovjes"/>}/>
-        <Route path='/vodiliceKabine' element={<Calculator tab="vodiliceKabine"/>}/>
-        <Route path='/vodiliceProtuutega' element={<Calculator tab="vodiliceProtuutega"/>}/>
-        <Route path='/kabina' element={<Calculator tab="kabina"/>}/>
-        <Route path='/protuutegIKompenzacija' element={<Calculator tab="protuutegIKompenzacija"/>}/>
-        <Route path='/elektricniPogon' element={<Calculator tab="elektricniPogon"/>}/>
-        <Route path='/hidraulicniPogon' element={<Calculator tab="hidraulicniPogon"/>}/>
-        <Route path='/biljeske' element={<Calculator tab="biljeske"/>}/>
-        
-        <Route path='/' element={<Calculator tab="projekt"/>}/>
-
-
+          {/* Calculator - user routes*/}
+          <Route element={<RequireAuth/>}>
+            {/* <Route path='/calculator' element={<Calculator tab="projekt"/>}/> */}
+            <Route path='/calculator' element={<Calculator/>}/>
+            {/* <Route path='/projekt' element={<Calculator tab="projekt"/>}/>
+            <Route path='/dizalo' element={<Calculator tab="dizalo"/>}/>
+            <Route path='/ovjes' element={<Calculator tab="ovjes"/>}/>
+            <Route path='/vodiliceKabine' element={<Calculator tab="vodiliceKabine"/>}/>
+            <Route path='/vodiliceProtuutega' element={<Calculator tab="vodiliceProtuutega"/>}/>
+            <Route path='/kabina' element={<Calculator tab="kabina"/>}/>
+            <Route path='/protuutegIKompenzacija' element={<Calculator tab="protuutegIKompenzacija"/>}/>
+            <Route path='/elektricniPogon' element={<Calculator tab="elektricniPogon"/>}/>
+            <Route path='/hidraulicniPogon' element={<Calculator tab="hidraulicniPogon"/>}/>
+            <Route path='/biljeske' element={<Calculator tab="biljeske"/>}/> */}
+          </Route>
+          
+        </Route>
       </Routes>
     </div>
   );
@@ -54,19 +64,19 @@ export default App;
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AuthProvider>
-      <ProjektProvider>
-        <DizaloProvider>
-          <VoznoOknoProvider>
-            <OvjesProvider>
-              <BrowserRouter>
+    <BrowserRouter>
+      <AuthProvider>
+        <ProjektProvider>
+          <DizaloProvider>
+            <VoznoOknoProvider>
+              <OvjesProvider>
                 <App/>
-              </BrowserRouter>
-            </OvjesProvider>
-          </VoznoOknoProvider>
-        </DizaloProvider>
-      </ProjektProvider>
-    </AuthProvider>
+              </OvjesProvider>
+            </VoznoOknoProvider>
+          </DizaloProvider>
+        </ProjektProvider>
+      </AuthProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

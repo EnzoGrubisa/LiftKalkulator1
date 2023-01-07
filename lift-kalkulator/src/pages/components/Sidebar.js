@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
 
+import { useProjektUpdate } from '../../contexts/ProjektProvider';
+
 const Sidebar = (props) => {
+
+    const { setTab } = useProjektUpdate();
 
     /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
     function closeSidebar() {
@@ -12,16 +16,16 @@ const Sidebar = (props) => {
         <div id="mySidebar" className="sidebar">
             <Link className="closebtn" onClick={closeSidebar}>&times;</Link><hr/>
 
-            <Link onClick={closeSidebar} className={props.tab === "projekt" ? 'selectedTab' : null} to="/projekt">Osnovni podaci o projektu</Link><hr/>
-            <Link onClick={closeSidebar} className={props.tab === "dizalo" ? 'selectedTab' : null} to="/dizalo">Osnovni podaci o dizalu</Link><hr/>
-            <Link onClick={closeSidebar} className={props.tab === "ovjes" ? 'selectedTab' : null} to="/ovjes">Ovjes</Link><hr/>
-            <Link onClick={closeSidebar} className={props.tab === "vodiliceKabine" ? 'selectedTab' : null} to="/vodiliceKabine">Vodilice kabine</Link><hr/>
-            <Link onClick={closeSidebar} className={props.tab === "vodiliceProtuutega" ? 'selectedTab' : null} to="/vodiliceProtuutega">Vodilice protuutega</Link><hr/>
-            <Link onClick={closeSidebar} className={props.tab === "kabina" ? 'selectedTab' : null} to="/kabina">Kabina</Link><hr/>
-            <Link onClick={closeSidebar} className={props.tab === "protuutegIKompenzacija" ? 'selectedTab' : null} to="/protuutegIKompenzacija">Protuuteg i kompenzacija</Link><hr/>
-            <Link onClick={closeSidebar} className={props.tab === "elektricniPogon" ? 'selectedTab' : null} to="/elektricniPogon">Električni pogon</Link><hr/>
-            <Link onClick={closeSidebar} className={props.tab === "hidraulicniPogon" ? 'selectedTab' : null} to="/hidraulicniPogon">Hidraulični pogon</Link><hr/>
-            <Link onClick={closeSidebar} className={props.tab === "biljeske" ? 'selectedTab' : null} to="/biljeske">Bilješke</Link><hr/>
+            <Link onClick={() => {closeSidebar(); setTab("projekt");}} className={props.tab === "projekt" ? 'selectedTab' : null} >Osnovni podaci o projektu</Link><hr/>
+            <Link onClick={() => {closeSidebar(); setTab("dizalo");}} className={props.tab === "dizalo" ? 'selectedTab' : null} >Osnovni podaci o dizalu</Link><hr/>
+            <Link onClick={() => {closeSidebar(); setTab("ovjes");}} className={props.tab === "ovjes" ? 'selectedTab' : null} >Ovjes</Link><hr/>
+            <Link onClick={() => {closeSidebar(); setTab("vodiliceKabine");}} className={props.tab === "vodiliceKabine" ? 'selectedTab' : null}>Vodilice kabine</Link><hr/>
+            <Link onClick={() => {closeSidebar(); setTab("vodiliceProtuutega");}} className={props.tab === "vodiliceProtuutega" ? 'selectedTab' : null}>Vodilice protuutega</Link><hr/>
+            <Link onClick={() => {closeSidebar(); setTab("kabina");}} className={props.tab === "kabina" ? 'selectedTab' : null}>Kabina</Link><hr/>
+            <Link onClick={() => {closeSidebar(); setTab("protuutegIKompenzacija");}} className={props.tab === "protuutegIKompenzacija" ? 'selectedTab' : null}>Protuuteg i kompenzacija</Link><hr/>
+            <Link onClick={() => {closeSidebar(); setTab("elektricniPogon");}} className={props.tab === "elektricniPogon" ? 'selectedTab' : null}>Električni pogon</Link><hr/>
+            <Link onClick={() => {closeSidebar(); setTab("hidraulicniPogon");}} className={props.tab === "hidraulicniPogon" ? 'selectedTab' : null}>Hidraulični pogon</Link><hr/>
+            <Link onClick={() => {closeSidebar(); setTab("biljeske");}} className={props.tab === "biljeske" ? 'selectedTab' : null}>Bilješke</Link><hr/>
         </div>
     );
 }

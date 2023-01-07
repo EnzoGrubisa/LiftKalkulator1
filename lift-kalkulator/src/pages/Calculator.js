@@ -6,12 +6,20 @@ import { useState, useEffect } from 'react';
 // import CalculatorProvider from "../contexts/CalculatorProvider";
 import Izracuni from "./components/izracuni/Izracuni";
 
+import useSaveProject from "../projectData/saveData";
+
+import { useProjekt } from "../contexts/ProjektProvider";
+
 const Calculator = (props) => {
+
+	const { tab } = useProjekt();
+ 
+	const saveProjectById = useSaveProject();
 
 	const [naslov, setNaslov] = useState("Default naslov");
 	
 	useEffect(() => {
-		switch (props.tab) {
+		switch (tab) {
 			case "projekt":
 				setNaslov("Osnovni podaci o projektu");
 				break;
@@ -47,7 +55,7 @@ const Calculator = (props) => {
 				setNaslov("...error...");
 				break;
 		}
-    }, [props.tab]);
+    }, [tab]);
 
 	const headerStyle = {
 		fontWeight: "bold",
@@ -72,16 +80,21 @@ const Calculator = (props) => {
 		document.getElementById("divIzracuni").style.visibility = "visible"; 
 	}
 
+	const saveProject = () => {
+		saveProjectById()
+	}
+
     return (
 		<>
 			<div id="calculatorTitleContainer">
 				<button className="openbtn" style={izbornikButtonStyle} onClick={openSidebar}>&#9776; Izbornik</button>
 				<h2 style={headerStyle}>{naslov}</h2>
+				<button onClick={saveProject} className="btn btn-danger" id="saveBtn">Spremi projekt</button>
 			</div>
 			
-			<Sidebar tab={props.tab} />
+			<Sidebar tab={tab} />
 			
-			<Main tab={props.tab} postaviNaslov={setNaslov}/>
+			<Main tab={tab} postaviNaslov={setNaslov}/>
 
 			<button onClick={openIzracuni} className="btn btn-primary">Izračuni</button>
 			<Izracuni/>

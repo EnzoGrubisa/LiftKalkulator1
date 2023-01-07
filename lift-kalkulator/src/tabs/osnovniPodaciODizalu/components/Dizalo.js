@@ -43,8 +43,11 @@ const Dizalo = () => {
             //ovjes
             setBrojNosivihUzadi(7);
             setKorisnickoDefiniranje(false);
+
+            setSmjestajPogona("uVoznomOknuNaNosacu");
         }else if(e.target.value === "hidraulicno"){
             setVrstaPogona("indirektni");
+            
             setFaktorOvjesa("1:2");
             setBezStrojarnice(false);
             setNazivnaBrzina(0.5);
@@ -55,6 +58,8 @@ const Dizalo = () => {
             //ovjes
             setBrojNosivihUzadi(4);
             setKorisnickoDefiniranje(false);
+
+            setSmjestajPogona("uStrojarniciIspodVoznogOkna");
         }
     };
 

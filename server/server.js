@@ -1,7 +1,8 @@
 const express = require('express');
+const app = express();
 const mysql = require('mysql');
-
-
+const path = require('path');
+const cors = require('cors');
 
 const { format } = require('date-fns');
 const { v4: uuid } = require('uuid');
@@ -29,7 +30,14 @@ const myEmitter = new MyEmitter();
 
 
 
-const app = express();
+app.use(cors({
+    origin: 'http://localhost:3000',
+    credentials: true
+}));
+
+// app.use(cors({
+//     methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
+// }));
 
 app.use(express.json());
 
@@ -60,6 +68,7 @@ const db = mysql.createConnection({
 //     }
 // }
 
+
 app.post('/login', (req, res) => {
 
     const username = req.body.username;
@@ -82,7 +91,236 @@ app.post('/login', (req, res) => {
                 res.send(result[0].username);
             }
             else{
-                res.send({message: "Pogrešno korisničko ime/lozinka."});
+                res.status(401).send({message: "Pogrešno korisničko ime/lozinka."});
+            }
+        }
+    );
+
+});
+
+app.post('/projectsList', (req, res) => {
+
+    const username = req.body.username;
+
+    if (!username) return res.status(400).json({ 'message': 'Nedostaje korisničko ime.' });
+
+    db.query(
+        "SELECT id, projectName FROM projects WHERE owner = ?",
+        [username],
+        (err, result) => {
+
+            if(err){
+                console.log(err);
+                res.send({err: err});
+            }
+            else if(result){
+                // console.log(result[0].username + " logged in.");
+                console.log(result);
+                //res.status = "200";
+                res.send(result);
+            }
+            else{
+                res.status(401).send({message: "Pogrešno korisničko ime/lozinka."});
+            }
+        }
+    );
+
+});
+
+app.post('/getProject', (req, res) => {
+
+    const projectId = req.body.projectId;
+
+    if (!projectId) return res.status(400).json({ 'message': 'Nedostaje projectId.' });
+
+    db.query(
+        "SELECT * FROM projects WHERE id = ?",
+        [projectId],
+        (err, result) => {
+
+            if(err){
+                console.log(err);
+                res.send({err: err});
+            }
+            else if(result){
+                // console.log(result[0].username + " logged in.");
+                console.log(result);
+                //res.status = "200";
+                res.send(result);
+            }
+            else{
+                res.status(401).send({message: "Pogrešno korisničko ime/lozinka."});
+            }
+        }
+    );
+
+});
+
+app.post('/saveProject', (req, res) => {
+
+    const projectId = req.body.projectId;
+
+    if (!projectId) return res.status(400).json({ 'message': 'Nedostaje projectId.' });
+
+    db.query(
+        `UPDATE projects SET
+        autor = ?,
+        adresaGradAutora = ?,
+        izradio = ?,
+        suradnik = ?,
+        ugraditelj = ?,
+        adresaGradUgraditelja = ?,
+        nazivGradevine = ?,
+        lokacijaAdresaGradevine = ?,
+        refOznakaProjekta = ?,
+        tvBrojOznakaDizala = ?,
+
+        namjenaDizala = ?,
+        ukrcavanjeVilicarem = ?,
+        vrstaDizala = ?,
+        vrstaPogona = ?,
+        smjestajPogona = ?,
+        bezStrojarnice = ?,
+        faktorOvjesa = ?,
+        nazivnaNosivost = ?,
+        brojOsoba = ?,
+        nazivnaBrzina = ?,
+        akceleracijaDeceleracijaNormalnaVoznja = ?,
+        deceleracijaKodHitnogStopa = ?,
+        brojUkljucenjaNaSat = ?,
+
+        brojPostaja = ?,
+        brojUlaza = ?,
+        visinaDizanja = ?,
+        tlocrtnaSirina = ?,
+        tlocrtnaDubina = ?,
+        dubinaJame = ?,
+        nadvisenje = ?,
+
+        brojNosivihUzadi = ?,
+        tipUzadi = ?,
+        korisnickoDefiniranje = ?,
+        promjer = ?,
+        prekidnaCvrstoca = ?,
+        masaPoDuljnomMetru = ?,
+        youngovModul = ?,
+
+        promjenaSmjeraNaStraniKabine = ?,
+        maxRazmakNaStraniKabine = ?,
+        npr_c = ?,
+        promjenaSmjeraNaStraniProtuutega = ?,
+        maxRazmakNaStraniProtuutega = ?,
+        npr_cw = ?,
+    
+        z1 = ?,
+        z2 = ?,
+        z3 = ?,
+        z4 = ?,
+        z5 = ?,
+        z6 = ?,
+        l1 = ?,
+        
+        otklonskeUzniceNaStraniKabine = ?,
+        brojIDP_c = ?,
+        promjerDDP_c = ?,
+        masaMDP_c = ?,
+        inercijaJDP_c = ?,
+        
+        otklonskeUzniceNaStraniUtega = ?,
+        brojIDP_cw = ?,
+        promjerDDP_cw = ?,
+        masaMDP_cw = ?,
+        inercijaJDP_cw = ?
+
+        WHERE id = ?`,
+        [
+            req.body.autor,
+            req.body.adresaGradAutora,
+            req.body.izradio,
+            req.body.suradnik,
+            req.body.ugraditelj,
+            req.body.adresaGradUgraditelja,
+            req.body.nazivGradevine,
+            req.body.lokacijaAdresaGradevine,
+            req.body.refOznakaProjekta,
+            req.body.tvBrojOznakaDizala,
+
+            //--- DIZALO
+            req.body.namjenaDizala,
+            req.body.ukrcavanjeVilicarem,
+            req.body.vrstaDizala,
+            req.body.vrstaPogona,
+            req.body.smjestajPogona,
+            req.body.bezStrojarnice,
+            req.body.faktorOvjesa,
+            req.body.nazivnaNosivost,
+            req.body.brojOsoba,
+            req.body.nazivnaBrzina,
+            req.body.akceleracijaDeceleracijaNormalnaVoznja,
+            req.body.deceleracijaKodHitnogStopa,
+            req.body.brojUkljucenjaNaSat,
+
+            //--- VOZNO OKNO
+            req.body.brojPostaja,
+            req.body.brojUlaza,
+            req.body.visinaDizanja,
+            req.body.tlocrtnaSirina,
+            req.body.tlocrtnaDubina,
+            req.body.dubinaJame,
+            req.body.nadvisenje,
+
+            //--- OVJES prvi dio
+            req.body.brojNosivihUzadi,
+            req.body.tipUzadi,
+            req.body.korisnickoDefiniranje,
+            req.body.promjer,
+            req.body.prekidnaCvrstoca,
+            req.body.masaPoDuljnomMetru,
+            req.body.youngovModul,
+
+            req.body.promjenaSmjeraNaStraniKabine,
+            req.body.maxRazmakNaStraniKabine,
+            req.body.npr_c,
+            req.body.promjenaSmjeraNaStraniProtuutega,
+            req.body.maxRazmakNaStraniProtuutega,
+            req.body.npr_cw,
+
+            //--- OVJES drugi dio
+            req.body.z1,
+            req.body.z2,
+            req.body.z3,
+            req.body.z4,
+            req.body.z5,
+            req.body.z6,
+            req.body.l1,
+            
+            req.body.otklonskeUzniceNaStraniKabine,
+            req.body.brojIDP_c,
+            req.body.promjerDDP_c,
+            req.body.masaMDP_c,
+            req.body.inercijaJDP_c,
+            
+            req.body.otklonskeUzniceNaStraniUtega,
+            req.body.brojIDP_cw,
+            req.body.promjerDDP_cw,
+            req.body.masaMDP_cw,
+            req.body.inercijaJDP_cw,
+
+            projectId
+        ],
+        (err, result) => {
+
+            if(err){
+                console.log(err);
+                res.send({err: err});
+            }
+            else if(result){
+                console.log(result);
+                res.status = "200";
+                res.send();
+            }
+            else{
+                res.status(401).send({message: "Pogrešno korisničko ime/lozinka."});
             }
         }
     );
@@ -100,6 +338,21 @@ process.on('uncaughtException', err => {
 
 const PORT = process.env.PORT || 3001;
 
+app.get('/', (req, res) => {
+    //res.send("Hello Express!");
+    //res.sendFile("../lift-kalkulator/public/index.html", {root: __dirname});
+    //res.sendFile("./index-test.html", {root: __dirname});
+    res.sendFile(path.join(__dirname, "index-test.html"));
+});
+
+app.get('/old-page', (req, res) => {
+    res.redirect(301, "/index-test.html"); //302 by default
+});
+
+app.get('/*', (req, res) => {
+    res.status(404).sendFile(path.join(__dirname, "404.html")); //302 by default
+});
+
 app.listen(PORT, () => {
-    console.log(`Server listening on ${PORT}`);
-  });
+    console.log(`Server listening on port ${PORT}`);
+});

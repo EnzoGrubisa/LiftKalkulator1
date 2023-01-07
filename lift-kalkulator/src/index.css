@@ -242,3 +242,25 @@ body {
   border-radius: 10px;
   border-width: 2px;
 }
+
+#saveBtn{
+  /* position: fixed;
+  background-color: white;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: auto;
+  margin: 5vh 5vW;
+  /* margin: 40px; */
+  /* padding: 20px;
+  border: solid;
+  border-radius: 10px;
+  border-width: 2px; */
+  
+  right: 0;
+  top: 0;
+  position: absolute;
+  display: block;
+}
+
