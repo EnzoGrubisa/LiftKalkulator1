@@ -327,6 +327,65 @@ app.post('/saveProject', (req, res) => {
 
 });
 
+app.post('/newProject', (req, res) => {
+
+    const username = req.body.username;
+    const projectName = req.body.projectName;
+
+    if (!username) return res.status(400).json({ 'message': 'Nedostaje username.' });
+
+    db.query(
+        "INSERT INTO projects (owner, projectName) VALUES (?, ?)",
+        [username, projectName],
+        (err, result) => {
+
+            if(err){
+                console.log(err);
+                res.send({err: err});
+            }
+            else if(result){
+                // console.log(result[0].username + " logged in.");
+                console.log(result);
+                res.status = "200";
+                res.send();
+            }
+            else{
+                res.status(401).send({message: "Pogrešno korisničko ime/lozinka."});
+            }
+        }
+    );
+
+});
+
+app.post('/deleteProject', (req, res) => {
+
+    const projectId = req.body.projectId;
+
+    if (!projectId) return res.status(400).json({ 'message': 'Nedostaje projectId.' });
+
+    db.query(
+        "DELETE FROM projects WHERE id = ?",
+        [projectId],
+        (err, result) => {
+
+            if(err){
+                console.log(err);
+                res.send({err: err});
+            }
+            else if(result){
+                // console.log(result[0].username + " logged in.");
+                console.log(result);
+                res.status = "200";
+                res.send();
+            }
+            else{
+                res.status(401).send({message: "Pogrešno korisničko ime/lozinka."});
+            }
+        }
+    );
+
+});
+
 app.get("/api", (req, res) => {
     res.json({ message: "Hello from server!" });
 });

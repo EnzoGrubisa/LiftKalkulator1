@@ -21,7 +21,9 @@ const ProjektProvider = ({children}) => {
     // },[namjenaDizala]);
 
     const [projectId, setProjectId] = useState(0);
-    const [ tab, setTab ] = useState("projekt");
+    const [projectName, setProjectName] = useState("");
+
+    const [tab, setTab] = useState("projekt");
 
     const [autor, setAutor] = useState("");
     const [adresaGradAutora, setAdresaGradAutora] = useState("");
@@ -38,8 +40,8 @@ const ProjektProvider = ({children}) => {
 	
 
     return (
-        <ProjektContext.Provider value={{projectId, tab, autor, adresaGradAutora, izradio, suradnik, datum, ugraditelj, adresaGradUgraditelja, nazivGradevine, lokacijaAdresaGradevine, refOznakaProjekta, tvBrojOznakaDizala}}>
-            <ProjektUpdateContext.Provider value={{setProjectId, setTab, setAutor, setAdresaGradAutora, setIzradio, setSuradnik, setDatum, setUgraditelj, setAdresaGradUgraditelja, setNazivGradevine, setLokacijaAdresaGradevine, setRefOznakaProjekta, setTvBrojOznakaDizala}}>
+        <ProjektContext.Provider value={{projectId, projectName, tab, autor, adresaGradAutora, izradio, suradnik, datum, ugraditelj, adresaGradUgraditelja, nazivGradevine, lokacijaAdresaGradevine, refOznakaProjekta, tvBrojOznakaDizala}}>
+            <ProjektUpdateContext.Provider value={{setProjectId, setProjectName, setTab, setAutor, setAdresaGradAutora, setIzradio, setSuradnik, setDatum, setUgraditelj, setAdresaGradUgraditelja, setNazivGradevine, setLokacijaAdresaGradevine, setRefOznakaProjekta, setTvBrojOznakaDizala}}>
                 {children}
             </ProjektUpdateContext.Provider>
         </ProjektContext.Provider>

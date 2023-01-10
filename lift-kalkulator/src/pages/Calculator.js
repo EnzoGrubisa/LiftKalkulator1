@@ -89,7 +89,7 @@ const Calculator = (props) => {
 			<div id="calculatorTitleContainer">
 				<button className="openbtn" style={izbornikButtonStyle} onClick={openSidebar}>&#9776; Izbornik</button>
 				<h2 style={headerStyle}>{naslov}</h2>
-				<button onClick={saveProject} className="btn btn-danger" id="saveBtn">Spremi projekt</button>
+				<button onClick={saveProject} className="btn btn-success" id="saveBtn">Spremi projekt</button>
 			</div>
 			
 			<Sidebar tab={tab} />

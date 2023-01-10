@@ -86,7 +86,7 @@ const Login = () => {
 				<label htmlFor="passwordInput">Lozinka: </label>
 				<input required type="password" id="passwordInput" onChange={(e) => {setPassword(e.target.value)}}/>
 				
-				<button disabled={username.length === 0 || password.length === 0}>Prijavi me</button>
+				<button disabled={username.length === 0 || password.length === 0} className="btn btn-primary">Prijavi me</button>
 			</form>
       	</div>
 		:

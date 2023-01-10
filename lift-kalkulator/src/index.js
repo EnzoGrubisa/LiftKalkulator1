@@ -33,13 +33,14 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           {/* public routes */}
-          <Route path='/home' element={<Home/>}/>
+          
           <Route path='/login' element={<Login/>}/>
           <Route path='/' element={<Home/>}/>
 
           {/* Calculator - user routes*/}
           <Route element={<RequireAuth/>}>
             {/* <Route path='/calculator' element={<Calculator tab="projekt"/>}/> */}
+            <Route path='/home' element={<Home/>}/>
             <Route path='/calculator' element={<Calculator/>}/>
             {/* <Route path='/projekt' element={<Calculator tab="projekt"/>}/>
             <Route path='/dizalo' element={<Calculator tab="dizalo"/>}/>
