@@ -1,5 +1,4 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useProjektUpdate } from "../contexts/ProjektProvider";
 
 import useAuth from "../hooks/useAuth";
 
@@ -11,8 +10,6 @@ import ConfirmDeleteProject from "./components/ConfirmDeleteProject";
 const Home = () => {
 
   const { auth, setAuth } = useAuth();
-
-  const { setProjectId } = useProjektUpdate();
 
   //setProjectId(0);
 

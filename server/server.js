@@ -230,7 +230,22 @@ app.post('/saveProject', (req, res) => {
         brojIDP_cw = ?,
         promjerDDP_cw = ?,
         masaMDP_cw = ?,
-        inercijaJDP_cw = ?
+        inercijaJDP_cw = ?,
+
+        vk_brojVodilica = ?,
+        vk_ukupnaDuljinaVodilica = ?,
+        vk_vertikalniRazmakPrihvataVodilica = ?,
+        vk_masaDodatneOpreme = ?,
+        vk_ukupnaDodatnaMasa = ?,
+        vk_koeficijentDodatnogOpterecenja = ?,
+        vk_gubitciUslijedTrenja = ?,
+        vk_korisnickoDefiniranjeFRc = ?,
+        vk_vrstaVodilice = ?,
+        vk_tipVodilice = ?,
+        vk_korisnickoDefiniranjeVodilica = ?,
+        vk_brojOdbojnika = ?,
+        vk_vrstaOdbojnika = ?
+
 
         WHERE id = ?`,
         [
@@ -305,6 +320,20 @@ app.post('/saveProject', (req, res) => {
             req.body.promjerDDP_cw,
             req.body.masaMDP_cw,
             req.body.inercijaJDP_cw,
+
+            req.body.vk_brojVodilica,
+            req.body.vk_ukupnaDuljinaVodilica,
+            req.body.vk_vertikalniRazmakPrihvataVodilica,
+            req.body.vk_masaDodatneOpreme,
+            req.body.vk_ukupnaDodatnaMasa,
+            req.body.vk_koeficijentDodatnogOpterecenja,
+            req.body.vk_gubitciUslijedTrenja,
+            req.body.vk_korisnickoDefiniranjeFRc,
+            req.body.vk_vrstaVodilice,
+            req.body.vk_tipVodilice,
+            req.body.vk_korisnickoDefiniranjeVodilica,
+            req.body.vk_brojOdbojnika,
+            req.body.vk_vrstaOdbojnika,
 
             projectId
         ],

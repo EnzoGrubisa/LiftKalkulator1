@@ -4,6 +4,7 @@ import { useProjekt } from '../contexts/ProjektProvider';
 import { useDizalo } from '../contexts/DizaloProvider';
 import { useVoznoOkno } from '../contexts/VoznoOknoProvider';
 import { useOvjes } from '../contexts/OvjesProvider';
+import { useVodiliceKabine } from '../contexts/VodiliceKabineProvider';
 
 const SAVE_PROJECT_URL = '/saveProject';
 
@@ -16,6 +17,22 @@ const useSaveProject = () => {
 
     const { brojNosivihUzadi, tipUzadi, korisnickoDefiniranje, promjer, prekidnaCvrstoca, masaPoDuljnomMetru, youngovModul, promjenaSmjeraNaStraniKabine, maxRazmakNaStraniKabine, npr_c, promjenaSmjeraNaStraniProtuutega, maxRazmakNaStraniProtuutega, npr_cw } = useOvjes();
     const { z1, z2, z3, z4, z5, z6, l1, otklonskeUzniceNaStraniKabine, brojIDP_c, promjerDDP_c, masaMDP_c, inercijaJDP_c, otklonskeUzniceNaStraniUtega, brojIDP_cw, promjerDDP_cw, masaMDP_cw, inercijaJDP_cw } = useOvjes();
+
+    const { vk_brojVodilica,
+        vk_ukupnaDuljinaVodilica,
+        vk_vertikalniRazmakPrihvataVodilica,
+        vk_masaDodatneOpreme,
+        vk_ukupnaDodatnaMasa,
+        vk_koeficijentDodatnogOpterecenja,
+        vk_gubitciUslijedTrenja,
+        vk_korisnickoDefiniranjeFRc,
+
+        vk_vrstaVodilice,
+        vk_tipVodilice,
+        vk_korisnickoDefiniranjeVodilica,
+
+        vk_brojOdbojnika,
+        vk_vrstaOdbojnika } = useVodiliceKabine();
 
     const saveProjectById = async () => {
         //console.log("saving data");
@@ -96,7 +113,25 @@ const useSaveProject = () => {
                     brojIDP_cw: brojIDP_cw,
                     promjerDDP_cw: promjerDDP_cw,
                     masaMDP_cw: masaMDP_cw,
-                    inercijaJDP_cw: inercijaJDP_cw
+                    inercijaJDP_cw: inercijaJDP_cw,
+
+                    //--- VODILICE KABINE
+                    vk_brojVodilica: vk_brojVodilica,
+                    vk_ukupnaDuljinaVodilica: vk_ukupnaDuljinaVodilica,
+                    vk_vertikalniRazmakPrihvataVodilica: vk_vertikalniRazmakPrihvataVodilica,
+                    vk_masaDodatneOpreme: vk_masaDodatneOpreme,
+                    vk_ukupnaDodatnaMasa: vk_ukupnaDodatnaMasa,
+                    vk_koeficijentDodatnogOpterecenja: vk_koeficijentDodatnogOpterecenja,
+                    vk_gubitciUslijedTrenja: vk_gubitciUslijedTrenja,
+                    vk_korisnickoDefiniranjeFRc: vk_korisnickoDefiniranjeFRc,
+
+                    vk_vrstaVodilice: vk_vrstaVodilice,
+                    vk_tipVodilice: vk_tipVodilice,
+                    vk_korisnickoDefiniranjeVodilica: vk_korisnickoDefiniranjeVodilica,
+                    
+                    vk_brojOdbojnika: vk_brojOdbojnika,
+                    vk_vrstaOdbojnika: vk_vrstaOdbojnika
+
                 }),
                 {
                     headers: { 'Content-Type': "application/json" },

@@ -4,6 +4,7 @@ import { useProjektUpdate } from '../contexts/ProjektProvider';
 import { useDizaloUpdate } from '../contexts/DizaloProvider';
 import { useVoznoOknoUpdate } from '../contexts/VoznoOknoProvider';
 import { useOvjesUpdate } from '../contexts/OvjesProvider';
+import { useVodiliceKabineUpdate } from '../contexts/VodiliceKabineProvider';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -23,6 +24,9 @@ const useLoadProject = () => {
     //--- OVJES
     const { setBrojNosivihUzadi, setTipUzadi, setKorisnickoDefiniranje, setPromjer, setPrekidnaCvrstoca, setMasaPoDuljnomMetru, setYoungovModul, setPromjenaSmjeraNaStraniKabine, setMaxRazmakNaStraniKabine, setNpr_c, setPromjenaSmjeraNaStraniProtuutega, setMaxRazmakNaStraniProtuutega, setNpr_cw } = useOvjesUpdate();
     const { setZ1, setZ2, setZ3, setZ4, setZ5, setZ6, setL1, setOtklonskeUzniceNaStraniKabine, setBrojIDP_c, setPromjerDDP_c, setMasaMDP_c, setInercijaJDP_c, setOtklonskeUzniceNaStraniUtega, setBrojIDP_cw, setPromjerDDP_cw, setMasaMDP_cw, setInercijaJDP_cw } = useOvjesUpdate();
+
+    //--- VODILICE KABINE
+    const { setVk_BrojVodilica, setVk_UkupnaDuljinaVodilica,setVk_VertikalniRazmakPrihvataVodilica,setVk_MasaDodatneOpreme,setVk_UkupnaDodatnaMasa,setVk_KoeficijentDodatnogOpterecenja,setVk_GubitciUslijedTrenja,setVk_KorisnickoDefiniranjeFRc,setVk_VrstaVodilice,setVk_TipVodilice,setVk_KorisnickoDefiniranjeVodilica,setVk_BrojOdbojnika,setVk_VrstaOdbojnika } = useVodiliceKabineUpdate();
 
     const navigate = useNavigate();
     
@@ -120,6 +124,23 @@ const useLoadProject = () => {
                     setPromjerDDP_cw(response?.data[0].promjerDDP_cw);
                     setMasaMDP_cw(response?.data[0].masaMDP_cw);
                     setInercijaJDP_cw(response?.data[0].inercijaJDP_cw);
+
+                    //--- VODILICE KABINE 1.dio
+                    setVk_BrojVodilica(response?.data[0].vk_brojVodilica);
+                    setVk_UkupnaDuljinaVodilica(response?.data[0].vk_ukupnaDuljinaVodilica);
+                    setVk_VertikalniRazmakPrihvataVodilica(response?.data[0].vk_vertikalniRazmakPrihvataVodilica);
+                    setVk_MasaDodatneOpreme(response?.data[0].vk_masaDodatneOpreme);
+                    setVk_UkupnaDodatnaMasa(response?.data[0].vk_ukupnaDodatnaMasa);
+                    setVk_KoeficijentDodatnogOpterecenja(response?.data[0].vk_koeficijentDodatnogOpterecenja);
+                    setVk_GubitciUslijedTrenja(response?.data[0].vk_gubitciUslijedTrenja);
+                    setVk_KorisnickoDefiniranjeFRc(response?.data[0].vk_korisnickoDefiniranjeFRc?.data[0] === 1? true : false);
+                    
+                    setVk_VrstaVodilice(response?.data[0].vk_vrstaVodilice);
+                    setVk_TipVodilice(response?.data[0].vk_tipVodilice);
+                    setVk_KorisnickoDefiniranjeVodilica(response?.data[0].vk_korisnickoDefiniranjeVodilica?.data[0] === 1? true : false);
+
+                    setVk_BrojOdbojnika(response?.data[0].vk_brojOdbojnika);
+                    setVk_VrstaOdbojnika(response?.data[0].vk_vrstaOdbojnika);
                 }
     
             }

@@ -6,10 +6,12 @@ import Home from './pages/Home'
 import Calculator from './pages/Calculator';
 import Login from './pages/Login';
 
+import ProjektProvider from './contexts/ProjektProvider';
 import DizaloProvider from "./contexts/DizaloProvider";
 import VoznoOknoProvider from './contexts/VoznoOknoProvider';
 import OvjesProvider from './contexts/OvjesProvider';
-import ProjektProvider from './contexts/ProjektProvider';
+import VodiliceKabineProvider from './contexts/VodiliceKabineProvider';
+
 import { AuthProvider } from './contexts/AuthProvider';
 import useAuth from "./hooks/useAuth";
 
@@ -22,26 +24,26 @@ const App = () => {
 
   useEffect(() => {
     const localAuth = localStorage.getItem('auth');
-    if(localAuth){
-        setAuth(JSON.parse(localAuth));
-        //console.log("index.js -> local auth = " + localAuth);
+    if (localAuth) {
+      setAuth(JSON.parse(localAuth));
+      //console.log("index.js -> local auth = " + localAuth);
     }
   }, [setAuth]);
-   
+
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Layout />}>
           {/* public routes */}
-          
-          <Route path='/login' element={<Login/>}/>
-          <Route path='/' element={<Home/>}/>
+
+          <Route path='/login' element={<Login />} />
+          <Route path='/' element={<Home />} />
 
           {/* Calculator - user routes*/}
-          <Route element={<RequireAuth/>}>
+          <Route element={<RequireAuth />}>
             {/* <Route path='/calculator' element={<Calculator tab="projekt"/>}/> */}
-            <Route path='/home' element={<Home/>}/>
-            <Route path='/calculator' element={<Calculator/>}/>
+            <Route path='/home' element={<Home />} />
+            <Route path='/calculator' element={<Calculator />} />
             {/* <Route path='/projekt' element={<Calculator tab="projekt"/>}/>
             <Route path='/dizalo' element={<Calculator tab="dizalo"/>}/>
             <Route path='/ovjes' element={<Calculator tab="ovjes"/>}/>
@@ -53,7 +55,7 @@ const App = () => {
             <Route path='/hidraulicniPogon' element={<Calculator tab="hidraulicniPogon"/>}/>
             <Route path='/biljeske' element={<Calculator tab="biljeske"/>}/> */}
           </Route>
-          
+
         </Route>
       </Routes>
     </div>
@@ -71,7 +73,9 @@ root.render(
           <DizaloProvider>
             <VoznoOknoProvider>
               <OvjesProvider>
-                <App/>
+                <VodiliceKabineProvider>
+                  <App />
+                </VodiliceKabineProvider>
               </OvjesProvider>
             </VoznoOknoProvider>
           </DizaloProvider>
