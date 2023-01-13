@@ -1,0 +1,3 @@
+cd C:\Users\Enzo\Documents\GitHub\LiftKalkulator1\lift-kalkulator\src
+
+dir -Recurse *.js | Get-Content | Measure-Object -Line | Out-File -FilePath C:\Users\Enzo\Documents\GitHub\LiftKalkulator1\LINE_COUNT.txt

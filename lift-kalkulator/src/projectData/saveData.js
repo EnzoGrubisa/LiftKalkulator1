@@ -18,7 +18,9 @@ const useSaveProject = () => {
     const { brojNosivihUzadi, tipUzadi, korisnickoDefiniranje, promjer, prekidnaCvrstoca, masaPoDuljnomMetru, youngovModul, promjenaSmjeraNaStraniKabine, maxRazmakNaStraniKabine, npr_c, promjenaSmjeraNaStraniProtuutega, maxRazmakNaStraniProtuutega, npr_cw } = useOvjes();
     const { z1, z2, z3, z4, z5, z6, l1, otklonskeUzniceNaStraniKabine, brojIDP_c, promjerDDP_c, masaMDP_c, inercijaJDP_c, otklonskeUzniceNaStraniUtega, brojIDP_cw, promjerDDP_cw, masaMDP_cw, inercijaJDP_cw } = useOvjes();
 
-    const { vk_brojVodilica,
+    const { 
+        // PRVI DIO
+        vk_brojVodilica,
         vk_ukupnaDuljinaVodilica,
         vk_vertikalniRazmakPrihvataVodilica,
         vk_masaDodatneOpreme,
@@ -32,7 +34,48 @@ const useSaveProject = () => {
         vk_korisnickoDefiniranjeVodilica,
 
         vk_brojOdbojnika,
-        vk_vrstaOdbojnika } = useVodiliceKabine();
+        vk_vrstaOdbojnika,
+
+        // DRUGI DIO
+        vk_vlacnaCvrstoca,
+        vk_modulElasticnosti,
+        vk_elongacija,
+
+        vk_povrsinaPoprecnogPresjeka,
+        vk_masaPoJedinicDuzine,
+        vk_momentOtporaWxx,
+        vk_momentOtporaWyy,
+        vk_geometrijskaInercijaLxx,
+        vk_geometrijskaInercijaLyy,
+        vk_minRadijusInercijeIxx,
+        vk_minRadijusInercijeIyy,
+        vk_minRadijusInercijeImin,
+        vk_vitkost,
+        vk_omega,
+
+        // CETVRTI DIO
+        vk_b1,
+        vk_h1,
+        vk_h,
+        vk_k,
+        vk_n,
+        vk_c,
+        vk_p,
+        vk_g,
+        vk_f,
+        vk_e,
+        vk_rs,
+        vk_m1,
+        vk_m2,
+        vk_t1,
+        vk_t2,
+        vk_l,
+        vk_d,
+        vk_d1,
+        vk_b3,
+        vk_l2,
+        vk_l3
+    } = useVodiliceKabine();
 
     const saveProjectById = async () => {
         //console.log("saving data");
@@ -115,7 +158,7 @@ const useSaveProject = () => {
                     masaMDP_cw: masaMDP_cw,
                     inercijaJDP_cw: inercijaJDP_cw,
 
-                    //--- VODILICE KABINE
+                    //--- VODILICE KABINE 1. dio
                     vk_brojVodilica: vk_brojVodilica,
                     vk_ukupnaDuljinaVodilica: vk_ukupnaDuljinaVodilica,
                     vk_vertikalniRazmakPrihvataVodilica: vk_vertikalniRazmakPrihvataVodilica,
@@ -130,8 +173,47 @@ const useSaveProject = () => {
                     vk_korisnickoDefiniranjeVodilica: vk_korisnickoDefiniranjeVodilica,
                     
                     vk_brojOdbojnika: vk_brojOdbojnika,
-                    vk_vrstaOdbojnika: vk_vrstaOdbojnika
+                    vk_vrstaOdbojnika: vk_vrstaOdbojnika,
 
+                    //--- VODILICE KABINE 2. dio
+                    vk_vlacnaCvrstoca: vk_vlacnaCvrstoca,
+                    vk_modulElasticnosti: vk_modulElasticnosti,
+                    vk_elongacija: vk_elongacija,
+
+                    vk_povrsinaPoprecnogPresjeka: vk_povrsinaPoprecnogPresjeka,
+                    vk_masaPoJedinicDuzine: vk_masaPoJedinicDuzine,
+                    vk_momentOtporaWxx: vk_momentOtporaWxx,
+                    vk_momentOtporaWyy: vk_momentOtporaWyy,
+                    vk_geometrijskaInercijaLxx: vk_geometrijskaInercijaLxx,
+                    vk_geometrijskaInercijaLyy: vk_geometrijskaInercijaLyy,
+                    vk_minRadijusInercijeIxx: vk_minRadijusInercijeIxx,
+                    vk_minRadijusInercijeIyy: vk_minRadijusInercijeIyy,
+                    vk_minRadijusInercijeImin: vk_minRadijusInercijeImin,
+                    vk_vitkost: vk_vitkost,
+                    vk_omega: vk_omega,
+
+                    //--- VODILICE KABINE 4. dio
+                    vk_b1: vk_b1,
+                    vk_h1: vk_h1,
+                    vk_h: vk_h,
+                    vk_k: vk_k,
+                    vk_n: vk_n,
+                    vk_c: vk_c,
+                    vk_p: vk_p,
+                    vk_g: vk_g,
+                    vk_f: vk_f,
+                    vk_e: vk_e,
+                    vk_rs: vk_rs,
+                    vk_m1: vk_m1,
+                    vk_m2: vk_m2,
+                    vk_t1: vk_t1,
+                    vk_t2: vk_t2,
+                    vk_l: vk_l,
+                    vk_d: vk_d,
+                    vk_d1: vk_d1,
+                    vk_b3: vk_b3,
+                    vk_l2: vk_l2,
+                    vk_l3: vk_l3
                 }),
                 {
                     headers: { 'Content-Type': "application/json" },

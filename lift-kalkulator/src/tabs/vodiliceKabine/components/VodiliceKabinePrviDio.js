@@ -301,6 +301,20 @@ const VodiliceKabinePrviDio = () => {
         ];
     }
 
+    const vk_vrstaOdbojnikaGetTooltip = () => {
+        switch (vk_vrstaOdbojnika) {
+            case "odbojniciSAkumulacijomEnergijeILinearnomKarakteristikom":
+                return "Odbojnici s akumulacijom energije i linearnom karakteristikom";
+            case "odbojniciSAkumulacijomEnergijeINelinearnomKarakteristikom":
+                return "Odbojnici s akumulacijom energije i nelinearnom karakteristikom";
+            case "odbojniciSDiscipacijomEnergije":
+                return "Odbojnici s discipacijom energije";
+                
+            default:
+                return null;
+        }
+    }
+
     return (
         <div>
             <TitledInput labelWidth="200px" inputWidth="80px" title="Broj vodilica (n_cr)" sDesna="" value={vk_brojVodilica} valid={validVk_brojVodilica} onChange={vk_brojVodilicaChanged} onBlur={vk_brojVodilicaOnBlur} tooltip="2 - 10" />
@@ -329,7 +343,7 @@ const VodiliceKabinePrviDio = () => {
             <div style={{ borderColor: "black", border: "solid" }}>
                 <p>Odbojnici kabine</p>
                 <TitledInput labelWidth="200px" inputWidth="80px" title="Broj odbojnika (nb_c)" sDesna="" value={vk_brojOdbojnika} valid={validVk_brojOdbojnika} onChange={vk_brojOdbojnikaChanged} onBlur={vk_brojOdbojnikaOnBlur} tooltip="1 - 20" />
-                <Dropdown labelWidth="200px" title="Vrsta odbojnika" options={getVrstaOdbojnikaOptions()} value={vk_vrstaOdbojnika} onChange={vk_vrstaOdbojnikaChanged} />
+                <Dropdown labelWidth="200px" title="Vrsta odbojnika" options={getVrstaOdbojnikaOptions()} value={vk_vrstaOdbojnika} onChange={vk_vrstaOdbojnikaChanged} tooltip={vk_vrstaOdbojnikaGetTooltip()}/>
             </div>
         </div>
     );

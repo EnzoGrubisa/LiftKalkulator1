@@ -1,5 +1,5 @@
 
-// props -> title, options (key - value list), value, onChange, labelWidth, disabled
+// props -> title, options (key - value list), value, onChange, labelWidth, disabled, tooltip
 const Dropdown = (props) => {
 
     function OptionsList() {
@@ -17,7 +17,7 @@ const Dropdown = (props) => {
     return (
         <div className='divDropDown'>
             <label style={{width: props.labelWidth}}>{props.title}: </label>
-            <select className="form-select" aria-label="Default select example" onChange={props.onChange} value={props.value} disabled={props.disabled}> 
+            <select title={props.tooltip} className="form-select" aria-label="Default select example" onChange={props.onChange} value={props.value} disabled={props.disabled}> 
                 {OptionsList()}
             </select>
         </div>
