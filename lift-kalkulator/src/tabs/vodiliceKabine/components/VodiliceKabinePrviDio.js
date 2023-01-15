@@ -41,7 +41,30 @@ const VodiliceKabinePrviDio = () => {
         setVk_KorisnickoDefiniranjeVodilica,
 
         setVk_BrojOdbojnika,
-        setVk_VrstaOdbojnika
+        setVk_VrstaOdbojnika,
+
+        //cetvrti dio
+        setVk_b1,
+        setVk_h1,
+        setVk_h,
+        setVk_k,
+        setVk_n,
+        setVk_c,
+        setVk_p,
+        setVk_g,
+        setVk_f,
+        setVk_e,
+        setVk_rs,
+        setVk_m1,
+        setVk_m2,
+        setVk_t1,
+        setVk_t2,
+        setVk_l,
+        setVk_d,
+        setVk_d1,
+        setVk_b3,
+        setVk_l2,
+        setVk_l3
     } = useVodiliceKabineUpdate();
 
     /* BROJ VODILICA */
@@ -259,6 +282,28 @@ const VodiliceKabinePrviDio = () => {
         }
         else{
             setVk_TipVodilice("tip1");
+
+            setVk_b1(70);
+            setVk_h1(70);
+            setVk_h(0);
+            setVk_k(8);
+            setVk_n(0);
+            setVk_c(8);
+            setVk_p(8);
+            setVk_g(0);
+            setVk_f(0);
+            setVk_e(20.20);
+            setVk_rs(1.50);
+            setVk_m1(3);
+            setVk_m2(2.95);
+            setVk_t1(3.5);
+            setVk_t2(3);
+            setVk_l(0);
+            setVk_d(13);
+            setVk_d1(0);
+            setVk_b3(42);
+            setVk_l2(105);
+            setVk_l3(25);
         }
     };
 
