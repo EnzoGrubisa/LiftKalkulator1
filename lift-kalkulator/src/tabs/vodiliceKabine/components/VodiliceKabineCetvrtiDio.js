@@ -64,7 +64,7 @@ const VodiliceKabineCetvrtiDio = () => {
 
     useEffect(() => {
         const num = +vk_b1;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { ///<<<-------
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
             setValidVk_b1(false);
         }
         else {
@@ -77,7 +77,7 @@ const VodiliceKabineCetvrtiDio = () => {
             setVk_b1(+(e.target.value));
         }
         else {
-            setVk_b1(0);///<<-----------
+            setVk_b1(0);
         }
     }
     
@@ -90,7 +90,7 @@ const VodiliceKabineCetvrtiDio = () => {
 
     useEffect(() => {
         const num = +vk_h1;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { ///<<<-------
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
             setValidVk_h1(false);
         }
         else {
@@ -103,7 +103,7 @@ const VodiliceKabineCetvrtiDio = () => {
             setVk_h1(+(e.target.value));
         }
         else {
-            setVk_h1(0);///<<-----------
+            setVk_h1(0);
         }
     }
     
@@ -116,7 +116,7 @@ const VodiliceKabineCetvrtiDio = () => {
 
     useEffect(() => {
         const num = +vk_h;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { ///<<<-------
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
             setValidVk_h(false);
         }
         else {
@@ -129,7 +129,7 @@ const VodiliceKabineCetvrtiDio = () => {
             setVk_h(+(e.target.value));
         }
         else {
-            setVk_h(0);///<<-----------
+            setVk_h(0);
         }
     }
     
@@ -142,7 +142,7 @@ const VodiliceKabineCetvrtiDio = () => {
 
     useEffect(() => {
         const num = +vk_k;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { ///<<<-------
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
             setValidVk_k(false);
         }
         else {
@@ -155,7 +155,7 @@ const VodiliceKabineCetvrtiDio = () => {
             setVk_k(+(e.target.value));
         }
         else {
-            setVk_k(0);///<<-----------
+            setVk_k(0);
         }
     }
     
@@ -168,7 +168,7 @@ const VodiliceKabineCetvrtiDio = () => {
 
     useEffect(() => {
         const num = +vk_n;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { ///<<<-------
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
             setValidVk_n(false);
         }
         else {
@@ -181,7 +181,7 @@ const VodiliceKabineCetvrtiDio = () => {
             setVk_n(+(e.target.value));
         }
         else {
-            setVk_n(0);///<<-----------
+            setVk_n(0);
         }
     }
     
@@ -194,7 +194,7 @@ const VodiliceKabineCetvrtiDio = () => {
 
     useEffect(() => {
         const num = +vk_c;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { ///<<<-------
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
             setValidVk_c(false);
         }
         else {
@@ -207,7 +207,7 @@ const VodiliceKabineCetvrtiDio = () => {
             setVk_c(+(e.target.value));
         }
         else {
-            setVk_c(0);///<<-----------
+            setVk_c(0);
         }
     }
     
@@ -220,7 +220,7 @@ const VodiliceKabineCetvrtiDio = () => {
 
     useEffect(() => {
         const num = +vk_p;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { ///<<<-------
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
             setValidVk_p(false);
         }
         else {
@@ -233,7 +233,7 @@ const VodiliceKabineCetvrtiDio = () => {
             setVk_p(+(e.target.value));
         }
         else {
-            setVk_p(0);///<<-----------
+            setVk_p(0);
         }
     }
     
@@ -246,7 +246,7 @@ const VodiliceKabineCetvrtiDio = () => {
 
     useEffect(() => {
         const num = +vk_g;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { ///<<<-------
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
             setValidVk_g(false);
         }
         else {
@@ -259,7 +259,7 @@ const VodiliceKabineCetvrtiDio = () => {
             setVk_g(+(e.target.value));
         }
         else {
-            setVk_g(0);///<<-----------
+            setVk_g(0);
         }
     }
     
@@ -272,7 +272,7 @@ const VodiliceKabineCetvrtiDio = () => {
 
     useEffect(() => {
         const num = +vk_f;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { ///<<<-------
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
             setValidVk_f(false);
         }
         else {
@@ -285,7 +285,7 @@ const VodiliceKabineCetvrtiDio = () => {
             setVk_f(+(e.target.value));
         }
         else {
-            setVk_f(0);///<<-----------
+            setVk_f(0);
         }
     }
     
@@ -298,7 +298,7 @@ const VodiliceKabineCetvrtiDio = () => {
 
     useEffect(() => {
         const num = +vk_e;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { ///<<<-------
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) {
             setValidVk_e(false);
         }
         else {
@@ -311,7 +311,7 @@ const VodiliceKabineCetvrtiDio = () => {
             setVk_e(+(e.target.value));
         }
         else {
-            setVk_e(0);///<<-----------
+            setVk_e(0);
         }
     }
     
@@ -324,7 +324,7 @@ const VodiliceKabineCetvrtiDio = () => {
 
     useEffect(() => {
         const num = +vk_rs;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { ///<<<-------
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
             setValidVk_rs(false);
         }
         else {
@@ -337,7 +337,7 @@ const VodiliceKabineCetvrtiDio = () => {
             setVk_rs(+(e.target.value));
         }
         else {
-            setVk_rs(0);///<<-----------
+            setVk_rs(0);
         }
     }
     
@@ -350,7 +350,7 @@ const VodiliceKabineCetvrtiDio = () => {
 
     useEffect(() => {
         const num = +vk_m1;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { ///<<<-------
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
             setValidVk_m1(false);
         }
         else {
@@ -363,7 +363,7 @@ const VodiliceKabineCetvrtiDio = () => {
             setVk_m1(+(e.target.value));
         }
         else {
-            setVk_m1(0);///<<-----------
+            setVk_m1(0);
         }
     }
     
@@ -376,7 +376,7 @@ const VodiliceKabineCetvrtiDio = () => {
 
     useEffect(() => {
         const num = +vk_m2;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { ///<<<-------
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
             setValidVk_m2(false);
         }
         else {
@@ -389,7 +389,7 @@ const VodiliceKabineCetvrtiDio = () => {
             setVk_m2(+(e.target.value));
         }
         else {
-            setVk_m2(0);///<<-----------
+            setVk_m2(0);
         }
     }
     
@@ -402,7 +402,7 @@ const VodiliceKabineCetvrtiDio = () => {
 
     useEffect(() => {
         const num = +vk_t1;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { ///<<<-------
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
             setValidVk_t1(false);
         }
         else {
@@ -415,7 +415,7 @@ const VodiliceKabineCetvrtiDio = () => {
             setVk_t1(+(e.target.value));
         }
         else {
-            setVk_t1(0);///<<-----------
+            setVk_t1(0);
         }
     }
     
@@ -428,7 +428,7 @@ const VodiliceKabineCetvrtiDio = () => {
 
     useEffect(() => {
         const num = +vk_t2;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { ///<<<-------
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
             setValidVk_t2(false);
         }
         else {
@@ -441,7 +441,7 @@ const VodiliceKabineCetvrtiDio = () => {
             setVk_t2(+(e.target.value));
         }
         else {
-            setVk_t2(0);///<<-----------
+            setVk_t2(0);
         }
     }
     
@@ -454,7 +454,7 @@ const VodiliceKabineCetvrtiDio = () => {
 
     useEffect(() => {
         const num = +vk_l;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { ///<<<-------
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
             setValidVk_l(false);
         }
         else {
@@ -467,7 +467,7 @@ const VodiliceKabineCetvrtiDio = () => {
             setVk_l(+(e.target.value));
         }
         else {
-            setVk_l(0);///<<-----------
+            setVk_l(0);
         }
     }
     
@@ -480,7 +480,7 @@ const VodiliceKabineCetvrtiDio = () => {
 
     useEffect(() => {
         const num = +vk_d;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { ///<<<-------
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
             setValidVk_d(false);
         }
         else {
@@ -493,7 +493,7 @@ const VodiliceKabineCetvrtiDio = () => {
             setVk_d(+(e.target.value));
         }
         else {
-            setVk_d(0);///<<-----------
+            setVk_d(0);
         }
     }
     
@@ -506,7 +506,7 @@ const VodiliceKabineCetvrtiDio = () => {
 
     useEffect(() => {
         const num = +vk_d1;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { ///<<<-------
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
             setValidVk_d1(false);
         }
         else {
@@ -519,7 +519,7 @@ const VodiliceKabineCetvrtiDio = () => {
             setVk_d1(+(e.target.value));
         }
         else {
-            setVk_d1(0);///<<-----------
+            setVk_d1(0);
         }
     }
     
@@ -532,7 +532,7 @@ const VodiliceKabineCetvrtiDio = () => {
 
     useEffect(() => {
         const num = +vk_b3;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { ///<<<-------
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
             setValidVk_b3(false);
         }
         else {
@@ -545,7 +545,7 @@ const VodiliceKabineCetvrtiDio = () => {
             setVk_b3(+(e.target.value));
         }
         else {
-            setVk_b3(0);///<<-----------
+            setVk_b3(0);
         }
     }
     
@@ -558,7 +558,7 @@ const VodiliceKabineCetvrtiDio = () => {
 
     useEffect(() => {
         const num = +vk_l2;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { ///<<<-------
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
             setValidVk_l2(false);
         }
         else {
@@ -571,7 +571,7 @@ const VodiliceKabineCetvrtiDio = () => {
             setVk_l2(+(e.target.value));
         }
         else {
-            setVk_l2(0);///<<-----------
+            setVk_l2(0);
         }
     }
     
@@ -584,7 +584,7 @@ const VodiliceKabineCetvrtiDio = () => {
 
     useEffect(() => {
         const num = +vk_l3;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { ///<<<-------
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
             setValidVk_l3(false);
         }
         else {
@@ -597,7 +597,7 @@ const VodiliceKabineCetvrtiDio = () => {
             setVk_l3(+(e.target.value));
         }
         else {
-            setVk_l3(0);///<<-----------
+            setVk_l3(0);
         }
     }
     

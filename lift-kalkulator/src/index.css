@@ -11,6 +11,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 /*             |||            */
 /* //---- moje VVV ----------- */
 
@@ -31,18 +32,21 @@ label {
   /* float: left; */
   /* clear:both; */
 }
-.divTitledInput input{
+
+.divTitledInput input {
   /* padding: 10px; */
   margin: 0px;
 }
-.divTitledInput label{
+
+.divTitledInput label {
   padding: 3px;
   padding-left: 0px;
   text-align: right;
   height: auto;
   display: block;
 }
-.inputInvalid{
+
+.inputInvalid {
   color: red;
 }
 
@@ -57,7 +61,8 @@ label {
   /* float: left; */
   /* clear:both; */
 }
-.divDropDown select{
+
+.divDropDown select {
   /* padding: 10px; */
   /* margin: 5px; */
   display: "flex";
@@ -65,13 +70,15 @@ label {
   vertical-align: "center";
   top: "50%";
 }
-.divDropDown label{
+
+.divDropDown label {
   /* padding: 3px; */
   /* padding-left: 0px; */
   display: "block";
   text-align: "right";
   padding: "6px"
 }
+
 /* --------------------- */
 /* divCheckBox */
 .divCheckBox {
@@ -82,30 +89,41 @@ label {
   /* float: left; */
   /* clear:both; */
 }
-.divCheckBox input{
+
+.divCheckBox input {
   padding: 10px;
   margin: 5px;
 }
-.divCheckBox label{
+
+.divCheckBox label {
   padding: 3px;
   padding-left: 0px;
 }
+
 /* --------------------- */
 
 /* SIDEBAR */
- /* The sidebar menu */
- .sidebar {
-  height: 100%; /* 100% Full-height */
+/* The sidebar menu */
+.sidebar {
+  height: 100%;
+  /* 100% Full-height */
   max-width: 100%;
-  width: 0; /* 0 width - change this with JavaScript */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Stay on top */
+  width: 0;
+  /* 0 width - change this with JavaScript */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Stay on top */
   top: 0;
   left: 0;
-  background-color: #111; /* Black*/
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 0px; /* Place content 60px from the top */
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+  background-color: #111;
+  /* Black*/
+  overflow-x: hidden;
+  /* Disable horizontal scroll */
+  padding-top: 0px;
+  /* Place content 60px from the top */
+  transition: 0.5s;
+  /* 0.5 second transition effect to slide in the sidebar */
 }
 
 /* The sidebar links */
@@ -169,15 +187,21 @@ label {
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
-  transition: margin-left .5s; /* If you want a transition effect */
+  transition: margin-left .5s;
+  /* If you want a transition effect */
   padding: 20px;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
-  .sidebar {padding-top: 15px;}
-  .sidebar a {font-size: 18px;}
-} 
+  .sidebar {
+    padding-top: 15px;
+  }
+
+  .sidebar a {
+    font-size: 18px;
+  }
+}
 
 /* --------------------- */
 
@@ -199,27 +223,27 @@ html{
 
 body {
   background-color: #CCCCCC;
-  overflow-x: hidden; 
+  overflow-x: hidden;
   /* disables horizontal scroll */
 }
 
 
 
 /* IZRACUNI */
-#divIzracuni{
+#divIzracuni {
   visibility: collapse;
 
   background-color: rgba(120, 120, 120, 0.8);
-  position:fixed;
-  padding:0;
-  margin:0;
-  top:0;
-  left:0;
+  position: fixed;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
 }
 
-#closeIzracuniButton{
+#closeIzracuniButton {
   /* position: fixed; */
   right: 0;
   margin: 2vh 2vw;
@@ -227,7 +251,7 @@ body {
   float: right;
 }
 
-#innerDivIzracuni{
+#innerDivIzracuni {
   position: fixed;
   background-color: white;
   top: 0;
@@ -244,20 +268,20 @@ body {
 }
 
 /* New Project */
-#divNewProject{
+#divNewProject {
   visibility: collapse;
 
   background-color: rgba(120, 120, 120, 0.8);
-  position:fixed;
-  padding:0;
-  margin:0;
-  top:0;
-  left:0;
+  position: fixed;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
 }
 
-#closeNewProjectButton{
+#closeNewProjectButton {
   /* position: fixed; */
   right: 0;
   margin: 2vh 2vw;
@@ -265,7 +289,7 @@ body {
   float: right;
 }
 
-#innerDivNewProject{
+#innerDivNewProject {
   position: fixed;
   background-color: white;
   top: 0;
@@ -281,7 +305,7 @@ body {
   border-width: 2px;
 }
 
-#newProjectName{
+#newProjectName {
   display: block;
   position: relative;
   top: 0;
@@ -292,16 +316,17 @@ body {
   margin: 0;
   padding: 20px;
 }
+
 /*newProjectNameInput*/
-#newProjectTitle{
+#newProjectTitle {
   display: block;
 }
 
-#newProjectButton{
+#newProjectButton {
   display: block;
 }
 
-#createProjectErrorMessage{
+#createProjectErrorMessage {
   display: block;
   color: red;
 }
@@ -309,20 +334,20 @@ body {
 /* ------- */
 
 /* CONFIRM delete Project */
-#divConfirmDeleteProject{
+#divConfirmDeleteProject {
   visibility: collapse;
 
   background-color: rgba(120, 120, 120, 0.8);
-  position:fixed;
-  padding:0;
-  margin:0;
-  top:0;
-  left:0;
+  position: fixed;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
 }
 
-#closeConfirmDeleteProjectButton{
+#closeConfirmDeleteProjectButton {
   /* position: fixed; */
   right: 0;
   margin: 2vh 2vw;
@@ -330,7 +355,7 @@ body {
   float: right;
 }
 
-#innerDivConfirmDeleteProject{
+#innerDivConfirmDeleteProject {
   position: fixed;
   background-color: white;
   top: 0;
@@ -345,6 +370,7 @@ body {
   border-radius: 10px;
   border-width: 2px;
 }
+
 /* 
 #newProjectName{
   display: block;
@@ -359,13 +385,22 @@ body {
 } */
 
 /* ------- */
-#saveBtn{
+#saveBtn {
   right: 0;
   top: 0;
   position: absolute;
   display: block;
 }
 
-.projectLink{
+.projectLink {
   margin: 10px;
+}
+
+/* okvir   */
+.okvir {
+  border-color: black;
+  border: solid;
+  border-radius: 15px;
+  border-width: 2px;
+  padding: 2px;
 }

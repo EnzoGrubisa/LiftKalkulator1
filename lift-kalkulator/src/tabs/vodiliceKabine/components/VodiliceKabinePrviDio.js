@@ -43,6 +43,23 @@ const VodiliceKabinePrviDio = () => {
         setVk_BrojOdbojnika,
         setVk_VrstaOdbojnika,
 
+        //drugi dio
+        setVk_VlacnaCvrstoca,
+        setVk_ModulElasticnosti,
+        setVk_Elongacija,
+
+        setVk_PovrsinaPoprecnogPresjeka,
+        setVk_MasaPoJedinicDuzine,
+        setVk_MomentOtporaWxx,
+        setVk_MomentOtporaWyy,
+        setVk_GeometrijskaInercijaLxx,
+        setVk_GeometrijskaInercijaLyy,
+        setVk_MinRadijusInercijeIxx,
+        setVk_MinRadijusInercijeIyy,
+        setVk_MinRadijusInercijeImin,
+        setVk_Vitkost,
+        setVk_Omega,
+
         //cetvrti dio
         setVk_b1,
         setVk_h1,
@@ -283,6 +300,24 @@ const VodiliceKabinePrviDio = () => {
         else{
             setVk_TipVodilice("tip1");
 
+            //drugi dio
+            setVk_VlacnaCvrstoca(370);
+            setVk_ModulElasticnosti(210000);
+            setVk_Elongacija(22);
+
+            setVk_PovrsinaPoprecnogPresjeka(1052);
+            setVk_MasaPoJedinicDuzine(8.26);
+            setVk_MomentOtporaWxx(9630);
+            setVk_MomentOtporaWyy(6610);
+            setVk_GeometrijskaInercijaLxx(474300);
+            setVk_GeometrijskaInercijaLyy(231300);
+            setVk_MinRadijusInercijeIxx(21.20);
+            setVk_MinRadijusInercijeIyy(14.80);
+            setVk_MinRadijusInercijeImin(14.80);
+            setVk_Vitkost(135.14);
+            setVk_Omega(3.08);
+
+            //cetvrti dio
             setVk_b1(70);
             setVk_h1(70);
             setVk_h(0);
@@ -369,23 +404,23 @@ const VodiliceKabinePrviDio = () => {
             <TitledInput disabled labelWidth="200px" inputWidth="80px" title="Ukupna dodatna masa na kabinskim vodilicama (Maet)" sDesna="kg" value={vk_ukupnaDodatnaMasa} valid={validVk_ukupnaDodatnaMasa} onChange={vk_ukupnaDodatnaMasaChanged} onBlur={vk_ukupnaDodatnaMasaOnBlur} tooltip="0 - 5000" />
             <TitledInput labelWidth="200px" inputWidth="80px" title="Koeficijent dodatnog opterećenja (k3_c)" sDesna="" value={vk_koeficijentDodatnogOpterecenja} valid={validVk_koeficijentDodatnogOpterecenja} onChange={vk_koeficijentDodatnogOpterecenjaChanged} onBlur={vk_koeficijentDodatnogOpterecenjaOnBlur} tooltip="0 - 5" />
 
-            <div style={{ borderColor: "black", border: "solid" }}>
+            <div className="okvir">
                 <TitledInput disabled={!vk_korisnickoDefiniranjeFRc} labelWidth="200px" inputWidth="80px" title="Gubitci uslijed trenja (FRc)" sDesna="%" value={vk_gubitciUslijedTrenja} valid={validVk_gubitciUslijedTrenja} onChange={vk_gubitciUslijedTrenjaChanged} onBlur={vk_gubitciUslijedTrenjaOnBlur} tooltip="0 - 20" />
                 <CheckBox title="korisničko definiranje" id="vk_korisnickoDefiniranjeFRcCheckBox" onChange={vk_korisnickoDefiniranjeFRcCBChanged} paddingLeft="30px" checked={vk_korisnickoDefiniranjeFRc} />
             </div>
 
             <br />
             <Dropdown labelWidth="200px" title="Vrsta vodilice" options={getVrstaVodiliceOptions()} value={vk_vrstaVodilice} onChange={vk_vrstaVodiliceChanged} />
-            <div style={{ borderColor: "black", border: "solid" }}>
+            <div className="okvir">
                 {vk_korisnickoDefiniranjeVodilica
-                    ? <TitledInput labelWidth="200px"  title="Tip vodilice" sDesna="" value={vk_tipVodilice} valid={true} onChange={vk_tipVodiliceChanged}/>
+                    ? <TitledInput labelWidth="200px" inputWidth="150px" title="Tip vodilice" sDesna="" value={vk_tipVodilice} valid={true} onChange={vk_tipVodiliceChanged}/>
                     : <Dropdown labelWidth="200px" title="Tip vodilice" options={getTipVodiliceOptions()} value={vk_tipVodilice} onChange={vk_tipVodiliceChanged} />
                 }
                 
                 <CheckBox title="korisničko definiranje" id="vk_korisnickoDefiniranjeVodilicaCheckBox" onChange={vk_korisnickoDefiniranjeVodilicaCBChanged} paddingLeft="30px" checked={vk_korisnickoDefiniranjeVodilica} />
             </div>
 
-            <div style={{ borderColor: "black", border: "solid" }}>
+            <div className="okvir" style={{ marginTop: "1px" }}>
                 <p>Odbojnici kabine</p>
                 <TitledInput labelWidth="200px" inputWidth="80px" title="Broj odbojnika (nb_c)" sDesna="" value={vk_brojOdbojnika} valid={validVk_brojOdbojnika} onChange={vk_brojOdbojnikaChanged} onBlur={vk_brojOdbojnikaOnBlur} tooltip="1 - 20" />
                 <Dropdown labelWidth="200px" title="Vrsta odbojnika" options={getVrstaOdbojnikaOptions()} value={vk_vrstaOdbojnika} onChange={vk_vrstaOdbojnikaChanged} tooltip={vk_vrstaOdbojnikaGetTooltip()}/>
