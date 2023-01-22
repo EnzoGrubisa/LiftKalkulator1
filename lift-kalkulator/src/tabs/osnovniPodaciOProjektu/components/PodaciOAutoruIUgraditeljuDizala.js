@@ -34,7 +34,7 @@ const PodaciOAutoruIUgraditeljuDizala = () => {
 
     return (
         //className='container'
-        <div >
+        <div>
             <h5>Podaci o autoru i ugraditelju dizala: </h5>
             <TitledInput valid labelWidth={labelsWidth} title="Autor"           value={autor} onChange={autorChanged}/>
             <TitledInput valid labelWidth={labelsWidth} title="Adresa, Grad"    value={adresaGradAutora} onChange={adresaGradAutoraChanged}/>

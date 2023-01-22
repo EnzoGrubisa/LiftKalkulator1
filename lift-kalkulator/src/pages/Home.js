@@ -26,18 +26,18 @@ const Home = () => {
   }
 
   return (
-    <div>
-        <h1>Home{auth.username? "(" + auth.username + ")" : ""}</h1>
-        {!auth?.username? <Link to="/login"><button className="btn btn-primary">Log in</button></Link> 
+    <div className="centerDiv">
+        <h1 className='centeredElement'>Lift Kalkulator{auth.username? "(" + auth.username + ")" : ""}</h1>
+        {!auth?.username? <Link to="/login"><button className="btn btn-primary centeredElement">Prijava</button></Link> 
         : 
         <>
-          <button onClick={newProjectDialog} className="btn btn-success">Novi projekt</button>
+          <button onClick={newProjectDialog} className="btn btn-success centeredElement">Novi projekt</button>
 
           <div>
             <ProjectsList/>
           </div>
           
-          <button onClick={logout} className="btn btn-dark">Log out</button> 
+          <button onClick={logout} className="btn btn-dark centeredElement">Log out</button> 
 
           <NewProject/>
           <ConfirmDeleteProject/>

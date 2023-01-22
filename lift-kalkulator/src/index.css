@@ -404,3 +404,50 @@ body {
   border-width: 2px;
   padding: 2px;
 }
+
+
+
+/* centerDiv */
+.centerDiv{
+  background-color: white;
+  margin: auto;
+  width: 50%;
+  height: 50%;
+  margin-top: 25vh;
+  margin-left: 25vw;
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  position: absolute;
+}
+
+/* centeredElement */
+.centeredElement{
+  display: block;
+  margin: 5px;
+}
+
+.App{
+  height: 100vh;
+  margin: 0;
+  background-color: #CCCCCC;
+}
+
+.izracuniPostavkeVodilica{
+  margin-top: 0;
+  margin-left: 25vw;
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #CCCCCC;
+}
+
+.izracunValid{
+  color: white;
+  background-color: green;
+}
+
+.izracunInvalid{
+  color: white;
+  background-color: red;
+}

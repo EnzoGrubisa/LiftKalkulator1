@@ -1,3 +1,4 @@
+import IzracunIKontrolaVodilica from "./components/IzracunIKontrolaVodilica";
 
 
 const Izracuni = () => {
@@ -10,6 +11,7 @@ const Izracuni = () => {
         <div id="divIzracuni">
             <div id="innerDivIzracuni">
                 <button id="closeIzracuniButton" className="btn btn-danger" onClick={closeIzracuni}>X</button>
+                <IzracunIKontrolaVodilica/>
             </div>
         </div>
     );

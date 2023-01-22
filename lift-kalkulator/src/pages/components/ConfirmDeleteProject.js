@@ -35,8 +35,8 @@ const NewProject = () => {
         <div id="divConfirmDeleteProject">
             <div id="innerDivConfirmDeleteProject">
                 <button id="closeConfirmDeleteProjectButton" className="btn btn-danger" onClick={closeConfirmDeleteProject}>X</button>
-                <h3 id="confirmDeleteProjectTitle">Jeste li sigurni da želite obrisati projekt "{projectName}"?</h3>
-                <button id="confirmDeleteProjectButton" className="btn btn-success" onClick={deleteProject}>Izbriši projekt</button>
+                <h3 className='centeredElement' id="confirmDeleteProjectTitle">Jeste li sigurni da želite obrisati projekt "{projectName}"?</h3>
+                <button id="confirmDeleteProjectButton" className="btn btn-success centeredElement" onClick={deleteProject}>Izbriši projekt</button>
             </div>
         </div>
     );

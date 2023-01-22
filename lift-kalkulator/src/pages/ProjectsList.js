@@ -66,11 +66,11 @@ const ProjectsList = () => {
 
     return (
         <div>
-            <h5>popis projekata:</h5>
+            <h4 className='centeredElement'>popis projekata:</h4>
             <ul>
                 {projects.length > 0
                     ? projects.map((project) =>
-                        <li key={project.id}>
+                        <li style={{margin: "5px"}} key={project.id}>
                             <Link className='projectLink' onClick={() => { loadProject(project.id); setTab("projekt"); }} to="/calculator">
                                 {project.projectName}
                             </Link>

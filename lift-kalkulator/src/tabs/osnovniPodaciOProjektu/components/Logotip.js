@@ -1,12 +1,12 @@
 
-import noImage from '../../../assets/images/noImage.jpg'
+// import noImage from '../../../assets/images/noImage.jpg'
 
 const Logotip = () => {
     return(
         <>
-            <h5>Logotip: </h5>
+            {/* <h5>Logotip: </h5>
             <img alt='logotip' src={noImage} className="img-fluid"/>
-            <button>Odaberi...</button>
+            <button>Odaberi...</button> */}
         </>
     );
 }

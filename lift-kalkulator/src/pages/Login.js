@@ -74,19 +74,19 @@ const Login = () => {
     return (
 		!auth?.username 
 		?
-      	<div>
-			<h1>Prijava</h1>
+      	<div className='centerDiv'>
+			<h1 className='centeredElement'>Prijava</h1>
 			{loginErrorMessage.length > 0? 
-			<h3>Greška: {loginErrorMessage}</h3>
+			<h3 className='centeredElement'>Greška: {loginErrorMessage}</h3>
 			: null}
 			<form onSubmit={handleSubmit}>
-				<label htmlFor="usernameInput">Korisničko ime: </label>
-				<input required type="text" id="usernameInput" autoComplete="off" onChange={(e) => {setUsername(e.target.value)}}/>
+				<label className='centeredElement' htmlFor="usernameInput">Korisničko ime: </label>
+				<input className='centeredElement' required type="text" id="usernameInput" autoComplete="off" onChange={(e) => {setUsername(e.target.value)}}/>
 				
-				<label htmlFor="passwordInput">Lozinka: </label>
-				<input required type="password" id="passwordInput" onChange={(e) => {setPassword(e.target.value)}}/>
+				<label className='centeredElement' htmlFor="passwordInput">Lozinka: </label>
+				<input className='centeredElement' required type="password" id="passwordInput" onChange={(e) => {setPassword(e.target.value)}}/>
 				
-				<button disabled={username.length === 0 || password.length === 0} className="btn btn-primary">Prijavi me</button>
+				<button className="btn btn-primary centeredElement" disabled={username.length === 0 || password.length === 0}>Prijavi me</button>
 			</form>
       	</div>
 		:

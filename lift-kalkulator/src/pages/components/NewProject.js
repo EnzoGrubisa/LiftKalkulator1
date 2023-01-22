@@ -58,9 +58,9 @@ const NewProject = () => {
                 <button id="closeNewProjectButton" className="btn btn-danger" onClick={closeNewProject}>X</button>
 
                 <div id="newProjectName">
-                    <h3 id="newProjectTitle">Unesite naziv novog projekta: </h3>
-                    <input required type="text" id="newProjectNameInput" autoComplete="off" onChange={(e) => { setNewProjectName(e.target.value) }}></input>
-                    <button disabled={newProjectName.length === 0} id="newProjectButton" className="btn btn-success" onClick={createNewProject}>Kreiraj projekt</button>
+                    <h3 className='centeredElement' id="newProjectTitle">Unesite naziv novog projekta: </h3>
+                    <input className='centeredElement' required type="text" id="newProjectNameInput" autoComplete="off" onChange={(e) => { setNewProjectName(e.target.value) }}></input>
+                    <button disabled={newProjectName.length === 0} id="newProjectButton" className="btn btn-success centeredElement" onClick={createNewProject}>Kreiraj projekt</button>
                     <p id="createProjectErrorMessage">{createProjectErrorMessage}</p>
                 </div>
 
