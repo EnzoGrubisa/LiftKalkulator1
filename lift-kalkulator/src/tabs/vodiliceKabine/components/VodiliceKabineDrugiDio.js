@@ -4,6 +4,8 @@ import TitledInput from "../../../components/TitledInput";
 
 import { useVodiliceKabine, useVodiliceKabineUpdate } from '../../../contexts/VodiliceKabineProvider'
 
+import useSaveProject from "../../../projectData/saveData";
+
 const VodiliceKabineDrugiDio = () => {
     
     const {
@@ -42,6 +44,26 @@ const VodiliceKabineDrugiDio = () => {
         setVk_Vitkost,
         setVk_Omega
     } = useVodiliceKabineUpdate();
+
+    // AUTOSAVE
+    const { autosaveInLocalStorage } = useSaveProject();
+    useEffect(() => { autosaveInLocalStorage(); }, [autosaveInLocalStorage, vk_korisnickoDefiniranjeVodilica,
+
+        vk_vlacnaCvrstoca,
+        vk_modulElasticnosti,
+        vk_elongacija,
+
+        vk_povrsinaPoprecnogPresjeka,
+        vk_masaPoJedinicDuzine,
+        vk_momentOtporaWxx,
+        vk_momentOtporaWyy,
+        vk_geometrijskaInercijaLxx,
+        vk_geometrijskaInercijaLyy,
+        vk_minRadijusInercijeIxx,
+        vk_minRadijusInercijeIyy,
+        vk_minRadijusInercijeImin,
+        vk_vitkost,
+        vk_omega]);
 
     /* VLACNA CVRSTOCA */
     const [validVk_vlacnaCvrstoca, setValidVk_vlacnaCvrstoca] = useState(true);

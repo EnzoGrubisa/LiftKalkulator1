@@ -1,5 +1,7 @@
 import axios from '../api/axios';
 
+import useAuth from '../hooks/useAuth';
+
 import { useProjektUpdate } from '../contexts/ProjektProvider';
 import { useDizaloUpdate } from '../contexts/DizaloProvider';
 import { useVoznoOknoUpdate } from '../contexts/VoznoOknoProvider';
@@ -12,6 +14,8 @@ const GET_PROJECT_URL = '/getProject';
 
 
 const useLoadProject = () => {
+
+    const { auth } = useAuth();
 
     //--- PROJEKT
     const { setAutor, setAdresaGradAutora, setIzradio, setSuradnik, /*setDatum,*/ setUgraditelj, setAdresaGradUgraditelja } = useProjektUpdate();
@@ -86,9 +90,7 @@ const useLoadProject = () => {
 
     const navigate = useNavigate();
 
-    const loadProjectById = async (projectId) => {
-        //console.log("loading data");
-
+    const loadFromServer = async (projectId) => {
         try {
             const response = await axios.post(
                 GET_PROJECT_URL,
@@ -245,6 +247,159 @@ const useLoadProject = () => {
             console.log("catched error: " + err);
             navigate("/home", { replace: true });
         }
+    }
+    
+    const loadFromLocalStorage = async (localDataJson) => {
+        setAutor(localDataJson.autor);
+        setAdresaGradAutora(localDataJson.adresaGradAutora);
+        setIzradio(localDataJson.izradio);
+        setSuradnik(localDataJson.suradnik);
+        //setDatum...!!!!!!!!!!!!!
+        setUgraditelj(localDataJson.ugraditelj);
+        setAdresaGradUgraditelja(localDataJson.adresaGradUgraditelja);
+        //---
+        setNazivGradevine(localDataJson.nazivGradevine);
+        setLokacijaAdresaGradevine(localDataJson.lokacijaAdresaGradevine);
+        setRefOznakaProjekta(localDataJson.refOznakaProjekta);
+        setTvBrojOznakaDizala(localDataJson.tvBrojOznakaDizala);
+
+        //--- DIZALO
+        setNamjenaDizala(localDataJson.namjenaDizala);
+        setUkrcavanjeVilicarem(localDataJson.ukrcavanjeVilicarem); // bit--bool
+        setVrstaDizala(localDataJson.vrstaDizala);
+        setVrstaPogona(localDataJson.vrstaPogona);
+
+        //console.log(localDataJson.bezStrojarnice?.data[0]);
+        setBezStrojarnice(localDataJson.bezStrojarnice);
+        setSmjestajPogona(localDataJson.smjestajPogona);
+
+        setFaktorOvjesa(localDataJson.faktorOvjesa);
+
+        //--- **
+        setNazivnaNosivost(localDataJson.nazivnaNosivost);
+        setBrojOsoba(localDataJson.brojOsoba);
+
+        setNazivnaBrzina(localDataJson.nazivnaBrzina);
+        setAkceleracijaDeceleracijaNormalnaVoznja(localDataJson.akceleracijaDeceleracijaNormalnaVoznja);
+        setDeceleracijaKodHitnogStopa(localDataJson.deceleracijaKodHitnogStopa);
+        setBrojUkljucenjaNaSat(localDataJson.brojUkljucenjaNaSat);
+
+        //--- VOZNO OKNO
+        setBrojPostaja(localDataJson.brojPostaja);
+        setBrojUlaza(localDataJson.brojUlaza);
+        setVisinaDizanja(localDataJson.visinaDizanja);
+        setTlocrtnaSirina(localDataJson.tlocrtnaSirina);
+        setTlocrtnaDubina(localDataJson.tlocrtnaDubina);
+        setDubinaJame(localDataJson.dubinaJame);
+        setNadvisenje(localDataJson.nadvisenje);
+
+        //--- OVJES prvi dio
+        setBrojNosivihUzadi(localDataJson.brojNosivihUzadi);
+        setTipUzadi(localDataJson.tipUzadi);
+        setKorisnickoDefiniranje(localDataJson.korisnickoDefiniranje);//bool/bit
+        setPromjer(localDataJson.promjer);
+        setPrekidnaCvrstoca(localDataJson.prekidnaCvrstoca);
+        setMasaPoDuljnomMetru(localDataJson.masaPoDuljnomMetru);
+        setYoungovModul(localDataJson.youngovModul);
+        setPromjenaSmjeraNaStraniKabine(localDataJson.promjenaSmjeraNaStraniKabine);
+        setMaxRazmakNaStraniKabine(localDataJson.maxRazmakNaStraniKabine);
+        setNpr_c(localDataJson.npr_c);
+        setPromjenaSmjeraNaStraniProtuutega(localDataJson.promjenaSmjeraNaStraniProtuutega);
+        setMaxRazmakNaStraniProtuutega(localDataJson.maxRazmakNaStraniProtuutega);
+        setNpr_cw(localDataJson.npr_cw);
+
+        //--- OVJES drugi dio
+        setZ1(localDataJson.z1);
+        setZ2(localDataJson.z2);
+        setZ3(localDataJson.z3);
+        setZ4(localDataJson.z4);
+        setZ5(localDataJson.z5);
+        setZ6(localDataJson.z6);
+        setL1(localDataJson.l1);
+
+        setOtklonskeUzniceNaStraniKabine(localDataJson.otklonskeUzniceNaStraniKabine);
+        setBrojIDP_c(localDataJson.brojIDP_c);
+        setPromjerDDP_c(localDataJson.promjerDDP_c);
+        setMasaMDP_c(localDataJson.masaMDP_c);
+        setInercijaJDP_c(localDataJson.inercijaJDP_c);
+
+        setOtklonskeUzniceNaStraniUtega(localDataJson.otklonskeUzniceNaStraniUtega);
+        setBrojIDP_cw(localDataJson.brojIDP_cw);
+        setPromjerDDP_cw(localDataJson.promjerDDP_cw);
+        setMasaMDP_cw(localDataJson.masaMDP_cw);
+        setInercijaJDP_cw(localDataJson.inercijaJDP_cw);
+
+        //--- VODILICE KABINE 1.dio
+        setVk_BrojVodilica(localDataJson.vk_brojVodilica);
+        setVk_UkupnaDuljinaVodilica(localDataJson.vk_ukupnaDuljinaVodilica);
+        setVk_VertikalniRazmakPrihvataVodilica(localDataJson.vk_vertikalniRazmakPrihvataVodilica);
+        setVk_MasaDodatneOpreme(localDataJson.vk_masaDodatneOpreme);
+        setVk_UkupnaDodatnaMasa(localDataJson.vk_ukupnaDodatnaMasa);
+        setVk_KoeficijentDodatnogOpterecenja(localDataJson.vk_koeficijentDodatnogOpterecenja);
+        setVk_GubitciUslijedTrenja(localDataJson.vk_gubitciUslijedTrenja);
+        setVk_KorisnickoDefiniranjeFRc(localDataJson.vk_korisnickoDefiniranjeFRc);
+
+        setVk_VrstaVodilice(localDataJson.vk_vrstaVodilice);
+        setVk_TipVodilice(localDataJson.vk_tipVodilice);
+        setVk_KorisnickoDefiniranjeVodilica(localDataJson.vk_korisnickoDefiniranjeVodilica);
+
+        setVk_BrojOdbojnika(localDataJson.vk_brojOdbojnika);
+        setVk_VrstaOdbojnika(localDataJson.vk_vrstaOdbojnika);
+
+        //--- VODILICE KABINE 2.dio
+        setVk_VlacnaCvrstoca(localDataJson.vk_vlacnaCvrstoca);
+        setVk_ModulElasticnosti(localDataJson.vk_modulElasticnosti);
+        setVk_Elongacija(localDataJson.vk_elongacija);
+
+        setVk_PovrsinaPoprecnogPresjeka(localDataJson.vk_povrsinaPoprecnogPresjeka);
+        setVk_MasaPoJedinicDuzine(localDataJson.vk_masaPoJedinicDuzine);
+        setVk_MomentOtporaWxx(localDataJson.vk_momentOtporaWxx);
+        setVk_MomentOtporaWyy(localDataJson.vk_momentOtporaWyy);
+        setVk_GeometrijskaInercijaLxx(localDataJson.vk_geometrijskaInercijaLxx);
+        setVk_GeometrijskaInercijaLyy(localDataJson.vk_geometrijskaInercijaLyy);
+        setVk_MinRadijusInercijeIxx(localDataJson.vk_minRadijusInercijeIxx);
+        setVk_MinRadijusInercijeIyy(localDataJson.vk_minRadijusInercijeIyy);
+        setVk_MinRadijusInercijeImin(localDataJson.vk_minRadijusInercijeImin);
+        setVk_Vitkost(localDataJson.vk_vitkost);
+        setVk_Omega(localDataJson.vk_omega);
+
+        //--- VODILICE KABINE 4.dio
+        setVk_b1(localDataJson.vk_b1);
+        setVk_h1(localDataJson.vk_h1);
+        setVk_h(localDataJson.vk_h);
+        setVk_k(localDataJson.vk_k);
+        setVk_n(localDataJson.vk_n);
+        setVk_c(localDataJson.vk_c);
+        setVk_p(localDataJson.vk_p);
+        setVk_g(localDataJson.vk_g);
+        setVk_f(localDataJson.vk_f);
+        setVk_e(localDataJson.vk_e);
+        setVk_rs(localDataJson.vk_rs);
+        setVk_m1(localDataJson.vk_m1);
+        setVk_m2(localDataJson.vk_m2);
+        setVk_t1(localDataJson.vk_t1);
+        setVk_t2(localDataJson.vk_t2);
+        setVk_l(localDataJson.vk_l);
+        setVk_d(localDataJson.vk_d);
+        setVk_d1(localDataJson.vk_d1);
+        setVk_b3(localDataJson.vk_b3);
+        setVk_l2(localDataJson.vk_l2);
+        setVk_l3(localDataJson.vk_l3);
+    }
+
+    const loadProjectById = (projectId) => {
+        //console.log("loading data");
+
+        const localDataString = localStorage.getItem('autosavedAllData');
+        const localDataJson = JSON.parse(localDataString);
+        if(localDataJson && localDataJson.projectId === projectId && localDataJson.username === auth.username){
+            loadFromLocalStorage(localDataJson);
+        }
+        else{
+            loadFromServer(projectId);
+        }
+
+        
     }
 
     return loadProjectById;

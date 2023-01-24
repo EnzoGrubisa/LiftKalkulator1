@@ -6,6 +6,7 @@ import TitledInput from "../../../components/TitledInput";
 
 import { useVodiliceKabine, useVodiliceKabineUpdate } from '../../../contexts/VodiliceKabineProvider'
 
+import useSaveProject from "../../../projectData/saveData";
 
 const VodiliceKabinePrviDio = () => {
 
@@ -83,6 +84,24 @@ const VodiliceKabinePrviDio = () => {
         setVk_l2,
         setVk_l3
     } = useVodiliceKabineUpdate();
+
+    // AUTOSAVE
+    const { autosaveInLocalStorage } = useSaveProject();
+    useEffect(() => { autosaveInLocalStorage(); }, [autosaveInLocalStorage, vk_brojVodilica,
+        vk_ukupnaDuljinaVodilica,
+        vk_vertikalniRazmakPrihvataVodilica,
+        vk_masaDodatneOpreme,
+        vk_ukupnaDodatnaMasa,
+        vk_koeficijentDodatnogOpterecenja,
+        vk_gubitciUslijedTrenja,
+        vk_korisnickoDefiniranjeFRc,
+
+        vk_vrstaVodilice,
+        vk_tipVodilice,
+        vk_korisnickoDefiniranjeVodilica,
+
+        vk_brojOdbojnika,
+        vk_vrstaOdbojnika]);
 
     /* BROJ VODILICA */
     const [validVk_brojVodilica, setValidVk_brojVodilica] = useState(true);

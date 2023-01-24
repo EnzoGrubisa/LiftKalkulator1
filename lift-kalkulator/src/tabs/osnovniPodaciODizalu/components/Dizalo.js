@@ -8,6 +8,8 @@ import { useDizalo, useDizaloUpdate } from '../../../contexts/DizaloProvider';
 import { useVoznoOknoUpdate } from '../../../contexts/VoznoOknoProvider';
 import { useOvjesUpdate } from '../../../contexts/OvjesProvider';
 
+import useSaveProject from "../../../projectData/saveData";
+
 const Dizalo = () => {
 
     // context read
@@ -17,6 +19,11 @@ const Dizalo = () => {
     const { setNamjenaDizala, setUkrcavanjeVilicarem, setVrstaDizala, setVrstaPogona, setSmjestajPogona, setBezStrojarnice, setFaktorOvjesa, /*setNazivnaNosivost, setBrojOsoba,*/ setNazivnaBrzina, setAkceleracijaDeceleracijaNormalnaVoznja, setDeceleracijaKodHitnogStopa, setBrojUkljucenjaNaSat } = useDizaloUpdate();   
     const { setBrojPostaja, setBrojUlaza, setDubinaJame } = useVoznoOknoUpdate();   
     const { setBrojNosivihUzadi, setKorisnickoDefiniranje } = useOvjesUpdate();
+
+    
+    // AUTOSAVE
+    const { autosaveInLocalStorage } = useSaveProject();
+    useEffect(() => { autosaveInLocalStorage(); }, [autosaveInLocalStorage, namjenaDizala, ukrcavanjeVilicarem, vrstaDizala, vrstaPogona, smjestajPogona, bezStrojarnice, faktorOvjesa, nazivnaNosivost, brojOsoba, nazivnaBrzina, akceleracijaDeceleracijaNormalnaVoznja, deceleracijaKodHitnogStopa, brojUkljucenjaNaSat]);
 
     const namjenaDizalaChanged = (e) => {
         setNamjenaDizala(e.target.value);

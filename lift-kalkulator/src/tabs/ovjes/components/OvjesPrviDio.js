@@ -7,6 +7,8 @@ import TitledInput from "../../../components/TitledInput";
 import { useDizalo, useDizaloUpdate } from "../../../contexts/DizaloProvider";
 import { useOvjes, useOvjesUpdate } from "../../../contexts/OvjesProvider";
 
+import useSaveProject from "../../../projectData/saveData";
+
 const OvjesPrviDio = () => {
 
     const { smjestajPogona, faktorOvjesa, vrstaDizala, vrstaPogona, bezStrojarnice } = useDizalo();
@@ -14,6 +16,10 @@ const OvjesPrviDio = () => {
 
     const { brojNosivihUzadi, tipUzadi, korisnickoDefiniranje, promjer, prekidnaCvrstoca, masaPoDuljnomMetru, youngovModul, promjenaSmjeraNaStraniKabine, maxRazmakNaStraniKabine, npr_c, promjenaSmjeraNaStraniProtuutega, maxRazmakNaStraniProtuutega, npr_cw } = useOvjes();
     const { setBrojNosivihUzadi, setTipUzadi, setKorisnickoDefiniranje, setPromjer, setPrekidnaCvrstoca, setMasaPoDuljnomMetru, setYoungovModul, setPromjenaSmjeraNaStraniKabine, setMaxRazmakNaStraniKabine, setNpr_c, setPromjenaSmjeraNaStraniProtuutega, setMaxRazmakNaStraniProtuutega, setNpr_cw } = useOvjesUpdate();
+
+    // AUTOSAVE
+    const { autosaveInLocalStorage } = useSaveProject();
+    useEffect(() => { autosaveInLocalStorage(); }, [autosaveInLocalStorage, smjestajPogona, faktorOvjesa, vrstaDizala, vrstaPogona, bezStrojarnice, brojNosivihUzadi, tipUzadi, korisnickoDefiniranje, promjer, prekidnaCvrstoca, masaPoDuljnomMetru, youngovModul, promjenaSmjeraNaStraniKabine, maxRazmakNaStraniKabine, npr_c, promjenaSmjeraNaStraniProtuutega, maxRazmakNaStraniProtuutega, npr_cw ]);
 
     /* FAKTOR OVJESA */
     const faktorOvjesaChanged = (e) => {
@@ -216,7 +222,7 @@ const OvjesPrviDio = () => {
             setMaxRazmakNaStraniKabine(num * 200);
             setMaxRazmakNaStraniProtuutega(num * 200);
         }
-    }, [promjer]);
+    }, [promjer, setMaxRazmakNaStraniKabine, setMaxRazmakNaStraniProtuutega]);
 
     function promjerOnBlur(e){
         if(validPromjer){

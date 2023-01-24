@@ -6,6 +6,8 @@ import Dropdown from "../../../../components/Dropdown";
 import TitledInput from "../../../../components/TitledInput";
 import IzracuniTitledInput from "../../../../components/IzracuniTitledInput";
 
+import useSaveProject from "../../../../projectData/saveData";
+
 const IzracunIKontrolaVodilica = () => {
 
     const {
@@ -27,6 +29,17 @@ const IzracunIKontrolaVodilica = () => {
         setVk_VrstaVodilice,
         setVk_TipVodilice
     } = useVodiliceKabineUpdate();
+
+    // AUTOSAVE
+    const { autosaveInLocalStorage } = useSaveProject();
+    useEffect(() => { autosaveInLocalStorage(); }, [autosaveInLocalStorage, vk_brojVodilica,
+        vk_ukupnaDuljinaVodilica,
+        vk_vertikalniRazmakPrihvataVodilica,
+
+        vk_korisnickoDefiniranjeVodilica,
+
+        vk_vrstaVodilice,
+        vk_tipVodilice]);
 
     /* BROJ VODILICA */
     const [validVk_brojVodilica, setValidVk_brojVodilica] = useState(true);
@@ -131,27 +144,27 @@ const IzracunIKontrolaVodilica = () => {
 
     //--------------------
 
-    const [ sigmaX, setSigmaX ] = useState();
-    const [ sigmaY, setSigmaY ] = useState();
+    const [ sigmaX, setSigmaX ] = useState(0);
+    const [ sigmaY, setSigmaY ] = useState(0);
     
-    const [ sigmaM, setSigmaM ] = useState();
+    const [ sigmaM, setSigmaM ] = useState(0);
     
-    const [ sigma, setSigma ] = useState();
-    const [ sigmaF, setSigmaF ] = useState();
+    const [ sigma, setSigma ] = useState(0);
+    const [ sigmaF, setSigmaF ] = useState(0);
     
-    const [ deltaX, setDeltaX ] = useState();
-    const [ deltaY, setDeltaY ] = useState();
+    const [ deltaX, setDeltaX ] = useState(0);
+    const [ deltaY, setDeltaY ] = useState(0);
     
-    const [ sigmaXUkrcavanje, setSigmaXUkrcavanje ] = useState();
-    const [ sigmaYUkrcavanje, setSigmaYUkrcavanje ] = useState();
+    const [ sigmaXUkrcavanje, setSigmaXUkrcavanje ] = useState(0);
+    const [ sigmaYUkrcavanje, setSigmaYUkrcavanje ] = useState(0);
     
-    const [ sigmaMUkrcavanje, setSigmaMUkrcavanje ] = useState();
+    const [ sigmaMUkrcavanje, setSigmaMUkrcavanje ] = useState(0);
     
-    const [ sigmaUkrcavanje, setSigmaUkrcavanje ] = useState();
-    const [ sigmaFUkrcavanje, setSigmaFUkrcavanje ] = useState();
+    const [ sigmaUkrcavanje, setSigmaUkrcavanje ] = useState(0);
+    const [ sigmaFUkrcavanje, setSigmaFUkrcavanje ] = useState(0);
     
-    const [ deltaXUkrcavanje, setDeltaXUkrcavanje ] = useState();
-    const [ deltaYUkrcavanje, setDeltaYUkrcavanje ] = useState();
+    const [ deltaXUkrcavanje, setDeltaXUkrcavanje ] = useState(0);
+    const [ deltaYUkrcavanje, setDeltaYUkrcavanje ] = useState(0);
 
     const fillRandomData = () => {
         setSigmaX(Math.random() * 200);

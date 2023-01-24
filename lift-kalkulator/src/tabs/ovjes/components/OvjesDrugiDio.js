@@ -6,12 +6,18 @@ import TitledInput from "../../../components/TitledInput";
 import { useDizalo } from "../../../contexts/DizaloProvider";
 import { useOvjes, useOvjesUpdate } from "../../../contexts/OvjesProvider";
 
+import useSaveProject from "../../../projectData/saveData";
+
 const OvjesDrugiDio = () => {
 
     const { smjestajPogona, vrstaDizala, vrstaPogona } = useDizalo();
 
     const { z1, z2, z3, z4, z5, z6, l1, otklonskeUzniceNaStraniKabine, brojIDP_c, promjerDDP_c, masaMDP_c, inercijaJDP_c, otklonskeUzniceNaStraniUtega, brojIDP_cw, promjerDDP_cw, masaMDP_cw, inercijaJDP_cw } = useOvjes();
     const { setZ1, setZ2, setZ3, setZ4, setZ5, setZ6/*, setL1*/, setOtklonskeUzniceNaStraniKabine, setBrojIDP_c, setPromjerDDP_c, setMasaMDP_c, setInercijaJDP_c, setOtklonskeUzniceNaStraniUtega, setBrojIDP_cw, setPromjerDDP_cw, setMasaMDP_cw, setInercijaJDP_cw } = useOvjesUpdate();
+
+    // AUTOSAVE
+    const { autosaveInLocalStorage } = useSaveProject();
+    useEffect(() => { autosaveInLocalStorage(); }, [autosaveInLocalStorage, smjestajPogona, vrstaDizala, vrstaPogona, z1, z2, z3, z4, z5, z6, l1, otklonskeUzniceNaStraniKabine, brojIDP_c, promjerDDP_c, masaMDP_c, inercijaJDP_c, otklonskeUzniceNaStraniUtega, brojIDP_cw, promjerDDP_cw, masaMDP_cw, inercijaJDP_cw]);
 
     /* Z1 */
     const [validZ1, setValidZ1]  = useState(true);

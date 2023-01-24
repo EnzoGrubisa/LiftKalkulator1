@@ -1,5 +1,10 @@
+import { useEffect } from 'react';
+
 import TitledInput from '../../../components/TitledInput';
+
 import { useProjekt, useProjektUpdate } from '../../../contexts/ProjektProvider';
+
+import useSaveProject from "../../../projectData/saveData";
 
 const PodaciOAutoruIUgraditeljuDizala = () => {
     
@@ -7,6 +12,10 @@ const PodaciOAutoruIUgraditeljuDizala = () => {
 
     const { autor, adresaGradAutora, izradio, suradnik, /*datum,*/ ugraditelj, adresaGradUgraditelja } = useProjekt();
     const { setAutor, setAdresaGradAutora, setIzradio, setSuradnik, /*setDatum,*/ setUgraditelj, setAdresaGradUgraditelja } = useProjektUpdate();
+
+    // AUTOSAVE
+    const { autosaveInLocalStorage } = useSaveProject();
+    useEffect(() => { autosaveInLocalStorage(); }, [autosaveInLocalStorage, autor, adresaGradAutora, izradio, suradnik, /*datum,*/ ugraditelj, adresaGradUgraditelja]);
 
     function autorChanged(e){
         setAutor(e.target.value);

@@ -4,6 +4,8 @@ import TitledInput from "../../../components/TitledInput";
 
 import { useVodiliceKabine, useVodiliceKabineUpdate } from '../../../contexts/VodiliceKabineProvider'
 
+import useSaveProject from "../../../projectData/saveData";
+
 const VodiliceKabineCetvrtiDio = () => {
     
     const {
@@ -54,6 +56,32 @@ const VodiliceKabineCetvrtiDio = () => {
         setVk_l2,
         setVk_l3
     } = useVodiliceKabineUpdate();
+
+    // AUTOSAVE
+    const { autosaveInLocalStorage } = useSaveProject();
+    useEffect(() => { autosaveInLocalStorage(); }, [autosaveInLocalStorage, vk_korisnickoDefiniranjeVodilica,
+
+        vk_b1,
+        vk_h1,
+        vk_h,
+        vk_k,
+        vk_n,
+        vk_c,
+        vk_p,
+        vk_g,
+        vk_f,
+        vk_e,
+        vk_rs,
+        vk_m1,
+        vk_m2,
+        vk_t1,
+        vk_t2,
+        vk_l,
+        vk_d,
+        vk_d1,
+        vk_b3,
+        vk_l2,
+        vk_l3]);
 
     /* b1 */
     const [validVk_b1, setValidVk_b1] = useState(true);

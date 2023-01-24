@@ -4,6 +4,8 @@ import TitledInput from "../../../components/TitledInput";
 
 import { useVoznoOkno, useVoznoOknoUpdate } from '../../../contexts/VoznoOknoProvider'; 
 
+import useSaveProject from "../../../projectData/saveData";
+
 const VoznoOkno = () => {
 
     //#region properties 
@@ -11,11 +13,13 @@ const VoznoOkno = () => {
     const { brojPostaja, brojUlaza, visinaDizanja, tlocrtnaSirina, tlocrtnaDubina, dubinaJame, nadvisenje } = useVoznoOkno();   
     const { setBrojPostaja, setBrojUlaza, setVisinaDizanja, setTlocrtnaSirina, setTlocrtnaDubina, setDubinaJame, setNadvisenje } = useVoznoOknoUpdate();   
 
+    // AUTOSAVE
+    const { autosaveInLocalStorage } = useSaveProject();
+    useEffect(() => { autosaveInLocalStorage(); }, [autosaveInLocalStorage, brojPostaja, brojUlaza, visinaDizanja, tlocrtnaSirina, tlocrtnaDubina, dubinaJame, nadvisenje]);
+
     //BROJ POSTAJA
     const [validBrojPostaja, setValidBrojPostaja]  = useState(true);
     
-    
-
     function brojPostajaChanged(e){
         setBrojPostaja(e.target.value);
     }

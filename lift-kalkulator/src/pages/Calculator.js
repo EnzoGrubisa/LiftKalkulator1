@@ -14,7 +14,7 @@ const Calculator = (props) => {
 
 	const { tab } = useProjekt();
  
-	const saveProjectById = useSaveProject();
+	const { saveProjectById } = useSaveProject();
 
 	const [naslov, setNaslov] = useState("Default naslov");
 	
@@ -81,7 +81,7 @@ const Calculator = (props) => {
 	}
 
 	const saveProject = () => {
-		saveProjectById()
+		saveProjectById();
 	}
 
     return (
