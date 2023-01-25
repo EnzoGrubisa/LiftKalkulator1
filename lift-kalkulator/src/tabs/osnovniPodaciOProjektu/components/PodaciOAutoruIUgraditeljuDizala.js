@@ -7,7 +7,7 @@ import { useProjekt, useProjektUpdate } from '../../../contexts/ProjektProvider'
 import useSaveProject from "../../../projectData/saveData";
 
 const PodaciOAutoruIUgraditeljuDizala = () => {
-    
+
     const labelsWidth = "100px";
 
     const { autor, adresaGradAutora, izradio, suradnik, /*datum,*/ ugraditelj, adresaGradUgraditelja } = useProjekt();
@@ -17,27 +17,27 @@ const PodaciOAutoruIUgraditeljuDizala = () => {
     const { autosaveInLocalStorage } = useSaveProject();
     useEffect(() => { autosaveInLocalStorage(); }, [autosaveInLocalStorage, autor, adresaGradAutora, izradio, suradnik, /*datum,*/ ugraditelj, adresaGradUgraditelja]);
 
-    function autorChanged(e){
+    function autorChanged(e) {
         setAutor(e.target.value);
     }
 
-    function adresaGradAutoraChanged(e){
+    function adresaGradAutoraChanged(e) {
         setAdresaGradAutora(e.target.value);
     }
 
-    function izradioChanged(e){
+    function izradioChanged(e) {
         setIzradio(e.target.value);
     }
 
-    function suradnikChanged(e){
+    function suradnikChanged(e) {
         setSuradnik(e.target.value);
     }
 
-    function ugraditeljChanged(e){
+    function ugraditeljChanged(e) {
         setUgraditelj(e.target.value);
     }
 
-    function adresaGradUgraditeljaChanged(e){
+    function adresaGradUgraditeljaChanged(e) {
         setAdresaGradUgraditelja(e.target.value);
     }
 
@@ -45,16 +45,22 @@ const PodaciOAutoruIUgraditeljuDizala = () => {
         //className='container'
         <div>
             <h5>Podaci o autoru i ugraditelju dizala: </h5>
-            <TitledInput valid labelWidth={labelsWidth} title="Autor"           value={autor} onChange={autorChanged}/>
-            <TitledInput valid labelWidth={labelsWidth} title="Adresa, Grad"    value={adresaGradAutora} onChange={adresaGradAutoraChanged}/>
-            <TitledInput valid labelWidth={labelsWidth} title="Izradio"         value={izradio} onChange={izradioChanged}/>
-            <TitledInput valid labelWidth={labelsWidth} title="Suradnik"        value={suradnik} onChange={suradnikChanged}/>
+            <TitledInput
+                valid
+                labelWidth={labelsWidth}
+                title="Autor"
+                value={autor}
+                onChange={autorChanged}
+            />
+            <TitledInput valid labelWidth={labelsWidth} title="Adresa, Grad" value={adresaGradAutora} onChange={adresaGradAutoraChanged} />
+            <TitledInput valid labelWidth={labelsWidth} title="Izradio" value={izradio} onChange={izradioChanged} />
+            <TitledInput valid labelWidth={labelsWidth} title="Suradnik" value={suradnik} onChange={suradnikChanged} />
             {/* <TitledDatePicker title="Datum"/><br/> */}
-            <TitledInput valid labelWidth={labelsWidth} title="Ugraditelj"      value={ugraditelj} onChange={ugraditeljChanged}/>
-            <TitledInput valid labelWidth={labelsWidth} title="Adresa, Grad"    value={adresaGradUgraditelja} onChange={adresaGradUgraditeljaChanged}/>
+            <TitledInput valid labelWidth={labelsWidth} title="Ugraditelj" value={ugraditelj} onChange={ugraditeljChanged} />
+            <TitledInput valid labelWidth={labelsWidth} title="Adresa, Grad" value={adresaGradUgraditelja} onChange={adresaGradUgraditeljaChanged} />
         </div>
-      
+
     );
 }
-  
+
 export default PodaciOAutoruIUgraditeljuDizala;
