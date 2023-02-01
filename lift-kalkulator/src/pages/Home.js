@@ -1,11 +1,18 @@
 import { Link, useNavigate } from "react-router-dom";
 
+import { useEffect } from "react";
+
 import useAuth from "../hooks/useAuth";
 
 import ProjectsList from "./ProjectsList";
 
+import useLoadProject from '../projectData/loadData';
+
 import NewProject from "./components/NewProject";
 import ConfirmDeleteProject from "./components/ConfirmDeleteProject";
+
+import { useProjekt } from '../contexts/ProjektProvider';
+import { useProjektUpdate } from '../contexts/ProjektProvider';
 
 const Home = () => {
 
@@ -15,34 +22,55 @@ const Home = () => {
 
   const navigate = useNavigate();
 
+  const loadProjectById = useLoadProject();
+
+  const { projectId } = useProjekt();
+  const { setProjectId } = useProjektUpdate();
+
+  useEffect(() => {
+    const localDataString = localStorage.getItem('autosavedAllData');
+    const localDataJson = JSON.parse(localDataString);
+    if (localDataJson) {
+      loadProjectById(localDataJson.projectId);
+      setProjectId(localDataJson.projectId);
+      navigate("/calculator", { replace: true });
+      //console.log("project ID = " + localDataJson.projectId);
+    }
+  });
+
   const logout = () => {
     setAuth({});
     localStorage.setItem("auth", JSON.stringify({}));
-    navigate("/home", {replace: true});
+    navigate("/home", { replace: true });
   }
-  
+
   const newProjectDialog = () => {
     document.getElementById("divNewProject").style.visibility = "visible";
   }
 
+  // useEffect(() => {
+  // 	localStorage.removeItem("autosavedAllData");
+  //   console.log("REMOVED in HOME");
+  // }, []);
+
   return (
     <div className="centerDiv">
-        <h1 className='centeredElement'>Lift Kalkulator{auth.username? "(" + auth.username + ")" : ""}</h1>
-        {!auth?.username? <Link to="/login"><button className="btn btn-primary centeredElement">Prijava</button></Link> 
-        : 
+      <h1 className='centeredElement'>Lift Kalkulator{auth.username ? "(" + auth.username + ")" : ""}</h1>
+      {!auth?.username ? <Link to="/login"><button className="btn btn-primary centeredElement">Prijava</button></Link>
+        :
         <>
           <button onClick={newProjectDialog} className="btn btn-success centeredElement">Novi projekt</button>
 
           <div>
-            <ProjectsList/>
+            <ProjectsList />
           </div>
-          
-          <button onClick={logout} className="btn btn-dark centeredElement">Log out</button> 
 
-          <NewProject/>
-          <ConfirmDeleteProject/>
+          <button onClick={logout} className="btn btn-dark centeredElement">Log out</button>
+
+          <NewProject />
+          <ConfirmDeleteProject />
         </>}
-        
+
     </div>
   );
 }

@@ -222,9 +222,10 @@ const useSaveProject = () => {
     const saveProjectById = async () => {
         //console.log("saving data");
 
-        console.log(getAllDataJson());
+        //console.log(getAllDataJson());
 
         try {
+            //console.log(getAllDataJson());
             const response = await axios.post(
                 SAVE_PROJECT_URL,
                 getAllDataJson(),
@@ -233,6 +234,8 @@ const useSaveProject = () => {
                     withCredentials: true
                 }
             );
+
+            //console.log(response);
 
             if (response?.status === 200) {
                 //console.log("project saved");    
@@ -244,6 +247,7 @@ const useSaveProject = () => {
         } catch (err) {
             // ...
             console.log("catched error: " + err);
+            //console.log(err.response);
         }
     }
 

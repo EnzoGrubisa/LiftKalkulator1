@@ -10,10 +10,14 @@ import useSaveProject from "../projectData/saveData";
 
 import { useProjekt } from "../contexts/ProjektProvider";
 
+import { useNavigate/*, useLocation, Navigate*/} from 'react-router-dom';
+
 const Calculator = (props) => {
 
 	const { tab } = useProjekt();
  
+	const navigate = useNavigate();
+
 	const { saveProjectById } = useSaveProject();
 
 	const [naslov, setNaslov] = useState("Default naslov");
@@ -83,12 +87,19 @@ const Calculator = (props) => {
 	const saveProject = () => {
 		saveProjectById();
 	}
+	
+	const izadiIzProjekta = () => {
+		localStorage.removeItem("autosavedAllData");
+		navigate("/home", {replace: true});
+		//console.log("REMOVED in BACK");
+	}
 
     return (
 		<>
 			<div id="calculatorTitleContainer">
 				<button className="openbtn" style={izbornikButtonStyle} onClick={openSidebar}>&#9776; Izbornik</button>
 				<h2 style={headerStyle}>{naslov}</h2>
+				<button onClick={izadiIzProjekta} className="btn btn-dark" id="izadiBtn">Izađi</button>
 				<button onClick={saveProject} className="btn btn-success" id="saveBtn">Spremi projekt</button>
 			</div>
 			

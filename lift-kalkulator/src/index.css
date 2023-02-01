@@ -392,6 +392,14 @@ body {
   display: block;
 }
 
+#izadiBtn {
+  right: 0;
+  top: 0;
+  margin-right: 150px;
+  position: absolute;
+  display: block;
+}
+
 .projectLink {
   margin: 10px;
 }
