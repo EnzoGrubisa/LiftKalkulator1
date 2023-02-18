@@ -4,7 +4,7 @@ import { useProjekt } from "../../contexts/ProjektProvider";
 
 const DELETE_PROJECT_URL = '/deleteProject';
 
-const NewProject = () => {
+const ConfirmDeleteProject = () => {
 
     const { projectId, projectName } = useProjekt();
 
@@ -42,4 +42,4 @@ const NewProject = () => {
     );
 }
 
-export default NewProject;
+export default ConfirmDeleteProject;

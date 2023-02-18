@@ -11,6 +11,8 @@ import useLoadProject from '../projectData/loadData';
 
 import { useProjektUpdate } from '../contexts/ProjektProvider';
 
+import NewProject from "./components/NewProject";
+
 const PROJECTS_LIST_URL = '/projectsList';
 
 
@@ -64,13 +66,21 @@ const ProjectsList = () => {
         setProjectName(projectName);
     }
 
+    const newProjectDialog = () => {
+        document.getElementById("divNewProject").style.visibility = "visible";
+    }
+
     return (
         <div>
             <h4 className='centeredElement'>popis projekata:</h4>
+
+            <button onClick={newProjectDialog} className="btn btn-success centeredElement">Novi projekt</button>
+            <NewProject />
+
             <ul>
                 {projects.length > 0
                     ? projects.map((project) =>
-                        <li style={{margin: "5px"}} key={project.id}>
+                        <li style={{ margin: "5px" }} key={project.id}>
                             <Link className='projectLink' onClick={() => { loadProject(project.id); setTab("projekt"); }} to="/calculator">
                                 {project.projectName}
                             </Link>

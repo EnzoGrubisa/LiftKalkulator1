@@ -242,7 +242,7 @@ const useSaveProject = () => {
 
                 localStorage.removeItem("autosavedAllData");
 
-                alert("Projekt je spremljen.");
+                alert("Promjene su spremljene.");
             }
         } catch (err) {
             // ...

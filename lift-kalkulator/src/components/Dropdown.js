@@ -3,21 +3,21 @@
 const Dropdown = (props) => {
 
     function OptionsList() {
-        if(!props.disabled){
+        if (!props.disabled) {
             const options = props.options.map((option) =>
                 <option key={option.key} value={option.key}>{option.value}</option>
             );
             return options;
         }
-        else{
+        else {
             return [];
         }
     }
 
     return (
         <div className='divDropDown'>
-            <label style={{width: props.labelWidth}}>{props.title}: </label>
-            <select title={props.tooltip} className="form-select" aria-label="Default select example" onChange={props.onChange} value={props.value} disabled={props.disabled}> 
+            <label style={{ width: props.labelWidth }}>{props.title}: </label>
+            <select title={props.tooltip} className="form-select" aria-label="Default select example" onChange={props.onChange} value={props.value} disabled={props.disabled}>
                 {OptionsList()}
             </select>
         </div>

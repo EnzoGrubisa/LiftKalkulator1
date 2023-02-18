@@ -8,10 +8,9 @@ import ProjectsList from "./ProjectsList";
 
 import useLoadProject from '../projectData/loadData';
 
-import NewProject from "./components/NewProject";
 import ConfirmDeleteProject from "./components/ConfirmDeleteProject";
 
-import { useProjekt } from '../contexts/ProjektProvider';
+//import { useProjekt } from '../contexts/ProjektProvider';
 import { useProjektUpdate } from '../contexts/ProjektProvider';
 
 const Home = () => {
@@ -24,7 +23,7 @@ const Home = () => {
 
   const loadProjectById = useLoadProject();
 
-  const { projectId } = useProjekt();
+  //const { projectId } = useProjekt();
   const { setProjectId } = useProjektUpdate();
 
   useEffect(() => {
@@ -44,33 +43,17 @@ const Home = () => {
     navigate("/home", { replace: true });
   }
 
-  const newProjectDialog = () => {
-    document.getElementById("divNewProject").style.visibility = "visible";
-  }
-
-  // useEffect(() => {
-  // 	localStorage.removeItem("autosavedAllData");
-  //   console.log("REMOVED in HOME");
-  // }, []);
-
   return (
     <div className="centerDiv">
       <h1 className='centeredElement'>Lift Kalkulator{auth.username ? "(" + auth.username + ")" : ""}</h1>
       {!auth?.username ? <Link to="/login"><button className="btn btn-primary centeredElement">Prijava</button></Link>
         :
         <>
-          <button onClick={newProjectDialog} className="btn btn-success centeredElement">Novi projekt</button>
-
-          <div>
-            <ProjectsList />
-          </div>
-
           <button onClick={logout} className="btn btn-dark centeredElement">Log out</button>
-
-          <NewProject />
+          <ProjectsList />
           <ConfirmDeleteProject />
-        </>}
-
+        </>
+      }
     </div>
   );
 }
