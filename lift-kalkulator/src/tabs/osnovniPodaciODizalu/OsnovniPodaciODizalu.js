@@ -1,6 +1,3 @@
-//import { useEffect, useState } from 'react';
-
-// import UkrcavanjeVilicarem from '../Components/UkrcavanjeVilicarem';
 import Dizalo from './components/Dizalo';
 import VoznoOkno from './components/VoznoOkno';
 import SlikaDizala from './components/SlikaDizala';

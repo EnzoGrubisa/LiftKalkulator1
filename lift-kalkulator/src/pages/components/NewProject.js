@@ -15,41 +15,41 @@ const NewProject = () => {
     function closeNewProject() {
         document.getElementById("divNewProject").style.visibility = "collapse";
     }
-    
+
     async function createNewProject() {
         setCreateProjectErrorMessage("");
 
-		try {
-			const response = await axios.post(
-				NEW_PROJECT_URL, 
-				JSON.stringify({username: auth.username, projectName: newProjectName}),
-				{
-					headers: {'Content-Type': "application/json"},
-					withCredentials: true
-				}
-			);
+        try {
+            const response = await axios.post(
+                NEW_PROJECT_URL,
+                JSON.stringify({ username: auth.username, projectName: newProjectName }),
+                {
+                    headers: { 'Content-Type': "application/json" },
+                    withCredentials: true
+                }
+            );
 
-			if(response?.status === 200){
+            if (response?.status === 200) {
                 document.getElementById("divNewProject").style.visibility = "collapse";
                 window.location.reload();
-			}
-		} catch (err) {
-			//console.log(err)
-			if(!err?.response){
-				setCreateProjectErrorMessage("No server response.");
-			}
-			else if(err.response?.status){
-                if(err.response?.status === 444){
+            }
+        } catch (err) {
+            //console.log(err)
+            if (!err?.response) {
+                setCreateProjectErrorMessage("No server response.");
+            }
+            else if (err.response?.status) {
+                if (err.response?.status === 444) {
                     setCreateProjectErrorMessage("već postoji projekt s tim imenom!");
                 }
-				else{
+                else {
                     setCreateProjectErrorMessage("Error status " + err.response?.status);
                 }
-			}
-			else{
-				setCreateProjectErrorMessage("Error");
-			}
-		}	  
+            }
+            else {
+                setCreateProjectErrorMessage("Error");
+            }
+        }
     }
 
     return (

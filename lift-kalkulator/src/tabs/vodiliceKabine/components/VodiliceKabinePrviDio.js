@@ -313,10 +313,10 @@ const VodiliceKabinePrviDio = () => {
     /* KORISNICKO DEFINIRANJE VODILICA */
     const vk_korisnickoDefiniranjeVodilicaCBChanged = (e) => {
         setVk_KorisnickoDefiniranjeVodilica(e.target.checked);
-        if(e.target.checked){
+        if (e.target.checked) {
             setVk_TipVodilice("");
         }
-        else{
+        else {
             setVk_TipVodilice("tip1");
 
             //drugi dio
@@ -394,8 +394,8 @@ const VodiliceKabinePrviDio = () => {
 
     function getVrstaOdbojnikaOptions() {
         return [
-            { key: "odbojniciSAkumulacijomEnergijeILinearnomKarakteristikom", value: "Odbojnici s akumulacijom energije i linearnom karakteristikom" }, 
-            { key: "odbojniciSAkumulacijomEnergijeINelinearnomKarakteristikom", value: "Odbojnici s akumulacijom energije i nelinearnom karakteristikom" }, 
+            { key: "odbojniciSAkumulacijomEnergijeILinearnomKarakteristikom", value: "Odbojnici s akumulacijom energije i linearnom karakteristikom" },
+            { key: "odbojniciSAkumulacijomEnergijeINelinearnomKarakteristikom", value: "Odbojnici s akumulacijom energije i nelinearnom karakteristikom" },
             { key: "odbojniciSDiscipacijomEnergije", value: "Odbojnici s discipacijom energije" }
         ];
     }
@@ -408,7 +408,7 @@ const VodiliceKabinePrviDio = () => {
                 return "Odbojnici s akumulacijom energije i nelinearnom karakteristikom";
             case "odbojniciSDiscipacijomEnergije":
                 return "Odbojnici s discipacijom energije";
-                
+
             default:
                 return null;
         }
@@ -432,17 +432,17 @@ const VodiliceKabinePrviDio = () => {
             <Dropdown labelWidth="200px" title="Vrsta vodilice" options={getVrstaVodiliceOptions()} value={vk_vrstaVodilice} onChange={vk_vrstaVodiliceChanged} />
             <div className="okvir">
                 {vk_korisnickoDefiniranjeVodilica
-                    ? <TitledInput labelWidth="200px" inputWidth="150px" title="Tip vodilice" sDesna="" value={vk_tipVodilice} valid={true} onChange={vk_tipVodiliceChanged}/>
+                    ? <TitledInput labelWidth="200px" inputWidth="150px" title="Tip vodilice" sDesna="" value={vk_tipVodilice} valid={true} onChange={vk_tipVodiliceChanged} />
                     : <Dropdown labelWidth="200px" title="Tip vodilice" options={getTipVodiliceOptions()} value={vk_tipVodilice} onChange={vk_tipVodiliceChanged} />
                 }
-                
+
                 <CheckBox title="korisničko definiranje" id="vk_korisnickoDefiniranjeVodilicaCheckBox" onChange={vk_korisnickoDefiniranjeVodilicaCBChanged} paddingLeft="30px" checked={vk_korisnickoDefiniranjeVodilica} />
             </div>
 
             <div className="okvir" style={{ marginTop: "1px" }}>
                 <p>Odbojnici kabine</p>
                 <TitledInput labelWidth="200px" inputWidth="80px" title="Broj odbojnika (nb_c)" sDesna="" value={vk_brojOdbojnika} valid={validVk_brojOdbojnika} onChange={vk_brojOdbojnikaChanged} onBlur={vk_brojOdbojnikaOnBlur} tooltip="1 - 20" />
-                <Dropdown labelWidth="200px" title="Vrsta odbojnika" options={getVrstaOdbojnikaOptions()} value={vk_vrstaOdbojnika} onChange={vk_vrstaOdbojnikaChanged} tooltip={vk_vrstaOdbojnikaGetTooltip()}/>
+                <Dropdown labelWidth="200px" title="Vrsta odbojnika" options={getVrstaOdbojnikaOptions()} value={vk_vrstaOdbojnika} onChange={vk_vrstaOdbojnikaChanged} tooltip={vk_vrstaOdbojnikaGetTooltip()} />
             </div>
         </div>
     );

@@ -1,24 +1,17 @@
-import { useState, createContext, useContext/*, useEffect*/ } from 'react';
+import { useState, createContext, useContext } from 'react';
 
 const ProjektContext = createContext();
 const ProjektUpdateContext = createContext();
 
-export function useProjekt(){
+export function useProjekt() {
     return useContext(ProjektContext);
 }
 
-export function useProjektUpdate(){
+export function useProjektUpdate() {
     return useContext(ProjektUpdateContext);
 }
 
-const ProjektProvider = ({children}) => {
-
-    // SAVE TO LOCAL STORAGE FOR ACCESS AFTER REFRESH PAGE
-    // const localNamjenaDizala = localStorage.getItem('namjenaDizala');
-	// const [namjenaDizala, setNamjenaDizala] = useState(localNamjenaDizala? localNamjenaDizala : "osobno");
-    // useEffect(()=>{
-    //     localStorage.setItem('namjenaDizala', namjenaDizala);
-    // },[namjenaDizala]);
+const ProjektProvider = ({ children }) => {
 
     const [projectId, setProjectId] = useState(0);
     const [projectName, setProjectName] = useState("");
@@ -32,16 +25,16 @@ const ProjektProvider = ({children}) => {
     const [datum, setDatum] = useState("");
     const [ugraditelj, setUgraditelj] = useState("");
     const [adresaGradUgraditelja, setAdresaGradUgraditelja] = useState("");
-    
+
     const [nazivGradevine, setNazivGradevine] = useState("");
     const [lokacijaAdresaGradevine, setLokacijaAdresaGradevine] = useState("");
     const [refOznakaProjekta, setRefOznakaProjekta] = useState("");
     const [tvBrojOznakaDizala, setTvBrojOznakaDizala] = useState("");
-	
+
 
     return (
-        <ProjektContext.Provider value={{projectId, projectName, tab, autor, adresaGradAutora, izradio, suradnik, datum, ugraditelj, adresaGradUgraditelja, nazivGradevine, lokacijaAdresaGradevine, refOznakaProjekta, tvBrojOznakaDizala}}>
-            <ProjektUpdateContext.Provider value={{setProjectId, setProjectName, setTab, setAutor, setAdresaGradAutora, setIzradio, setSuradnik, setDatum, setUgraditelj, setAdresaGradUgraditelja, setNazivGradevine, setLokacijaAdresaGradevine, setRefOznakaProjekta, setTvBrojOznakaDizala}}>
+        <ProjektContext.Provider value={{ projectId, projectName, tab, autor, adresaGradAutora, izradio, suradnik, datum, ugraditelj, adresaGradUgraditelja, nazivGradevine, lokacijaAdresaGradevine, refOznakaProjekta, tvBrojOznakaDizala }}>
+            <ProjektUpdateContext.Provider value={{ setProjectId, setProjectName, setTab, setAutor, setAdresaGradAutora, setIzradio, setSuradnik, setDatum, setUgraditelj, setAdresaGradUgraditelja, setNazivGradevine, setLokacijaAdresaGradevine, setRefOznakaProjekta, setTvBrojOznakaDizala }}>
                 {children}
             </ProjektUpdateContext.Provider>
         </ProjektContext.Provider>

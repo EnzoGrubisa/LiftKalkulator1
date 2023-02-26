@@ -4,40 +4,10 @@ const mysql = require('mysql');
 const path = require('path');
 const cors = require('cors');
 
-const { format } = require('date-fns');
-const { v4: uuid } = require('uuid');
-
-//console.log(format(new Date(), "dd.MM.yyyy.\tHH:mm:ss"));
-//console.log(uuid());
-
-const logEvents = require("./logEvents");
-
-const EventEmitter = require('events');
-
-class MyEmitter extends EventEmitter {};
-
-// init object
-const myEmitter = new MyEmitter();
-
-// // add listener for log event
-// myEmitter.on('log', (msg) => {
-//     logEvents(msg);
-// });
-
-
-// myEmitter.emit('log', 'log event emitted');
-
-
-
-
 app.use(cors({
     origin: 'http://localhost:3000',
     credentials: true
 }));
-
-// app.use(cors({
-//     methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
-// }));
 
 app.use(express.json());
 
@@ -48,26 +18,6 @@ const db = mysql.createConnection({
     password: "LoRaRulez!",
     database: "liftkalkulator"
 });
-
-// app.get('/', (req, res) => {
-// });
-
-
-// const handleLogin = async (req, res) => {
-//     const { user, pwd } = req.body;
-//     if (!user || !pwd) return res.status(400).json({ 'message': 'Username and password are required.' });
-//     const foundUser = usersDB.users.find(person => person.username === user);
-//     if (!foundUser) return res.sendStatus(401); //Unauthorized 
-//     // evaluate password 
-//     const match = await bcrypt.compare(pwd, foundUser.password);
-//     if (match) {
-//         // create JWTs
-//         res.json({ 'success': `User ${user} is logged in!` });
-//     } else {
-//         res.sendStatus(401);
-//     }
-// }
-
 
 app.post('/login', (req, res) => {
 

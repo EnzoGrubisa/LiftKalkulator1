@@ -1,4 +1,4 @@
-import { useState, createContext, useContext/*, useEffect*/ } from 'react';
+import { useState, createContext, useContext } from 'react';
 
 const VodiliceKabineContext = createContext();
 const VodiliceKabineUpdateContext = createContext();

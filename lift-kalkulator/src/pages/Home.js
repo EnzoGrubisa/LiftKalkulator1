@@ -15,47 +15,44 @@ import { useProjektUpdate } from '../contexts/ProjektProvider';
 
 const Home = () => {
 
-  const { auth, setAuth } = useAuth();
+    const { auth, setAuth } = useAuth();
 
-  //setProjectId(0);
+    const navigate = useNavigate();
 
-  const navigate = useNavigate();
+    const loadProjectById = useLoadProject();
 
-  const loadProjectById = useLoadProject();
+    const { setProjectId } = useProjektUpdate();
 
-  //const { projectId } = useProjekt();
-  const { setProjectId } = useProjektUpdate();
+    useEffect(() => {
+        const localDataString = localStorage.getItem('autosavedAllData');
+        const localDataJson = JSON.parse(localDataString);
+        if (localDataJson) {
+            loadProjectById(localDataJson.projectId);
+            setProjectId(localDataJson.projectId);
+            navigate("/calculator", { replace: true });
+            //console.log("project ID = " + localDataJson.projectId);
+        }
+    });
 
-  useEffect(() => {
-    const localDataString = localStorage.getItem('autosavedAllData');
-    const localDataJson = JSON.parse(localDataString);
-    if (localDataJson) {
-      loadProjectById(localDataJson.projectId);
-      setProjectId(localDataJson.projectId);
-      navigate("/calculator", { replace: true });
-      //console.log("project ID = " + localDataJson.projectId);
+    const logout = () => {
+        setAuth({});
+        localStorage.setItem("auth", JSON.stringify({}));
+        navigate("/home", { replace: true });
     }
-  });
 
-  const logout = () => {
-    setAuth({});
-    localStorage.setItem("auth", JSON.stringify({}));
-    navigate("/home", { replace: true });
-  }
-
-  return (
-    <div className="centerDiv">
-      <h1 className='centeredElement'>Lift Kalkulator{auth.username ? "(" + auth.username + ")" : ""}</h1>
-      {!auth?.username ? <Link to="/login"><button className="btn btn-primary centeredElement">Prijava</button></Link>
-        :
-        <>
-          <button onClick={logout} className="btn btn-dark centeredElement">Log out</button>
-          <ProjectsList />
-          <ConfirmDeleteProject />
-        </>
-      }
-    </div>
-  );
+    return (
+        <div className="centerDiv">
+            <h1 className='centeredElement'>Lift Kalkulator{auth.username ? "(" + auth.username + ")" : ""}</h1>
+            {!auth?.username ? <Link to="/login"><button className="btn btn-primary centeredElement">Prijava</button></Link>
+                :
+                <>
+                    <button onClick={logout} className="btn btn-dark centeredElement">Log out</button>
+                    <ProjectsList />
+                    <ConfirmDeleteProject />
+                </>
+            }
+        </div>
+    );
 }
 
 export default Home;

@@ -1,4 +1,3 @@
-
 //props -> labelWidth, inputWidth, title, sDesna, value, valid, tooltip, disabled, style
 const IzracuniTitledInput = (props) => {
 
@@ -10,7 +9,5 @@ const IzracuniTitledInput = (props) => {
         </div>
     );
 }
-
-
 
 export default IzracuniTitledInput;

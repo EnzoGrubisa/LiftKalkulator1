@@ -7,7 +7,7 @@ import { useVodiliceKabine, useVodiliceKabineUpdate } from '../../../contexts/Vo
 import useSaveProject from "../../../projectData/saveData";
 
 const VodiliceKabineDrugiDio = () => {
-    
+
     const {
         vk_korisnickoDefiniranjeVodilica,
 
@@ -74,7 +74,7 @@ const VodiliceKabineDrugiDio = () => {
 
     useEffect(() => {
         const num = +vk_vlacnaCvrstoca;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) {
             setValidVk_vlacnaCvrstoca(false);
         }
         else {
@@ -87,7 +87,7 @@ const VodiliceKabineDrugiDio = () => {
             setVk_VlacnaCvrstoca(+(e.target.value));
         }
         else {
-            setVk_VlacnaCvrstoca(0); 
+            setVk_VlacnaCvrstoca(0);
         }
     }
 
@@ -100,7 +100,7 @@ const VodiliceKabineDrugiDio = () => {
 
     useEffect(() => {
         const num = +vk_modulElasticnosti;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) {
             setValidVk_modulElasticnosti(false);
         }
         else {
@@ -113,7 +113,7 @@ const VodiliceKabineDrugiDio = () => {
             setVk_ModulElasticnosti(+(e.target.value));
         }
         else {
-            setVk_ModulElasticnosti(0); 
+            setVk_ModulElasticnosti(0);
         }
     }
 
@@ -126,7 +126,7 @@ const VodiliceKabineDrugiDio = () => {
 
     useEffect(() => {
         const num = +vk_elongacija;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) {
             setValidVk_elongacija(false);
         }
         else {
@@ -139,7 +139,7 @@ const VodiliceKabineDrugiDio = () => {
             setVk_Elongacija(+(e.target.value));
         }
         else {
-            setVk_Elongacija(0); 
+            setVk_Elongacija(0);
         }
     }
 
@@ -152,7 +152,7 @@ const VodiliceKabineDrugiDio = () => {
 
     useEffect(() => {
         const num = +vk_povrsinaPoprecnogPresjeka;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) {
             setValidVk_povrsinaPoprecnogPresjeka(false);
         }
         else {
@@ -165,10 +165,10 @@ const VodiliceKabineDrugiDio = () => {
             setVk_PovrsinaPoprecnogPresjeka(+(e.target.value));
         }
         else {
-            setVk_PovrsinaPoprecnogPresjeka(0); 
+            setVk_PovrsinaPoprecnogPresjeka(0);
         }
     }
-    
+
     /* MASA PO JEDINICI DUZINE */
     const [validVk_masaPoJedinicDuzine, setValidVk_masaPoJedinicDuzine] = useState(true);
 
@@ -178,7 +178,7 @@ const VodiliceKabineDrugiDio = () => {
 
     useEffect(() => {
         const num = +vk_masaPoJedinicDuzine;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) {
             setValidVk_masaPoJedinicDuzine(false);
         }
         else {
@@ -191,10 +191,10 @@ const VodiliceKabineDrugiDio = () => {
             setVk_MasaPoJedinicDuzine(+(e.target.value));
         }
         else {
-            setVk_MasaPoJedinicDuzine(0); 
+            setVk_MasaPoJedinicDuzine(0);
         }
     }
-    
+
     /* MOMENT OTPORA Wxx */
     const [validVk_momentOtporaWxx, setValidVk_momentOtporaWxx] = useState(true);
 
@@ -204,7 +204,7 @@ const VodiliceKabineDrugiDio = () => {
 
     useEffect(() => {
         const num = +vk_momentOtporaWxx;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) {
             setValidVk_momentOtporaWxx(false);
         }
         else {
@@ -217,10 +217,10 @@ const VodiliceKabineDrugiDio = () => {
             setVk_MomentOtporaWxx(+(e.target.value));
         }
         else {
-            setVk_MomentOtporaWxx(0); 
+            setVk_MomentOtporaWxx(0);
         }
     }
-    
+
     /* MOMENT OTPORA Wyy */
     const [validVk_momentOtporaWyy, setValidVk_momentOtporaWyy] = useState(true);
 
@@ -230,7 +230,7 @@ const VodiliceKabineDrugiDio = () => {
 
     useEffect(() => {
         const num = +vk_momentOtporaWyy;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) {
             setValidVk_momentOtporaWyy(false);
         }
         else {
@@ -243,10 +243,10 @@ const VodiliceKabineDrugiDio = () => {
             setVk_MomentOtporaWyy(+(e.target.value));
         }
         else {
-            setVk_MomentOtporaWyy(0); 
+            setVk_MomentOtporaWyy(0);
         }
     }
-    
+
     /* GEOMETRIJSKA INERCIJA lxx */
     const [validVk_geometrijskaInercijaLxx, setValidVk_geometrijskaInercijaLxx] = useState(true);
 
@@ -256,7 +256,7 @@ const VodiliceKabineDrugiDio = () => {
 
     useEffect(() => {
         const num = +vk_geometrijskaInercijaLxx;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) {
             setValidVk_geometrijskaInercijaLxx(false);
         }
         else {
@@ -269,10 +269,10 @@ const VodiliceKabineDrugiDio = () => {
             setVk_GeometrijskaInercijaLxx(+(e.target.value));
         }
         else {
-            setVk_GeometrijskaInercijaLxx(0); 
+            setVk_GeometrijskaInercijaLxx(0);
         }
     }
-    
+
     /* GEOMETRIJSKA INERCIJA lyy */
     const [validVk_geometrijskaInercijaLyy, setValidVk_geometrijskaInercijaLyy] = useState(true);
 
@@ -282,7 +282,7 @@ const VodiliceKabineDrugiDio = () => {
 
     useEffect(() => {
         const num = +vk_geometrijskaInercijaLyy;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) {
             setValidVk_geometrijskaInercijaLyy(false);
         }
         else {
@@ -295,10 +295,10 @@ const VodiliceKabineDrugiDio = () => {
             setVk_GeometrijskaInercijaLyy(+(e.target.value));
         }
         else {
-            setVk_GeometrijskaInercijaLyy(0); 
+            setVk_GeometrijskaInercijaLyy(0);
         }
     }
-    
+
     /* MIN RADIJUS INERCIJE ixx */
     const [validVk_minRadijusInercijeIxx, setValidVk_minRadijusInercijeIxx] = useState(true);
 
@@ -308,7 +308,7 @@ const VodiliceKabineDrugiDio = () => {
 
     useEffect(() => {
         const num = +vk_minRadijusInercijeIxx;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) {
             setValidVk_minRadijusInercijeIxx(false);
         }
         else {
@@ -321,10 +321,10 @@ const VodiliceKabineDrugiDio = () => {
             setVk_MinRadijusInercijeIxx(+(e.target.value));
         }
         else {
-            setVk_MinRadijusInercijeIxx(0); 
+            setVk_MinRadijusInercijeIxx(0);
         }
     }
-    
+
     /* MIN RADIJUS INERCIJE iyy */
     const [validVk_minRadijusInercijeIyy, setValidVk_minRadijusInercijeIyy] = useState(true);
 
@@ -334,7 +334,7 @@ const VodiliceKabineDrugiDio = () => {
 
     useEffect(() => {
         const num = +vk_minRadijusInercijeIyy;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) {
             setValidVk_minRadijusInercijeIyy(false);
         }
         else {
@@ -347,10 +347,10 @@ const VodiliceKabineDrugiDio = () => {
             setVk_MinRadijusInercijeIyy(+(e.target.value));
         }
         else {
-            setVk_MinRadijusInercijeIyy(0); 
+            setVk_MinRadijusInercijeIyy(0);
         }
     }
-    
+
     /* MIN RADIJUS INERCIJE imin */
     const [validVk_minRadijusInercijeImin, setValidVk_minRadijusInercijeImin] = useState(true);
 
@@ -360,7 +360,7 @@ const VodiliceKabineDrugiDio = () => {
 
     useEffect(() => {
         const num = +vk_minRadijusInercijeImin;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) {
             setValidVk_minRadijusInercijeImin(false);
         }
         else {
@@ -373,10 +373,10 @@ const VodiliceKabineDrugiDio = () => {
             setVk_MinRadijusInercijeImin(+(e.target.value));
         }
         else {
-            setVk_MinRadijusInercijeImin(0); 
+            setVk_MinRadijusInercijeImin(0);
         }
     }
-    
+
     /* VITKOST */
     const [validVk_vitkost, setValidVk_vitkost] = useState(true);
 
@@ -386,7 +386,7 @@ const VodiliceKabineDrugiDio = () => {
 
     useEffect(() => {
         const num = +vk_vitkost;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) {
             setValidVk_vitkost(false);
         }
         else {
@@ -399,10 +399,10 @@ const VodiliceKabineDrugiDio = () => {
             setVk_Vitkost(+(e.target.value));
         }
         else {
-            setVk_Vitkost(0); 
+            setVk_Vitkost(0);
         }
     }
-    
+
     /* OMEGA */
     const [validVk_omega, setValidVk_omega] = useState(true);
 
@@ -412,7 +412,7 @@ const VodiliceKabineDrugiDio = () => {
 
     useEffect(() => {
         const num = +vk_omega;
-        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) { 
+        if (num.toString() === "NaN" || num > 1000000000000 || num < 0) {
             setValidVk_omega(false);
         }
         else {
@@ -425,7 +425,7 @@ const VodiliceKabineDrugiDio = () => {
             setVk_Omega(+(e.target.value));
         }
         else {
-            setVk_Omega(0); 
+            setVk_Omega(0);
         }
     }
 
@@ -440,21 +440,21 @@ const VodiliceKabineDrugiDio = () => {
 
             <TitledInput disabled={!vk_korisnickoDefiniranjeVodilica} labelWidth="200px" inputWidth="80px" title="Površina poprečnog presjeka (A)" sDesna="mm&sup2;" value={vk_povrsinaPoprecnogPresjeka} valid={validVk_povrsinaPoprecnogPresjeka} onChange={vk_povrsinaPoprecnogPresjekaChanged} onBlur={vk_povrsinaPoprecnogPresjekaOnBlur} tooltip="0 - 1000000000000" />
             <TitledInput disabled={!vk_korisnickoDefiniranjeVodilica} labelWidth="200px" inputWidth="80px" title="Masa po jedinici dužine (q1)" sDesna="kg/m" value={vk_masaPoJedinicDuzine} valid={validVk_masaPoJedinicDuzine} onChange={vk_masaPoJedinicDuzineChanged} onBlur={vk_masaPoJedinicDuzineOnBlur} tooltip="0 - 1000000000000" />
-            
+
             <TitledInput disabled={!vk_korisnickoDefiniranjeVodilica} labelWidth="200px" inputWidth="80px" title="Moment otpora (Wxx)" sDesna="mm&sup3;" value={vk_momentOtporaWxx} valid={validVk_momentOtporaWxx} onChange={vk_momentOtporaWxxChanged} onBlur={vk_momentOtporaWxxOnBlur} tooltip="0 - 1000000000000" />
             <TitledInput disabled={!vk_korisnickoDefiniranjeVodilica} labelWidth="200px" inputWidth="80px" title="Moment otpora (Wyy)" sDesna="mm&sup3;" value={vk_momentOtporaWyy} valid={validVk_momentOtporaWyy} onChange={vk_momentOtporaWyyChanged} onBlur={vk_momentOtporaWyyOnBlur} tooltip="0 - 1000000000000" />
-            
+
             <TitledInput disabled={!vk_korisnickoDefiniranjeVodilica} labelWidth="200px" inputWidth="80px" title="Geometrijska inercija (lxx)" sDesna="mm&#8308;" value={vk_geometrijskaInercijaLxx} valid={validVk_geometrijskaInercijaLxx} onChange={vk_geometrijskaInercijaLxxChanged} onBlur={vk_geometrijskaInercijaLxxOnBlur} tooltip="0 - 1000000000000" />
             <TitledInput disabled={!vk_korisnickoDefiniranjeVodilica} labelWidth="200px" inputWidth="80px" title="Geometrijska inercija (lyy)" sDesna="mm&#8308;" value={vk_geometrijskaInercijaLyy} valid={validVk_geometrijskaInercijaLyy} onChange={vk_geometrijskaInercijaLyyChanged} onBlur={vk_geometrijskaInercijaLyyOnBlur} tooltip="0 - 1000000000000" />
-            
+
             <TitledInput disabled={!vk_korisnickoDefiniranjeVodilica} labelWidth="200px" inputWidth="80px" title="Min. radijus inercije (ixx)" sDesna="mm" value={vk_minRadijusInercijeIxx} valid={validVk_minRadijusInercijeIxx} onChange={vk_minRadijusInercijeIxxChanged} onBlur={vk_minRadijusInercijeIxxOnBlur} tooltip="0 - 1000000000000" />
             <TitledInput disabled={!vk_korisnickoDefiniranjeVodilica} labelWidth="200px" inputWidth="80px" title="Min. radijus inercije (iyy)" sDesna="mm" value={vk_minRadijusInercijeIyy} valid={validVk_minRadijusInercijeIyy} onChange={vk_minRadijusInercijeIyyChanged} onBlur={vk_minRadijusInercijeIyyOnBlur} tooltip="0 - 1000000000000" />
             <TitledInput disabled labelWidth="200px" inputWidth="80px" title="Min. radijus inercije (imin)" sDesna="mm" value={vk_minRadijusInercijeImin} valid={validVk_minRadijusInercijeImin} onChange={vk_minRadijusInercijeIminChanged} onBlur={vk_minRadijusInercijeIminOnBlur} tooltip="" />
-            
+
             <TitledInput disabled labelWidth="200px" inputWidth="80px" title="Vitkost (&lambda;)" sDesna="" value={vk_vitkost} valid={validVk_vitkost} onChange={vk_vitkostChanged} onBlur={vk_vitkostOnBlur} tooltip="" />
             <TitledInput disabled labelWidth="200px" inputWidth="80px" title="&omega;" sDesna="" value={vk_omega} valid={validVk_omega} onChange={vk_omegaChanged} onBlur={vk_omegaOnBlur} tooltip="" />
         </div>
     );
 }
-    
+
 export default VodiliceKabineDrugiDio;

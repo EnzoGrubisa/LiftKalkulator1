@@ -8,8 +8,6 @@ import useSaveProject from "../../../projectData/saveData";
 
 const VoznoOkno = () => {
 
-    //#region properties 
-
     const { brojPostaja, brojUlaza, visinaDizanja, tlocrtnaSirina, tlocrtnaDubina, dubinaJame, nadvisenje } = useVoznoOkno();   
     const { setBrojPostaja, setBrojUlaza, setVisinaDizanja, setTlocrtnaSirina, setTlocrtnaDubina, setDubinaJame, setNadvisenje } = useVoznoOknoUpdate();   
 
@@ -206,9 +204,7 @@ const VoznoOkno = () => {
             setNadvisenje(2200);
         }
     }
-
-    //#endregion
-
+    
     const labelsWidth = "160px";
 
     return (

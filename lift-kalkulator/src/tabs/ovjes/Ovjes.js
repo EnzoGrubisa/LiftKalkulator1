@@ -2,7 +2,6 @@ import OvjesDrugiDio from "./components/OvjesDrugiDio";
 import OvjesPrviDio from "./components/OvjesPrviDio";
 import SlikaOvjesa from "./components/SlikaOvjesa";
 
-
 const Ovjes = () => {
     return (
         <div className='container-fluid'>

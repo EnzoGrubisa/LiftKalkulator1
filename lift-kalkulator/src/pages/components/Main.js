@@ -11,8 +11,6 @@ import Biljeske from "../../tabs/biljeske/Biljeske";
 
 const Main = (props) => {
     
-    //props.postaviNaslov(props.tab);
-
     return (
         <div id="main" style={{backgroundColor: "#CCCCCC"}}>
             {props.tab === "projekt" ? <OsnovniPodaciOProjektu/> : null}

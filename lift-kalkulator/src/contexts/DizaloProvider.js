@@ -1,32 +1,26 @@
-import { useState, createContext, useContext/*, useEffect*/ } from 'react';
+import { useState, createContext, useContext } from 'react';
 
 const DizaloContext = createContext();
 const DizaloUpdateContext = createContext();
 
-export function useDizalo(){
+export function useDizalo() {
     return useContext(DizaloContext);
 }
 
-export function useDizaloUpdate(){
+export function useDizaloUpdate() {
     return useContext(DizaloUpdateContext);
 }
 
-const DizaloProvider = ({children}) => {
+const DizaloProvider = ({ children }) => {
 
-    // SAVE TO LOCAL STORAGE FOR ACCESS AFTER REFRESH PAGE
-    // const localNamjenaDizala = localStorage.getItem('namjenaDizala');
-	// const [namjenaDizala, setNamjenaDizala] = useState(localNamjenaDizala? localNamjenaDizala : "osobno");
-    // useEffect(()=>{
-    //     localStorage.setItem('namjenaDizala', namjenaDizala);
-    // },[namjenaDizala]);
     const [namjenaDizala, setNamjenaDizala] = useState("osobno");
-	const [ukrcavanjeVilicarem, setUkrcavanjeVilicarem] = useState(false);
-	const [vrstaDizala, setVrstaDizala] = useState("elektricno");
+    const [ukrcavanjeVilicarem, setUkrcavanjeVilicarem] = useState(false);
+    const [vrstaDizala, setVrstaDizala] = useState("elektricno");
     const [vrstaPogona, setVrstaPogona] = useState("bezreduktorski");
     const [smjestajPogona, setSmjestajPogona] = useState("uVoznomOknuNaNosacu");
     const [bezStrojarnice, setBezStrojarnice] = useState(true);
     const [faktorOvjesa, setFaktorOvjesa] = useState("2:1");
-    
+
     const [nazivnaNosivost, setNazivnaNosivost] = useState(630);
     const [brojOsoba, setBrojOsoba] = useState(8);
     const [nazivnaBrzina, setNazivnaBrzina] = useState(1);
@@ -35,8 +29,8 @@ const DizaloProvider = ({children}) => {
     const [brojUkljucenjaNaSat, setBrojUkljucenjaNaSat] = useState(180);
 
     return (
-        <DizaloContext.Provider value={{namjenaDizala, ukrcavanjeVilicarem, vrstaDizala, vrstaPogona, smjestajPogona, bezStrojarnice, faktorOvjesa, nazivnaNosivost, brojOsoba, nazivnaBrzina, akceleracijaDeceleracijaNormalnaVoznja, deceleracijaKodHitnogStopa, brojUkljucenjaNaSat}}>
-            <DizaloUpdateContext.Provider value={{setNamjenaDizala, setUkrcavanjeVilicarem, setVrstaDizala, setVrstaPogona, setSmjestajPogona, setBezStrojarnice, setFaktorOvjesa, setNazivnaNosivost, setBrojOsoba, setNazivnaBrzina, setAkceleracijaDeceleracijaNormalnaVoznja, setDeceleracijaKodHitnogStopa, setBrojUkljucenjaNaSat}}>
+        <DizaloContext.Provider value={{ namjenaDizala, ukrcavanjeVilicarem, vrstaDizala, vrstaPogona, smjestajPogona, bezStrojarnice, faktorOvjesa, nazivnaNosivost, brojOsoba, nazivnaBrzina, akceleracijaDeceleracijaNormalnaVoznja, deceleracijaKodHitnogStopa, brojUkljucenjaNaSat }}>
+            <DizaloUpdateContext.Provider value={{ setNamjenaDizala, setUkrcavanjeVilicarem, setVrstaDizala, setVrstaPogona, setSmjestajPogona, setBezStrojarnice, setFaktorOvjesa, setNazivnaNosivost, setBrojOsoba, setNazivnaBrzina, setAkceleracijaDeceleracijaNormalnaVoznja, setDeceleracijaKodHitnogStopa, setBrojUkljucenjaNaSat }}>
                 {children}
             </DizaloUpdateContext.Provider>
         </DizaloContext.Provider>

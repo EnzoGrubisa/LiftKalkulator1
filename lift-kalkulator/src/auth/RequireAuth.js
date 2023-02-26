@@ -6,22 +6,12 @@ const RequireAuth = () => {
 
     const { auth } = useAuth();
 
-    // useEffect(() => {
-    //     const localAuth = localStorage.getItem('auth');
-    //     if(localAuth){
-    //         setAuth(JSON.parse(localAuth));
-    //         //console.log("index.js -> local auth = " + localAuth);
-    //     }
-    //   }, [setAuth]);
-
-    
     const location = useLocation();
 
     return (
         auth?.username
             ? <Outlet />
             : <Navigate to="/login" state={{ from: location }} replace />
-                // : <Navigate to="/login" state={{ from: location }} replace />
     );
 }
 

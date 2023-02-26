@@ -1,17 +1,16 @@
 import IzracunIKontrolaVodilica from "./components/IzracunIKontrolaVodilica";
 
-
 const Izracuni = () => {
-    
+
     function closeIzracuni() {
         document.getElementById("divIzracuni").style.visibility = "collapse";
-    } 
+    }
 
-    return(
+    return (
         <div id="divIzracuni">
             <div id="innerDivIzracuni">
                 <button id="closeIzracuniButton" className="btn btn-danger" onClick={closeIzracuni}>X</button>
-                <IzracunIKontrolaVodilica/>
+                <IzracunIKontrolaVodilica />
             </div>
         </div>
     );

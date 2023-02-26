@@ -11,12 +11,12 @@ const ConfirmExitProject = () => {
         saveProjectById();
 
         localStorage.removeItem("autosavedAllData");
-		navigate("/home", {replace: true});
+        navigate("/home", { replace: true });
     }
 
     const exitDiscardingChanges = () => {
         localStorage.removeItem("autosavedAllData");
-		navigate("/home", {replace: true});
+        navigate("/home", { replace: true });
     }
 
     const cancelExit = () => {

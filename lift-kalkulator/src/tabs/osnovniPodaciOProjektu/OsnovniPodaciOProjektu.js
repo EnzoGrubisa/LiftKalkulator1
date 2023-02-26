@@ -1,4 +1,3 @@
-//import { useEffect, useState } from 'react';
 import PodaciOAutoruIUgraditeljuDizala from './components/PodaciOAutoruIUgraditeljuDizala';
 import OsnovniPodaciOProjektuComponent from './components/OsnovniPodaciOProjektuComponent';
 import Logotip from './components/Logotip';

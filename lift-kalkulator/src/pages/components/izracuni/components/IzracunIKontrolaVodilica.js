@@ -144,48 +144,48 @@ const IzracunIKontrolaVodilica = () => {
 
     //--------------------
 
-    const [ sigmaX, setSigmaX ] = useState(0);
-    const [ sigmaY, setSigmaY ] = useState(0);
-    
-    const [ sigmaM, setSigmaM ] = useState(0);
-    
-    const [ sigma, setSigma ] = useState(0);
-    const [ sigmaF, setSigmaF ] = useState(0);
-    
-    const [ deltaX, setDeltaX ] = useState(0);
-    const [ deltaY, setDeltaY ] = useState(0);
-    
-    const [ sigmaXUkrcavanje, setSigmaXUkrcavanje ] = useState(0);
-    const [ sigmaYUkrcavanje, setSigmaYUkrcavanje ] = useState(0);
-    
-    const [ sigmaMUkrcavanje, setSigmaMUkrcavanje ] = useState(0);
-    
-    const [ sigmaUkrcavanje, setSigmaUkrcavanje ] = useState(0);
-    const [ sigmaFUkrcavanje, setSigmaFUkrcavanje ] = useState(0);
-    
-    const [ deltaXUkrcavanje, setDeltaXUkrcavanje ] = useState(0);
-    const [ deltaYUkrcavanje, setDeltaYUkrcavanje ] = useState(0);
+    const [sigmaX, setSigmaX] = useState(0);
+    const [sigmaY, setSigmaY] = useState(0);
+
+    const [sigmaM, setSigmaM] = useState(0);
+
+    const [sigma, setSigma] = useState(0);
+    const [sigmaF, setSigmaF] = useState(0);
+
+    const [deltaX, setDeltaX] = useState(0);
+    const [deltaY, setDeltaY] = useState(0);
+
+    const [sigmaXUkrcavanje, setSigmaXUkrcavanje] = useState(0);
+    const [sigmaYUkrcavanje, setSigmaYUkrcavanje] = useState(0);
+
+    const [sigmaMUkrcavanje, setSigmaMUkrcavanje] = useState(0);
+
+    const [sigmaUkrcavanje, setSigmaUkrcavanje] = useState(0);
+    const [sigmaFUkrcavanje, setSigmaFUkrcavanje] = useState(0);
+
+    const [deltaXUkrcavanje, setDeltaXUkrcavanje] = useState(0);
+    const [deltaYUkrcavanje, setDeltaYUkrcavanje] = useState(0);
 
     const fillRandomData = () => {
         setSigmaX(Math.random() * 200);
         setSigmaY(Math.random() * 200);
-        
+
         setSigmaM(Math.random() * 200);
-        
+
         setSigma(Math.random() * 200);
         setSigmaF(Math.random() * 200);
-        
+
         setDeltaX(Math.random() * 200);
         setDeltaY(Math.random() * 200);
-        
+
         setSigmaXUkrcavanje(Math.random() * 200);
         setSigmaYUkrcavanje(Math.random() * 200);
-        
+
         setSigmaMUkrcavanje(Math.random() * 200);
-        
+
         setSigmaUkrcavanje(Math.random() * 200);
         setSigmaFUkrcavanje(Math.random() * 200);
-        
+
         setDeltaXUkrcavanje(Math.random() * 200);
         setDeltaYUkrcavanje(Math.random() * 200);
     }
@@ -247,7 +247,7 @@ const IzracunIKontrolaVodilica = () => {
                             <IzracuniTitledInput disabled labelWidth="200px" inputWidth="150px"
                                 title="&sigma; F" sDesna="N/mm&sup2;" value={sigmaF} valid={true} />
 
-                            <br/>
+                            <br />
 
                             <IzracuniTitledInput disabled labelWidth="200px" inputWidth="150px"
                                 title="&delta;x" sDesna="mm" value={deltaX} valid={true} />
@@ -278,7 +278,7 @@ const IzracunIKontrolaVodilica = () => {
                             <IzracuniTitledInput disabled labelWidth="200px" inputWidth="150px"
                                 title="&sigma; F" sDesna="N/mm&sup2;" value={sigmaFUkrcavanje} valid={true} />
 
-                            <br/>
+                            <br />
 
                             <IzracuniTitledInput disabled labelWidth="200px" inputWidth="150px"
                                 title="&delta;x" sDesna="mm" value={deltaXUkrcavanje} valid={true} />

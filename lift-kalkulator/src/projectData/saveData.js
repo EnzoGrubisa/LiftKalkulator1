@@ -221,7 +221,6 @@ const useSaveProject = () => {
 
     const saveProjectById = async () => {
         //console.log("saving data");
-
         //console.log(getAllDataJson());
 
         try {

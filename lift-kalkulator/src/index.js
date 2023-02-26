@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
-import { /*MemoryRouter,*/ Routes, Route, BrowserRouter } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import './index.css';
-import Home from './pages/Home'
+import Home from './pages/Home';
 import Calculator from './pages/Calculator';
 import Login from './pages/Login';
 
@@ -66,21 +66,19 @@ export default App;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <AuthProvider>
-        <ProjektProvider>
-          <DizaloProvider>
-            <VoznoOknoProvider>
-              <OvjesProvider>
-                <VodiliceKabineProvider>
-                  <App />
-                </VodiliceKabineProvider>
-              </OvjesProvider>
-            </VoznoOknoProvider>
-          </DizaloProvider>
-        </ProjektProvider>
-      </AuthProvider>
-    </BrowserRouter>
-  </React.StrictMode>
+  <BrowserRouter>
+    <AuthProvider>
+      <ProjektProvider>
+        <DizaloProvider>
+          <VoznoOknoProvider>
+            <OvjesProvider>
+              <VodiliceKabineProvider>
+                <App />
+              </VodiliceKabineProvider>
+            </OvjesProvider>
+          </VoznoOknoProvider>
+        </DizaloProvider>
+      </ProjektProvider>
+    </AuthProvider>
+  </BrowserRouter>
 );
